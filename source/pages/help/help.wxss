@@ -1,0 +1,21 @@
+/* pages/help/help.wxss */
+
+.swiper-container {
+    height: 150px
+}
+
+.item {
+    height: 100%;
+    line-height: 150px;
+    text-align: center;
+}
+
+swiper-item:nth-child(1) .item {
+    background-color: lightgreen;
+}
+swiper-item:nth-child(2) .item {
+    background-color: lightblue;
+}
+swiper-item:nth-child(3) .item {
+    background-color: lightpink;
+}

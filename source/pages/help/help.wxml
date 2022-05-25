@@ -1,0 +1,18 @@
+<!--pages/help/help.wxml-->
+<text selectable>使用指南</text>
+
+<swiper class="swiper-container" indicator-dots indicator-color="white" circular>
+
+<swiper-item>
+<view class="item">A</view>
+</swiper-item>
+
+<swiper-item>
+<view class="item">B</view>
+</swiper-item>
+
+<swiper-item>
+<view class="item">C</view>
+</swiper-item>
+
+</swiper>
