@@ -1,0 +1,14 @@
+<view class="title">
+  <view class="lose" bindtap="indexTitle1">
+    号码修改
+    <view class="line"></view>
+  </view>
+</view>
+
+<view class="input">
+  <input type="text" bindinput="qqEmailInput" />
+</view>
+
+<view>
+  <button bindtap="click">提交</button>
+</view>

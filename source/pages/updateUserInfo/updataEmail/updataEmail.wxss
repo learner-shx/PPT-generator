@@ -1,0 +1,33 @@
+.input{
+  width: 90%;
+  height: 80rpx;
+  margin: 0 auto;
+  border: gray solid 2rpx;
+  border-radius: 10rpx;
+  margin-top: 50rpx;
+}
+
+.input input{
+  margin: 15rpx;
+  color: gray;
+}
+
+button{
+  margin-top: 40rpx;
+  background-color: #ffeb37;
+  color: #fff;
+}
+
+.title{
+  display: flex;
+}
+.title .line{
+  background-color: #ffeb37;
+  height: 14rpx;
+  border-radius: 35rpx;
+  width: 80%;
+}
+.title .lose{
+  margin: 30rpx;
+  font-size: 38rpx;
+}

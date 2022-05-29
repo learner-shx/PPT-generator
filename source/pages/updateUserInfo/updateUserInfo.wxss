@@ -1,0 +1,70 @@
+Page{
+  background-color: #e9ecef;
+}
+.headImg{
+  margin: 40rpx;
+}
+.headImg image{
+  border-radius: 15rpx;
+  width: 150rpx;
+  height: 150rpx;
+}
+.item{
+  display: flex;
+  background-color: #fff;
+
+}
+.item .userName{
+  margin-top: 40rpx;
+  font-size: 37rpx;
+}
+
+.item .schoolId{
+  margin-top: 50rpx;
+  color: grey;
+  font-size: 32rpx;
+}
+.qqEmail{
+  background-color: #fff;
+  margin-top: 30rpx;
+  padding: 40rpx;
+  display: flex;
+}
+.qqEmail .img{
+  position: relative;
+  top: 8rpx;
+  left: 20rpx;
+}
+.qqEmail .img image{
+  width: 35rpx;
+  height: 35rpx;
+}
+.credibility{
+  background-color: #fff;
+  display: flex;
+  margin-top: 40rpx;
+  padding: 40rpx;
+}
+.credibility .font{
+  color: grey;
+}
+.credibility .img image{
+    width: 40rpx;
+    height: 40rpx;
+}
+
+/* .picker{
+  background-color: #fff;
+  margin-top: 30rpx;
+  padding: 40rpx;
+  display: flex;
+}
+.picker .img{
+  position: relative;
+  top: 8rpx;
+  left: 20rpx;
+}
+.picker .img image{
+  width: 35rpx;
+  height: 35rpx;
+} */

@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "PPT一键生成器",
+  "navigationBarBackgroundColor": "#ffd23c",
+  "backgroundColorTop": "left"
 }
