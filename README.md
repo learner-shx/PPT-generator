@@ -27,4 +27,12 @@
 
 ## 参考资料
 
+## 贡献者
+
+<a href="https://github.com/learner-shx/PPT-generator/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=learner-shx/PPT-generator" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
+
 ## 结语
