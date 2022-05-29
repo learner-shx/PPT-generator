@@ -1,14 +1,52 @@
 {
   "pages":[
-    "pages/help/help",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/help/help",
+    "pages/logs/logs",
+    "pages/hall/hall",
+    "pages/updateUserInfo/updateUserInfo",
+    "pages/updateUserInfo/updataCall/updataCall",
+    "pages/updateUserInfo/updataEmail/updataEmail",
+    "pages/message/message",
+    "pages/user/user"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#FFDDA1",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#9c9d9b",
+    "backgroundColor": "#fff",
+    "selectedColor": "#000",
+    "list": [
+        {
+            "pagePath": "pages/index/index",
+            "text": "首页",
+            "iconPath": "images/index-icon/index.png",
+            "selectedIconPath": "images/index-icon/index.png"
+        },
+        {
+            "pagePath": "pages/message/message",
+            "text": "消息",
+            "iconPath": "images/index-icon/message.png",
+            "selectedIconPath": "images/index-icon/message.png"
+        },
+        {
+            "pagePath": "pages/hall/hall",
+            "text": "大厅",
+            "iconPath": "images/index-icon/dating.png",
+            "selectedIconPath": "images/index-icon/dating.png"
+        },
+        {
+            "pagePath": "pages/user/user",
+            "text": "用户",
+            "iconPath": "images/index-icon/user.png",
+            "selectedIconPath": "images/index-icon/user.png"
+        }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

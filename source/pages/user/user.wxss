@@ -1,0 +1,246 @@
+.about{
+  position:fixed;
+  background-color: rgba(0,0,0,0.4);
+  height: 1500rpx;
+  width: 100%;
+}
+
+.about .content{
+  background-color: #fff;
+  height: 700rpx;
+  width: 90%;
+  border-radius: 30rpx;
+  margin: 0 auto;
+  margin-top: 220rpx;
+  text-align: center;
+}
+
+.about .content .img image{
+  width: 150rpx;
+  height: 150rpx;
+  margin-top: 50rpx;
+}
+.about .content .font{
+  font-weight: bold;
+  font-size: 40rpx;
+}
+.about .content .font1{
+  color: #919191;
+  margin-top: 20rpx;
+  font-size: 30rpx;
+}
+.about .content .font2{
+  color: #919191;
+  margin-top: 220rpx;
+  font-size: 26rpx;
+}
+
+/* 上方登录部分的css */
+.title .login{
+  text-align: center;
+}
+
+.title .admin{
+  color: #000;
+  background-color: #ffd23c;
+}
+.title .login .img{
+  margin-top: -350rpx;
+  margin-left: 80rpx;
+  margin-bottom: 50rpx;
+  display: flex;
+}
+.title .login .font{
+  font-size: 45rpx;
+  margin-top: 50rpx;
+  margin-left: 30rpx;
+  color: rgb(26, 26, 26);
+}
+.update image{
+  width: 60rpx;
+  height: 60rpx;
+  margin-top: 52rpx;
+}
+.title .login .img .image image{
+  height: 120rpx;
+  width: 120rpx;
+  border-radius: 50%;
+  border: #fff solid 10rpx;
+}
+.loginButton{
+  margin-top: 50rpx;
+}
+.filter{
+  background-color: #ffd23c;
+  height: 400rpx;
+  border-bottom-right-radius: 80rpx;
+  border-bottom-left-radius: 80rpx;
+}
+
+/* 学校和电话 */
+.emailCall{
+  background-color: #fff;
+  width: 90%;
+  height: 230rpx;
+  margin: 0 auto;
+  border-radius: 50rpx;
+  display: flex;
+  justify-content: space-evenly;
+}
+.emailCall .img{
+  display: flex;
+}
+.emailCall .email .img .font{
+  color: #b6b6b6;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  margin-left: 10rpx;
+}
+.emailCall .call .img .font{
+  color: #b6b6b6;
+  font-size: 28rpx;
+  margin-top: 10rpx;
+  margin-left: 12rpx;
+}
+
+.emailCall .email{
+  margin-top: 30rpx;
+}
+.emailCall .call{
+  margin-top: 40rpx;
+}
+
+.emailCall .email .content{
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-left: 12rpx;
+}
+.emailCall .call .content{
+  margin-top: 26rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.emailCall .email .img image{
+  width: 70rpx;
+  height: 70rpx;
+}
+.emailCall .call .img image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+
+/* 我的发布 */
+.task{
+  background-color: #fff;
+  width: 90%;
+  height: 650rpx;
+  margin: 0 auto;
+  border-radius: 50rpx;
+  margin-top: 60rpx;
+}
+.task .title{
+  display: flex;
+}
+.task .title .font{
+  margin:30rpx;
+  font-size: 32rpx;
+}
+.task .title .next{
+  margin-top:36rpx;
+}
+.task .next image{
+  width: 30rpx;
+  height: 30rpx;
+}
+
+
+
+/* 下方部分的css */
+.bottom{
+  margin-top: 50rpx;
+}
+.bottom-content{
+  width: 95%; 
+  border-radius: 5%;
+  margin: auto;
+  background-color: rgb(253, 253, 253);
+  padding-bottom: 35rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+}
+.me-about{
+  display: flex;
+  margin: 20rpx 40rpx;
+  padding: 30rpx 0rpx;
+  justify-content: space-between;
+  border-bottom: 2rpx solid rgb(238, 238, 238);
+}
+.me-about image{
+  align-self: center;
+  width: 35rpx;
+  height: 35rpx;
+}
+.bottom .me-about button{
+  position: relative;
+  left: -48rpx;
+  font-weight: normal;
+  font-size: 32rpx;
+  width: 600rpx;
+  text-align: left;
+}
+
+/* 发布的物品css */
+.thing{
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  width: 600rpx;
+}
+.thing .img image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 25rpx;
+  margin-left:30rpx;
+  margin-top: 20rpx;
+}
+.thing .title{
+  font-size: 32rpx;
+  margin-top: 25rpx;
+  margin-left: 40rpx;
+  color: rgb(22, 22, 22);
+}
+.thing .upshot{
+  font-size: 26rpx;
+  margin-top: 65rpx;
+  margin-left: 40rpx;
+  color: gray;
+}
+.thing .button{
+  display: flex;
+}
+.On{
+  background-color: #ffd23c;
+  height: 55rpx;
+  text-align: center;
+  line-height: 55rpx;
+  border-radius: 30rpx;
+  width: 140rpx;
+  font-size: 24rpx;
+  margin-top: 55rpx;
+  margin-left: 150rpx;
+}
+.off{
+  background-color: #e1e1e1;
+  height: 55rpx;
+  text-align: center;
+  line-height: 55rpx;
+  border-radius: 30rpx;
+  width: 140rpx;
+  font-size: 24rpx;
+  margin-top: 55rpx;
+  margin-left: 150rpx;
+}

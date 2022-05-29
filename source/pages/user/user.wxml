@@ -1,0 +1,124 @@
+<view class="about" bindtap="showPop" style="display:{{about}};">
+  <view class="content">
+    <view class="img">
+      <image src="../../images/index-icon/title.png"></image>
+    </view>
+    <!-- <view class="font"></view> -->
+    <view class="font1">易 PPT 平 台 v0.1</view>
+    <view class="font2">开发人员：孙含笑 徐梓峻 陆知行 陶文琪</view>
+    <view class="font1">来自： 武汉大学</view>
+  </view>
+</view>
+
+<view class="title">
+  <view class="login">
+    <!-- <image src="{{userinfo.avatarUrl}}"></image> -->
+    <view wx:if="{{headImg!=''}}">
+      <view class="filter"></view>
+      <!--模糊背景-->
+      <view class="img">
+        <view class="image">
+          <image src="{{headImg}}"></image>
+        </view>
+        <view class="font">{{userName}}</view>
+        <navigator url="../updateUserInfo/updateUserInfo">
+          <view class="update">
+            <image src="../../images/index-icon/update.png"></image>
+          </view>
+        </navigator>
+      </view>
+    </view>
+    <view wx:else class="loginButton">
+      <button class="admin" style="display:{{adminDisplay}}" type="primary" bindtap="getUserProfile">登录</button>
+      <!--获取用户信息-->
+    </view>
+  </view>
+</view>
+
+<!-- 学校和电话 -->
+<view wx:if="{{headImg!=''}}">
+
+  <view class="emailCall">
+    <view class="email">
+      <view class="img">
+        <image src="../../images/index-icon/school.png"></image>
+        <view class="font">邮箱</view>
+      </view>
+      <view class="content">{{email}}</view>
+    </view>
+
+    <view class="call">
+      <view class="img">
+        <image src="../../images/index-icon/call.png"></image>
+        <view class="font">电话</view>
+      </view>
+      <view class="content">{{call}}</view>
+    </view>
+  </view>
+
+</view>
+
+
+<!-- 我发布过的任务 -->
+<view wx:if="{{headImg!=''}}">
+  <view class="task">
+    <navigator url="../thingList/thingList">
+      <view class="title">
+        <view class="font">我发布的悬赏</view>
+        <view class="next">
+          <image src="../../images/common/next.png"></image>
+        </view>
+      </view>
+    </navigator>
+    <!-- 如果没有发布，显示无内容图片 -->
+    <view wx:if="{{imageBase64.length==0}}" style="text-align: center;">
+    <image src="../../images/img/noContent.png" style="width: 350rpx; height: 350rpx;margin-top: 50rpx;"></image>
+    <view style="color: gray;">暂未发悬赏</view>
+    </view>
+    <!-- 最多显示3个发布 -->
+    <view wx:if="{{imageBase64.length>0}}">
+      <view wx:for="{{imageBase64}}" data-index="{{index}}">
+        <view class="thing">
+          <view class="img">
+            <image src="data:image/png;base64,{{imageBase64[index].imageBase64}}"
+              wx:if="{{imageBase64[index].imageBase64!=''}}"></image>
+            <image src="../../images/img/noImg.png" wx:if="{{imageBase64[index].imageBase64==''}}"></image>
+          </view>
+          <view>
+            <view class="title">标题：{{imageBase64[index].title}}</view>
+            <view class="button">
+              <view class="upshot">{{imageBase64[index].upshot}}</view>
+              <view class="On" wx:if="{{imageBase64[index].offOn==0}}">开启验证</view>
+              <view class="off" wx:if="{{imageBase64[index].offOn==1}}">无需验证</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 显示3个结束 -->
+  </view>
+</view>
+
+<!-- 下方表格 -->
+<view class="bottom">
+  <view class="bottom-content">
+    <view class="me-about" bindtap="showPop">
+      <text>关于</text>
+      <image src="../../images/common/next.png"></image>
+    </view>
+    <navigator url="../share/share">
+      <view class="me-about">
+        <text>分享</text>
+        <image src="../../images/common/next.png"></image>
+      </view>
+    </navigator>
+    <view class="me-about">
+      <button open-type="feedback">反馈与建议</button>
+      <image src="../../images/common/next.png"></image>
+    </view>
+    <navigator url="../help/help"><view class="me-about">
+      <text>帮助</text>
+      <image src="../../images/common/next.png"></image>
+    </view></navigator>
+  </view>
+</view>
