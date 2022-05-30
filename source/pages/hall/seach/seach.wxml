@@ -1,30 +1,3 @@
-<!-- 侧面导航条 -->
-<view class="side">
-  <view class="go" bindtap="goTop">
-    <image src="../../images/common/top.png"></image>
-  </view>
-  <navigator url="../release/release">
-    <view class="add">+</view>
-  </navigator>
-</view>
-
-<!-- 搜索框 -->
-<view class="search">
-  <view class="img" bindtap="search">
-    <image src="../../images/index-icon/search.png" bindtap="search"></image>
-  </view>
-  <view class="input">
-    <input type="text" placeholder="搜索"  bindinput="searchText"/>
-  </view>
-</view>
-
-<view class="list">
-  <view class="{{thing[index].str==nowThing ? 'item1':'item'}}" wx:for="{{thing}}" data-index="{{index}}"
-    bindtap="thing">
-    {{thing[index].str}}</view>
-</view>
-<view class="zjff">标签类型选择后需要结合搜索才能实现</view>
-
 <view style="display: flex;">
   <view class="showButton" style="background-color: {{BgColor}};">
     <view class="button" bindtap="showButton" style="margin-left: {{buttonLeft}};"></view>
@@ -35,24 +8,21 @@
 
 <view class="title">
   <view class="lose" bindtap="indexTitle1">
-    PPT悬赏
+    失物招领
     <view class="{{indexTitle==0?'line':''}}"></view>
   </view>
   <view class="seek" bindtap="indexTitle2">
-    PPT制作者
+    寻物启事
     <view class="{{indexTitle==1?'line':''}}"></view>
   </view>
 </view>
 
-<!-- 当选择了PPT需求标题时 -->
+<!-- 当选择了失物招领标题时 -->
 <view wx:if="{{indexTitle==0}}">
   <view class="loseContent">
-    <view class="content" wx:for="{{lose}}" data-index="{{index}}" bindtap="loseContent" wx:if="{{lose[index].upshot!=loseShow}}">
+    <view class="content" wx:for="{{lose}}" data-index="{{index}}" bindtap="loseContent" wx:if="{{lose[index].upshot!=loseShow && lose[index].title==searchText}}">
       <view class="img" wx:if="{{lose[index].imageBase64!=''}}">
         <image src="data:image/png;base64,{{lose[index].imageBase64}}"></image>
-      </view>
-      <view class ="title">
-        {{requirements[index].describe}}
       </view>
       <view class="list">
         <view class="title">
@@ -67,7 +37,7 @@
         </view>
         <view class="userName">{{lose[index].userName}}</view>
         <view class="icon">
-          <image src="../../images/index-icon/title.png"></image>
+          <image src="../../../images/index-icon/title.png"></image>
         </view>
       </view>
     </view>
@@ -94,7 +64,7 @@
         </view>
         <view class="userName">{{seek[index].userName}}</view>
         <view class="icon">
-          <image src="../../images/index-icon/title.png"></image>
+          <image src="../../../images/index-icon/title.png"></image>
         </view>
       </view>
     </view>

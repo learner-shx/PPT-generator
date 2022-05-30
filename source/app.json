@@ -1,12 +1,17 @@
 {
   "pages":[
+    "pages/release/release",
     "pages/index/index",
     "pages/help/help",
     "pages/logs/logs",
     "pages/hall/hall",
+    "pages/hall/reqContent/reqContent",
+    "pages/hall/seekContent/seekContent",
     "pages/updateUserInfo/updateUserInfo",
     "pages/updateUserInfo/updataCall/updataCall",
     "pages/updateUserInfo/updataEmail/updataEmail",
+    
+    
     "pages/message/message",
     "pages/user/user"
   ],

@@ -1,0 +1,47 @@
+<view class="about" bindtap="showPop" style="display:{{about}};">
+  <view class="content">
+    <view class="img">
+      <image src="../../../images/index-icon/title.png"></image>
+    </view>
+    <view class="font">光 制 作</view>
+    <view class="font1">校 园 失 物 招 领 平 台</view>
+    <view class="headImg"><image src="{{seek.headImg}}"></image></view>
+    <view class="font1">{{seek.userName}}</view>
+    <view class="font1">{{seek.callOrVx}}</view>
+    <view class="font2">请添加好友/通话 - 后介绍物品的详细信息,慎防诈骗</view>
+  </view>
+</view>
+
+<view class="content">
+  <view class="title">
+    <view class="font">
+      标题丨{{seek.seekTitle}}
+    </view>
+  </view>
+  <view class="img">
+    <image src="data:image/png;base64,{{seek.seekImageBase64}}" wx:if="{{seek.seekImageBase64!=''}}" mode="widthFix"></image>
+    <image src="../../../images/img/noImg.png" wx:if="{{seek.seekImageBase64==''}}" style="width: 350rpx;height: 350rpx;"></image>
+  </view>
+
+  <view class="text">
+    备注丨{{seek.seekRemark}}
+  </view>
+</view>
+
+<view class="user">
+  <view class="headImg">
+    <image src="{{seek.headImg}}"></image>
+  </view>
+  <view class="userName">{{seek.userName}}</view>
+  <view class="button" wx:if="{{seek.upshot=='丢失'}}" bindtap="showPop">联系方式</view>
+  <view wx:if="{{seek.upshot=='寻回'}}" class="ok"><image src="../../../images/index-icon/ok.png"></image></view>
+</view>
+
+<view class="detail">
+  <view class="title">物品详情丨</view>
+  <view class="font1">物品类型：{{seek.seekNowThing}}</view>
+  <view class="font1">认领状态：{{seek.upshot}}</view>
+  <view class="image">
+    <image src="../../../images/index-icon/title.png"></image>
+  </view>
+</view>

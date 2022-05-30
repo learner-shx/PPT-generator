@@ -1,0 +1,117 @@
+<view wx:if="{{openid==''}}">
+
+  <view class="title">
+    <view class="lose" bindtap="indexTitle1">
+      悬赏发布
+      <view class="{{indexTitle==0?'line':''}}"></view>
+    </view>
+  </view>
+
+  <!-- 物品的描述和标题+地点 -->
+  <view wx:if="{{indexTitle==0}}">
+    <view class="content">
+      <view class="input">
+        <input type="text" placeholder="物品的标题" bindinput="title" value="{{title}}" />
+      </view>
+
+      <view class="list">
+        <view class="{{thing[index].str==nowThing ? 'item1':'item'}}" wx:for="{{thing}}" data-index="{{index}}"
+          bindtap="thing">
+          {{thing[index].str}}</view>
+      </view>
+
+      <view class="place">
+        <view class="font"><picker range="{{schoolPicker}}" bindchange="schoolPicker">{{schoolId}}</picker></view>
+        <view class="input">
+          <input type="text" placeholder="输入详细地址" bindinput="addRess" value="{{addRess}}" />
+        </view>
+        <view class="text">
+          <view class="textFont">备注 丨</view>
+          <input type="text" placeholder="添加备注信息" bindinput="remark" value="{{remark}}" />
+        </view>
+      </view>
+    </view>
+
+
+
+
+    <view class="addImg">
+      <view wx:if="{{img!=''}}" style="width: 90%;">
+        <image src="{{img}}" bindtap="uploadimg" mode="widthFix"></image>
+      </view>
+      <view class="add" wx:if="{{img==''}}" bindtap="uploadim=g">
+        +
+      </view>
+      <view class="font">上传图片后需要更改，请点击图片</view>
+    </view>
+
+    <view class="call">
+      <view class="font">验证信息</view>
+      <view style="display: flex;">
+        <view class="font1">用于失主联系您的唯一途径 开启/关闭</view>
+        <view class="{{offOn==0? 'button':'button1'}}" bindtap="offOn">已开启</view>
+      </view>
+    </view>
+
+    <view class="submitButton" bindtap="submitButton">发布</view>
+
+  </view>
+
+  <!-- 分界线 -->
+  <view wx:if="{{indexTitle==1}}">
+    <view class="seekContent">
+      <view class="seekTitle">
+        <input type="text" placeholder="输入物品标题" bindinput="seekTitle" value="{{seekTitle}}" />
+      </view>
+
+      <view class="list">
+        <view class="{{thing[index].str==seekNowThing ? 'item1':'item'}}" wx:for="{{thing}}" data-index="{{index}}"
+          bindtap="thing">
+          {{thing[index].str}}</view>
+      </view>
+
+      <view class="text" style="margin-left: 50rpx;">
+        <view class="textFont">备注 丨</view>
+        <input type="text" placeholder="请简述一下该物品的信息" bindinput="seekRemark" value="{{seekRemark}}" />
+      </view>
+    </view>
+
+    <view class="call">
+      <view class="font">联系方式</view>
+      <view class="seekButton" style="display: flex;">
+        <view class="font1">用于联系您的唯一途径 关闭/开启</view>
+        <view class="{{callOrVxIndex==0? 'callOrVx2':'callOrVx1'}}" bindtap="callOrVxIndex">微信/电话</view>
+      </view>
+      <view class="input">
+        <input type="text" placeholder="{{callOrVxIndex==0? '请填写您的微信号':'请填写您的手机号'}}" bindinput="callOrVx"
+          value="{{callOrVx}}" />
+      </view>
+      <view class="icon">
+        <image src="../../images/index-icon/title.png"></image>
+        <view class="fontList">
+          <view class="font" style="margin-top: 26rpx;">请慎防诈骗等，核对身份与物品后进行交流</view>
+          <view class="font">如若涉及钱财，请自行判断，或举报</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="addImg">
+      <view wx:if="{{seekImg!=''}}">
+        <image src="{{seekImg}}" bindtap="seekUploadimg" mode="widthFix"></image>
+      </view>
+      <view class="add" wx:if="{{seekImg==''}}" bindtap="seekUploadimg">
+        +
+      </view>
+      <view class="font">上传图片后需要更改，请点击图片</view>
+    </view>
+
+    <view class="submitButton" bindtap="seekSubmitButton">发布寻物</view>
+
+  </view>
+
+</view>
+
+<view wx:if="{{openid==''}}">
+  <image src="../../images/img/noLogin.png" style="margin-top:50rpx;margin-left: 110rpx;"></image>
+  <view style="margin: 0 auto; text-align: center; font-size: 42rpx; color: rgba(0, 0, 0, 0.562);">未登录</view>
+</view>
