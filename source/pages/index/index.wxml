@@ -1,23 +1,60 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
+<view class="headBg">
+  <view class="title"><!-- 标题轮播图等 -->
+  <swiper indicator-dots='true' autoplay='true' interval='3000' duration='1000' circular='true' class="swip">
+    <block wx:for="{{movies}}" wx:for-index="index">
+      <swiper-item>
+        <image src='{{movies[index].url}}' mode='widthFix'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+</view>
+
+
+<!-- 发布和寻找 -->
+<view class="function">
+  <button class="release">
+    <!--发布-->
+
+      <view class="img" bindtap="navigator">
+        <image src="../../images/index-icon/generator.jpg"></image>
       </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+
+    <view class="font">
+      自动生成
+    </view>
+  </button>
+
+  <button class="release">
+    <!--寻找-->
+
+      <view class="img" bindtap="navigator">
+        <image src="../../images/index-icon/requirement.jpg"></image>
+      </view>
+
+
+    <view class="font">
+      悬赏
+    </view>
+  </button>
+</view>
+
+
+
+<!-- 公告 -->
+<view class="announcement-title">
+  <view class="img">
+    <image src="../../images/index-icon/announcement.png"></image>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="font">最新公告</view>
+</view>
+
+<!-- 公告内容 -->
+<view class="announcement-center">
+  <view wx:for="{{arr}}" data-index="{{index}}">
+    <view class="list">
+      <view class="li"></view>
+      <view class="font">{{arr[index].content}}</view>
+    </view>
   </view>
 </view>

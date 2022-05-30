@@ -1,19 +1,143 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #aaa;
+/* 首行黄色背景+正式上线 */
+.headBg{
+  background-color: #ffd23c;
+  height: 400rpx;
+  border-bottom-right-radius: 80rpx;
+  border-bottom-left-radius: 80rpx;
 }
 
-.userinfo-avatar {
+.headBg .content{
+  background-color: #fff;
+  width: 90%;
+  height: 250rpx;
+  margin: 50rpx auto;
+  border-radius: 60rpx;
+}
+
+/* 轮播图Go */
+.title {
+  width: 100%;
+  height: 300rpx;
+}
+
+.title .swip {
+  box-shadow: 4rpx 4rpx 8rpx rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  height: 280rpx;
+  width: 650rpx;
+  margin-top: 10rpx;
+  border-radius: 20rpx;
   overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
 }
 
-.usermotto {
-  margin-top: 200px;
+.title .swip image {
+  width: 100%;
+}
+/* 轮播图Over */
+
+
+/* 搜索框 */
+.search{
+  display: flex;
+  width: 90%;
+  background-color: #fff;
+  height: 80rpx;
+  margin: 0 auto;
+  margin-top: -40rpx;
+  border-radius: 60rpx;
+}
+.search .img{
+  margin-top: 17rpx;
+  margin-left: 27rpx;
+}
+.search .img image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.search .input{
+  margin-top: 20rpx;
+  margin-left: 27rpx;
+  color: #b6b6b6;
+  font-size: 30rpx;
+}
+
+
+
+/* 发布和寻找 */
+.function{
+  margin-top: 80rpx;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.function .release{
+  width: 300rpx;
+  height: 260rpx;
+  background-color: #fff;
+  border-radius: 30rpx;
+}
+.function .img image{
+  width: 80rpx;
+  height: 80rpx;
+  margin: 30rpx;
+}
+.function .font{
+  margin-left: 10rpx;
+  margin-top: 20rpx;
+}
+.function .list{
+  display: flex;
+}
+.function .list .button{
+  background-color: #ffd23c;
+  width: 140rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border-radius: 30rpx;
+  margin-top: 25rpx;
+}
+
+
+/* 公告 */
+.announcement-title{
+  display: flex;
+}
+.announcement-title .font{
+  margin-top: 66rpx;
+  margin-left: 20rpx;
+  font-size: 35rpx;
+  font-weight: bold;
+}
+.announcement-title .img{
+  margin-left: 70rpx;
+  margin-top: 50rpx;  
+}
+.announcement-title .img image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.announcement-center{
+  margin: 0 auto;
+  width: 80%;
+  background-color: #fff;
+  padding: 20rpx;
+  border-radius: 50rpx;
+}
+.announcement-center .list{
+  display:flex;
+  margin: 30rpx;
+}
+.announcement-center .list .li{
+  background-color: #ffd23c;
+  border-radius: 50%;
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 10rpx;
+}
+.announcement-center .list .font{
+  margin-top: 5rpx;
+  margin-left: 25rpx;
+  width: 480rpx;
 }
