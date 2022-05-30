@@ -1,16 +1,17 @@
 {
   "pages":[
-    "pages/release/release",
     "pages/index/index",
     "pages/help/help",
     "pages/logs/logs",
     "pages/hall/hall",
+    "pages/release1/release1",
+    "pages/release/release",
     "pages/hall/reqContent/reqContent",
     "pages/hall/seekContent/seekContent",
     "pages/updateUserInfo/updateUserInfo",
     "pages/updateUserInfo/updataCall/updataCall",
     "pages/updateUserInfo/updataEmail/updataEmail",
-    
+  
     
     "pages/message/message",
     "pages/user/user"
@@ -39,6 +40,12 @@
             "iconPath": "images/index-icon/message.png",
             "selectedIconPath": "images/index-icon/message.png"
         },
+        {
+          "pagePath": "pages/release1/release1",
+          "text": "发布",
+          "iconPath": "images/index-icon/dating.png",
+          "selectedIconPath": "images/index-icon/dating.png"
+      },
         {
             "pagePath": "pages/hall/hall",
             "text": "大厅",
