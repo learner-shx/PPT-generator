@@ -1,6 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "PPT一键生成器",
-  "navigationBarBackgroundColor": "#ffd23c",
-  "backgroundColorTop": "left"
+  "navigationBarTitleText": "失物招领",
+  "backgroundColorTop": "left",
+  "navigationBarBackgroundColor": "#ffd23c"
 }
