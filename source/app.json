@@ -1,8 +1,7 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/help/help",
-    "pages/logs/logs",
     "pages/hall/hall",
     "pages/release1/release1",
     "pages/release/release",
@@ -11,8 +10,6 @@
     "pages/updateUserInfo/updateUserInfo",
     "pages/updateUserInfo/updataCall/updataCall",
     "pages/updateUserInfo/updataEmail/updataEmail",
-  
-    
     "pages/message/message",
     "pages/user/user"
   ],
@@ -28,36 +25,31 @@
     "backgroundColor": "#fff",
     "selectedColor": "#000",
     "list": [
-        {
-            "pagePath": "pages/index/index",
-            "text": "首页",
-            "iconPath": "images/index-icon/index.png",
-            "selectedIconPath": "images/index-icon/index.png"
-        },
-        {
-            "pagePath": "pages/message/message",
-            "text": "消息",
-            "iconPath": "images/index-icon/message.png",
-            "selectedIconPath": "images/index-icon/message.png"
-        },
-        {
-          "pagePath": "pages/release1/release1",
-          "text": "发布",
-          "iconPath": "images/index-icon/dating.png",
-          "selectedIconPath": "images/index-icon/dating.png"
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/index-icon/index.png",
+        "selectedIconPath": "images/index-icon/index.png"
       },
-        {
-            "pagePath": "pages/hall/hall",
-            "text": "大厅",
-            "iconPath": "images/index-icon/dating.png",
-            "selectedIconPath": "images/index-icon/dating.png"
-        },
-        {
-            "pagePath": "pages/user/user",
-            "text": "用户",
-            "iconPath": "images/index-icon/user.png",
-            "selectedIconPath": "images/index-icon/user.png"
-        }
+
+      {
+        "pagePath": "pages/hall/hall",
+        "text": "大厅",
+        "iconPath": "images/index-icon/dating.png",
+        "selectedIconPath": "images/index-icon/dating.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "images/index-icon/message.png",
+        "selectedIconPath": "images/index-icon/message.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "用户",
+        "iconPath": "images/index-icon/user.png",
+        "selectedIconPath": "images/index-icon/user.png"
+      }
     ]
   },
   "style": "v2",

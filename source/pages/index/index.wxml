@@ -51,10 +51,13 @@
 
 <!-- 公告内容 -->
 <view class="announcement-center">
-  <view wx:for="{{arr}}" data-index="{{index}}">
+  <view wx:for="{{announcement}}" data-index="{{index}}">
     <view class="list">
       <view class="li"></view>
-      <view class="font">{{arr[index].content}}</view>
+      <view class="font">
+        <view>{{item.content}}</view>
+        <view>{{item.time}}</view>
+      </view>
     </view>
   </view>
 </view>

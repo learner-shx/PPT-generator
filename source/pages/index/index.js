@@ -1,4 +1,6 @@
-// pages/index/index.js
+const utils = require("../../utils/util")
+const app = getApp()
+
 Page({
 
     /**
@@ -23,18 +25,21 @@ Page({
   
     async onLoad() {
       var that = this;
-      const db = wx.cloud.database({ // 链接数据表
-        env: "cloud1-9gv9ynmtc4528521"
-      });
-      db.collection('announcement').where({}).get({
+      // console.log("hello")
+      // wx.cloud.database().collection('announcement').add({
+      //   data : {
+      //     time : utils.formatDate(new Date()),
+      //     content : "v0.0.1版本，初步开发"
+      //   },
+      //   success(res) {
+      //     console.log(res)
+      //   }
+      // })
+      wx.cloud.database().collection('announcement').get({
         success: function (res) {
-          let all = []
-          // res.data 包含该记录的数据
-          for (let i = 0; i < 3; i++) {
-            all.push(res.data[i])
-          }
+          console.log(res.data);
           that.setData({
-            arr: all,
+            announcement : res.data
           })
         }
       })

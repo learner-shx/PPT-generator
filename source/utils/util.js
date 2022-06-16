@@ -14,6 +14,15 @@ const formatNumber = n => {
   return n[1] ? n : `0${n}`
 }
 
+
+const formatDate = date => {
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+
+  return month + "月" +  day + "日"
+}
+
 module.exports = {
-  formatTime
+  formatTime,
+  formatDate
 }

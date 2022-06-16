@@ -10,6 +10,8 @@
 
 ## 使用方法
 
+## 代码
+
 - 进入[微信小程序官网](https://mp.weixin.qq.com/cgi-bin/wx)
 - 注册,登录
 - 获取AppID

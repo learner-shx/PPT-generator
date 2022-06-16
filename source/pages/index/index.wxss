@@ -137,6 +137,8 @@
   margin-top: 10rpx;
 }
 .announcement-center .list .font{
+  display: flex;
+  justify-content: space-between;
   margin-top: 5rpx;
   margin-left: 25rpx;
   width: 480rpx;
