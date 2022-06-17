@@ -13,10 +13,10 @@
 
 <!-- 发布和寻找 -->
 <view class="function">
-  <button class="release">
+  <button class="release" bindtap="toGenerator">
     <!--发布-->
 
-      <view class="img" bindtap="navigator">
+      <view class="img">
         <image src="../../images/index-icon/generator.jpg"></image>
       </view>
 
@@ -25,10 +25,10 @@
     </view>
   </button>
 
-  <button class="release">
+  <button class="release" bindtap="toRequirement">
     <!--寻找-->
 
-      <view class="img" bindtap="navigator">
+      <view class="img">
         <image src="../../images/index-icon/requirement.jpg"></image>
       </view>
 

@@ -1,8 +1,8 @@
 <view class="item">
   <!--头像名字的组合框架-->
-  <view class="headImg">
+  <view class="avatarUrl">
     <!--头像-->
-    <image src="{{headImg}}"></image>
+    <image src="{{avatarUrl}}"></image>
   </view>
   <view>
     <view class="userName">
@@ -20,7 +20,7 @@
 
 
 <!-- 头像修改 -->
-<view class="qqEmail" bindtap="headImg">
+<view class="qqEmail" bindtap="avatarUrl">
   头像：点击修改为当前微信头像
   <view class="img">
     <image src="../../images/common/next.png"></image>

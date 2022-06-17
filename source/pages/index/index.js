@@ -49,5 +49,17 @@ Page({
       wx.reLaunch({
         url: "../hall/hall"
       })
+    },
+
+    toGenerator() {
+      wx.navigateTo({
+        url: '../generator/generator',
+      })
+    },
+
+    toRequirement() {
+      wx.navigateTo({
+        url: '../requirement/requirement',
+      })
     }
   })

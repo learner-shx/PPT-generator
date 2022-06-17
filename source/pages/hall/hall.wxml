@@ -63,7 +63,7 @@
       <view class="nowThing">类型：{{lose[index].nowThing}}</view>
       <view class="user" style="display: flex;">
         <view class="imageUser">
-          <image src="{{lose[index].headImg}}"></image>
+          <image src="{{lose[index].avatarUrl}}"></image>
         </view>
         <view class="userName">{{lose[index].userName}}</view>
         <view class="icon">
@@ -90,7 +90,7 @@
       <view class="nowThing">类型：{{seek[index].seekNowThing}}</view>
       <view class="user" style="display: flex;">
         <view class="imageUser">
-          <image src="{{seek[index].headImg}}"></image>
+          <image src="{{seek[index].avatarUrl}}"></image>
         </view>
         <view class="userName">{{seek[index].userName}}</view>
         <view class="icon">

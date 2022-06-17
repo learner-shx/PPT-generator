@@ -12,13 +12,13 @@
 
 <view class="title">
   <view class="login">
-    <!-- <image src="{{userinfo.avatarUrl}}"></image> -->
-    <view wx:if="{{headImg!=''}}">
+    <!-- <image src="{{userInfo.avatarUrl}}"></image> -->
+    <view wx:if="{{avatarUrl!=''}}">
       <view class="filter"></view>
       <!--模糊背景-->
       <view class="img">
         <view class="image">
-          <image src="{{headImg}}"></image>
+          <image src="{{avatarUrl}}"></image>
         </view>
         <view class="font">{{userName}}</view>
         <navigator url="../updateUserInfo/updateUserInfo">
@@ -36,7 +36,7 @@
 </view>
 
 <!-- 学校和电话 -->
-<view wx:if="{{headImg!=''}}">
+<view wx:if="{{avatarUrl!=''}}">
 
   <view class="emailCall">
     <view class="email">
@@ -60,7 +60,7 @@
 
 
 <!-- 我发布过的任务 -->
-<view wx:if="{{headImg!=''}}">
+<view wx:if="{{avatarUrl!=''}}">
   <view class="task">
     <navigator url="../thingList/thingList">
       <view class="title">

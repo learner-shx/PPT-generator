@@ -34,7 +34,7 @@
   margin-top: 100rpx;
   font-size: 24rpx;
 }
-.about .content .headImg image{
+.about .content .avatarUrl image{
   width: 110rpx;
   height: 110rpx;
   border-radius: 50%;
@@ -83,7 +83,7 @@
   display: flex;
   box-shadow: 0rpx 1rpx 10rpx rgba(0, 0, 0, 0.09);
 }
-.user .headImg image{
+.user .avatarUrl image{
   width: 100rpx;
   height: 100rpx;
   margin-top: 40rpx;

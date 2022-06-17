@@ -161,8 +161,8 @@ Page({
         // data 字段表示需新增的 JSON 数据
         data: {
           // _openid: wx.getStorageSync('openId').result.openid,会自动添加，不需要自己输入
-          headImg: wx.getStorageSync('userinfo').avatarUrl,
-          userName: wx.getStorageSync('userinfo').nickName,
+          avatarUrl: wx.getStorageSync('userInfo').avatarUrl,
+          userName: wx.getStorageSync('userInfo').nickName,
           remark: this.data.remark,
           title: this.data.title,
           nowThing: this.data.nowThing,
@@ -218,8 +218,8 @@ Page({
         // data 字段表示需新增的 JSON 数据
         data: {
           // _openid: wx.getStorageSync('openId').result.openid,会自动添加，不需要自己输入
-          headImg: wx.getStorageSync('userinfo').avatarUrl,
-          userName: wx.getStorageSync('userinfo').nickName,
+          avatarUrl: wx.getStorageSync('userInfo').avatarUrl,
+          userName: wx.getStorageSync('userInfo').nickName,
           seekNowThing: this.data.seekNowThing,
           seekRemark: this.data.seekRemark,
           seekTitle: this.data.seekTitle,

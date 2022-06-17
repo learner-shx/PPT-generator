@@ -1,10 +1,13 @@
 // miniprogram/pages/user/user.js
+
+const app = getApp()
+
 Page({
   data: {
     userName: "",
-    headImg: "",
+    avatarUrl: "",
     db: {},
-    userinfo: {},
+    userInfo: {},
     about: "none",
     imageBase64:[]
   },
@@ -16,65 +19,61 @@ Page({
     wx.getUserProfile({
       desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
-        wx.setStorageSync('userinfo', res.userInfo);
+        
         // 数据库提交开始
         that.setData({
           userName: res.userInfo.nickName,
-          headImg: res.userInfo.avatarUrl,
-          home: res.userInfo.city
+          avatarUrl: res.userInfo.avatarUrl,
         })
 
-        const db = wx.cloud.database({
-          env: "cloud1-9gv9ynmtc4528521"
-        });
-        // 这里可能
-        db.collection('user').add({
-          // data 字段表示需新增的 JSON 数据
-
-          data: {
-            userName: res.userInfo.nickName,
-            headImg: res.userInfo.avatarUrl,
-            home: res.userInfo.city,
-            email: "未填写",
-            call: "未填写"
-          },
-        })
+        app.globalData.userInfo = res.userInfo
+        
         // 数据库提交结束
-
-        wx.login({
+        
+        wx.cloud.callFunction({
+          name: "login",
+          data : {},
           success: res => {
-            // 发送 res.code 到后台换取 openId, sessionKey, unionId
-            wx.cloud.callFunction({
-              name: 'login',
-              data: {},
-              success: res => {
-                //   console.log('[云函数] [login] user openid: ', res.result.openid)          
-                // this.setData({
-                //    openId:res.result.openid
-                //  })
-                wx.setStorageSync('openId', res);
-                wx.reLaunch({ 
-                  url: "../index/index"
-                })
-              }
-            });
+            //   console.log('[云函数] [login] user openid: ', res.result.openid)          
+            // this.setData({
+            //    openId:res.result.openid
+            //  })
+            console.log(res.result.userInfo.openId)
+            // 拿到用户的OpenId
+            app.globalData.userInfo._openid = res.result.userInfo.openId
+          },
+          fail: function(res) {
+            console.log(res)
           }
         })
 
+        wx.setStorageSync('userInfo', res.userInfo);
+        // 在数据库中查询此openid，如果没有那么新建用户，否则按原用户登录
+
+        wx.cloud.database().collection('users').where({
+          _openid : app.globalData.userInfo.openid
+        }).get({
+          success(res) {
+            console.log(res)
+            if(res.data.length==0) {
+              // 没有搜索到则新建用户
+              wx.cloud.database().collection('users').add({
+                // data 字段表示需新增的 JSON 数据
+      
+                data: {
+                  userName: res.userInfo.nickName,
+                  avatarUrl: res.userInfo.avatarUrl,
+                  email: "未填写",
+                  call: "未填写"
+                },
+              })
+            }
+          }
+        })
+
+        
       }
     })
-    //获取用户openid
-    // //获取用户openid 结束
-    // const {
-    //   userInfo
-    // } = e.detail;
-    // wx.setStorageSync('userinfo', userInfo);
-    // const userinfo = wx.getStorageSync('userinfo');
-    // this.setData({
-    //   userinfo
-    // });
-    // console.log(e);
-
 
   },
 
@@ -85,48 +84,24 @@ Page({
     this.onLoad();
   },
   onLoad() {
-    if (wx.getStorageSync('userinfo')) {
+    if (wx.getStorageSync('userInfo')) {
       wx.showLoading({
         title: '数据加载中...',
       });
 
-      const userinfo = wx.getStorageSync('userinfo');
-      wx.login({
-        //成功放回
-        success:(res)=>{
-          console.log(res);
-          let code=res.code
-          wx.request({
-          url: `https://api.weixin.qq.com/sns/jscode2session?appid=wx1037e76df21d68a4&secret=bc448ec45feb608fc375463829712980&js_code=${code}&grant_type=authorization_code`,
-            success:(res)=>{
-              // console.log(res);
-              userInfo.openid=res.data.openid
-              //获取到你的openid
-              // console.log(userInfo.openid);
-              this.setData({
-                userinfo,
-                openid:userInfo.openid
-                
-                // openid:wx.getStorageSync('openId').result.userInfo.openId
-              });
-              wx.setStorageSync('openId', res);
-              var app = getApp();
-              app.globalData.openid = this.data.openid;
-            }
-          })
-        }
+      app.globalData.userInfo = wx.getStorageSync('userInfo');
+      var that = this;
+
+      that.setData({
+        openid : app.globalData.userInfo._openid
       })
 
-      var that = this;
-      const db = wx.cloud.database({ // 链接数据表
-        env: "cloud1-9gv9ynmtc4528521"
-      });
-      db.collection('user').where({ //数据查询
+      wx.cloud.database().collection('user').where({ //数据查询
         _openid: that.data.openid //条件
       }).get({
         success: function (res) {
           that.setData({
-            headImg: res.data[0].headImg,
+            avatarUrl: res.data[0].avatarUrl,
             userName: res.data[0].userName,
             email: res.data[0].email,
             call: res.data[0].call
@@ -136,10 +111,8 @@ Page({
     }
     var arr=[];//暂存图片base64编码
     //提取用户发布的物品信息
-    const db = wx.cloud.database({ // 链接数据表
-      env: "cloud1-9gv9ynmtc4528521"
-    });
-    db.collection('requirements').where({ //数据查询
+    
+    wx.cloud.database().collection('requirements').where({ //数据查询
       _openid: this.data.openid //条件
     }).get({
       success: function (res) {
@@ -155,7 +128,9 @@ Page({
       }
     });
     //提取用户发布的物品信息结束
-
+    wx.hideLoading({
+      success: (res) => {},
+    })
   },
 
   showPop() {

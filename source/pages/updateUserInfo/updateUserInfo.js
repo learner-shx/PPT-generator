@@ -2,7 +2,7 @@
 Page({
   data: {
     userName: "", //用户名
-    headImg: "",
+    avatarUrl: "",
     home: "", //家庭地址
     email: "",
     call: "", //电话
@@ -27,7 +27,7 @@ Page({
       success: function (res) {
         that.setData({
           userName: res.data[0].userName,
-          headImg: res.data[0].headImg,
+          avatarUrl: res.data[0].avatarUrl,
           home: res.data[0].home,
           email: res.data[0].email,
           call: res.data[0].call
@@ -38,8 +38,8 @@ Page({
   },
 
 
-  headImg() {
-    if (this.data.headImg != wx.getStorageSync('userinfo').avatarUrl) {
+  avatarUrl() {
+    if (this.data.avatarUrl != wx.getStorageSync('userInfo').avatarUrl) {
       const db = wx.cloud.database({
         env: "cloud1-9gv9ynmtc4528521"
       });
@@ -49,7 +49,7 @@ Page({
         // data 字段表示需新增的 JSON 数据
 
         data: {
-          headImg: wx.getStorageSync('userinfo').avatarUrl,
+          avatarUrl: wx.getStorageSync('userInfo').avatarUrl,
         },
       })
 

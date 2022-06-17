@@ -1,10 +1,10 @@
 Page{
   background-color: #e9ecef;
 }
-.headImg{
+.avatarUrl{
   margin: 40rpx;
 }
-.headImg image{
+.avatarUrl image{
   border-radius: 15rpx;
   width: 150rpx;
   height: 150rpx;
