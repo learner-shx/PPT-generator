@@ -61,8 +61,8 @@ Page({
                 // data 字段表示需新增的 JSON 数据
       
                 data: {
-                  userName: res.userInfo.nickName,
-                  avatarUrl: res.userInfo.avatarUrl,
+                  userName: app.globalData.userInfo.nickName,
+                  avatarUrl: app.globalData.userInfo.avatarUrl,
                   email: "未填写",
                   call: "未填写"
                 },
@@ -88,16 +88,11 @@ Page({
       wx.showLoading({
         title: '数据加载中...',
       });
-
       app.globalData.userInfo = wx.getStorageSync('userInfo');
       var that = this;
 
-      that.setData({
-        openid : app.globalData.userInfo._openid
-      })
-
-      wx.cloud.database().collection('user').where({ //数据查询
-        _openid: that.data.openid //条件
+      wx.cloud.database().collection('users').where({ //数据查询
+        _openid: app.globalData.userInfo._openid //条件
       }).get({
         success: function (res) {
           that.setData({
