@@ -154,10 +154,8 @@ Page({
         title: '数据加载中...',
       });
       // 数据提交开始
-      const db = wx.cloud.database({
-        env: "test-5ghp2j4d337534cb"
-      });
-      db.collection('loseThing').add({
+
+      wx.cloud.database().collection('loseThing').add({
         // data 字段表示需新增的 JSON 数据
         data: {
           // _openid: wx.getStorageSync('openId').result.openid,会自动添加，不需要自己输入
@@ -211,10 +209,8 @@ Page({
         title: '数据加载中...',
       });
       // 数据提交开始
-      const db = wx.cloud.database({
-        env: "test-5ghp2j4d337534cb"
-      });
-      db.collection('seekThing').add({
+
+      wx.cloud.database().collection('seekThing').add({
         // data 字段表示需新增的 JSON 数据
         data: {
           // _openid: wx.getStorageSync('openId').result.openid,会自动添加，不需要自己输入

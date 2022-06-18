@@ -21,10 +21,8 @@ Page({
     this.setData({
       option: option.id
     })
-    const db = wx.cloud.database({ // 链接数据表
-      env: "test-5ghp2j4d337534cb"
-    });
-    db.collection('loseThing').where({ //数据查询
+
+    wx.cloud.database().collection('loseThing').where({ //数据查询
       _id: this.data.option //条件
     }).get({
       success: function (res) {
@@ -43,10 +41,8 @@ Page({
         about: "block"
       })
       var that = this;
-      const db = wx.cloud.database({ // 链接数据表
-        env: "test-5ghp2j4d337534cb"
-      });
-      db.collection('user').where({ //数据查询
+      
+      wx.cloud.database().collection('user').where({ //数据查询
         _openid: that.data.lose._openid //条件
       }).get({
         success: function (res) {

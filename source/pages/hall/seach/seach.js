@@ -44,10 +44,8 @@ Page({
 
     var that = this;
     //提取用户发布的物品信息
-    const db = wx.cloud.database({ // 链接数据表
-      env: "test-5ghp2j4d337534cb"
-    });
-    db.collection('loseThing').where({}).get({
+    
+    wx.cloud.database().collection('loseThing').where({}).get({
       success: function (res) {
         let arr = []
         // res.data 包含该记录的数据
@@ -84,11 +82,9 @@ Page({
   async onReachBottom() {
     var that = this;
     //提取用户发布的物品信息
-    const db = wx.cloud.database({ // 链接数据表
-      env: "test-5ghp2j4d337534cb"
-    });
+
     if (this.data.indexTitle == 0) {
-      let length = await db.collection('loseThing').count();
+      let length = await wx.cloud.database().collection('loseThing').count();
       length = length.total;
       length = length >= (that.data.lose.length + 10) ? that.data.lose.length + 10 : length;
       let arr = that.data.lose

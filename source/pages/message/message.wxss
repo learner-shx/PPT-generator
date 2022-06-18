@@ -1,0 +1,7 @@
+.announcement-center {
+  margin: 0 auto;
+  width: 80%;
+  background-color: #fff;
+  padding: 20rpx;
+  border-radius: 50rpx;
+}

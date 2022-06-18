@@ -50,14 +50,14 @@ Page({
         
         // 在数据库中查询此openid，如果没有那么新建用户，否则按原用户登录
 
-        wx.cloud.database().collection('users').where({
+        wx.cloud.database().collection('user').where({
           _openid : app.globalData.userInfo._openid
         }).get({
           success(res) {
             console.log(res)
             if(res.data.length==0) {
               // 没有搜索到则新建用户
-              wx.cloud.database().collection('users').add({
+              wx.cloud.database().collection('user').add({
                 // data 字段表示需新增的 JSON 数据
       
                 data: {
@@ -89,10 +89,9 @@ Page({
         title: '数据加载中...',
       });
       app.globalData.userInfo = wx.getStorageSync('userInfo');
-      console.log(app.globalData.userInfo._openid)
       var that = this;
 
-      wx.cloud.database().collection('users').where({ //数据查询
+      wx.cloud.database().collection('user').where({ //数据查询
         _openid: app.globalData.userInfo._openid //条件
       }).get({
         success: function (res) {
@@ -108,7 +107,7 @@ Page({
     var arr=[];//暂存图片base64编码
     //提取用户发布的物品信息
     
-    wx.cloud.database().collection('requirements').where({ //数据查询
+    wx.cloud.database().collection('requirement').where({ //数据查询
       _openid: this.data.openid //条件
     }).get({
       success: function (res) {

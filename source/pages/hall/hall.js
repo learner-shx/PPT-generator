@@ -103,10 +103,8 @@ Page({
 
     var that = this;
     //提取用户发布的物品信息
-    const db = wx.cloud.database({ // 链接数据表
-      env: "cloud1-9gv9ynmtc4528521"
-    });
-    db.collection('requirements').where({}).get({
+
+    wx.cloud.database().collection('requirement').where({}).get({
       success: function (res) {
         let arr = []
         // res.data 包含该记录的数据
@@ -121,7 +119,7 @@ Page({
     });
 
     //提取用户发布的寻物启事
-    db.collection('PPTMakerInfo').where({}).get({
+    wx.cloud.database().collection('PPTMakerInfo').where({}).get({
       success: function (res) {
         let arr1 = []
         // res.data 包含该记录的数据
@@ -143,11 +141,9 @@ Page({
   async onReachBottom() {
     var that = this;
     //提取用户发布的物品信息
-    const db = wx.cloud.database({ // 链接数据表
-      env: "cloud1-9gv9ynmtc4528521"
-    });
+
     if (this.data.indexTitle == 0) {
-      let length = await db.collection('requirements').count();
+      let length = await wx.cloud.database().collection('requirement').count();
       length = length.total;
       length = length >= (that.data.requirements.length + 10) ? that.data.requirements.length + 10 : length;
       let arr = that.data.requirements
@@ -157,7 +153,7 @@ Page({
             title: '数据加载中...',
           });
         }
-        await db.collection('requirements').skip(i).get({
+        await wx.cloud.database().collection('requirement').skip(i).get({
           success: function (res) {
             arr.push(res.data[0])
             if (i == length - 1) {
