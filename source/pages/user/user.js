@@ -41,17 +41,17 @@ Page({
             console.log(res.result.userInfo.openId)
             // 拿到用户的OpenId
             app.globalData.userInfo._openid = res.result.userInfo.openId
+            wx.setStorageSync('userInfo', app.globalData.userInfo);
           },
           fail: function(res) {
             console.log(res)
           }
         })
-
-        wx.setStorageSync('userInfo', res.userInfo);
+        
         // 在数据库中查询此openid，如果没有那么新建用户，否则按原用户登录
 
         wx.cloud.database().collection('users').where({
-          _openid : app.globalData.userInfo.openid
+          _openid : app.globalData.userInfo._openid
         }).get({
           success(res) {
             console.log(res)
@@ -89,6 +89,7 @@ Page({
         title: '数据加载中...',
       });
       app.globalData.userInfo = wx.getStorageSync('userInfo');
+      console.log(app.globalData.userInfo._openid)
       var that = this;
 
       wx.cloud.database().collection('users').where({ //数据查询
@@ -123,9 +124,6 @@ Page({
       }
     });
     //提取用户发布的物品信息结束
-    wx.hideLoading({
-      success: (res) => {},
-    })
   },
 
   showPop() {
