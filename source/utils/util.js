@@ -29,7 +29,6 @@ function getUserInfoFromOpenid(_openid) {
     _openid : _openid
   }).get({
     success(res) {
-      console.log(res)
       user_info._openid = res.data[0]._openid
       user_info.userName = res.data[0].userName
       user_info.avatarUrl = res.data[0].avatarUrl

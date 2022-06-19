@@ -1,4 +1,5 @@
 // pages/hall/hall.js
+const utils = require("../../utils/util")
 var interstitialAd = null;
 var searchTextStr="";
 Page({
@@ -17,8 +18,8 @@ Page({
     lose: [], //失物招领标题
     requirements: [], // 需求标题
     describes:[],
-
-
+    avatarUrl:[],
+    userName:[],
   },
 
   thing(e) {
@@ -90,19 +91,22 @@ Page({
     var that = this;
     //提取用户发布的物品信息
 
-    wx.cloud.database().collection('requirement').where({}).get({
+    wx.cloud.database().collection('requirement').orderBy('uploadTime','desc').where({}).get({
       success: function (res) {
+        console.log(res)
         let arr = []
+        let ava = []
+        let un = []
         // res.data 包含该记录的数据
         var length = res.data.length > 10 ? 10 : res.data.length;
         for (let i = 0; i < length; i++) {
-
           arr.push(res.data[i])
 
         }
+
         that.setData({
           requirements: arr,
-          
+
         })
         
       }

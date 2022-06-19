@@ -185,7 +185,8 @@ Page({
           picList : this.data.picList,
           status : "unreceived",
           avatarUrl: this.data.userInfo.avatarUrl,
-          userName: this.data.userInfo.userName
+          userName: this.data.userInfo.userName,
+          uploadTime: wx.cloud.database().serverDate(),
         },
         success: function (res) {
           wx.hideLoading(); //隐藏正在加载中
