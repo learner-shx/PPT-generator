@@ -71,7 +71,6 @@ Page({
     })
 
   },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -84,6 +83,7 @@ Page({
         title: '数据加载中...',
       });
       app.globalData.userInfo = wx.getStorageSync('userInfo');
+      console.log(app.globalData.userInfo)
       this.setData({
         userInfo : app.globalData.userInfo
       })
@@ -101,7 +101,7 @@ Page({
           })
         }
       })
-    }
+    
     
     wx.cloud.database().collection('requirement').where({ //数据查询
       _openid: this.data.openid //条件
@@ -120,5 +120,5 @@ Page({
       }
     });
   }
-
+}
 })
