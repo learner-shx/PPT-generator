@@ -7,16 +7,16 @@ Page({
     userName: "",
     avatarUrl: "",
     db: {},
-    email:"",
-    call:"",
+    email: "",
+    call: "",
     userInfo: {},
     about: "none",
-    imageBase64:[]
+    imageBase64: []
 
   },
 
   getUserProfile(e) {
-    
+
     var that = this;
     wx.getUserProfile({
       desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
@@ -27,44 +27,44 @@ Page({
         })
         console.log(res.userInfo)
         app.globalData.userInfo = res.userInfo
-        
+
         // 数据库提交结束
-        
+
         wx.cloud.callFunction({
           name: "login",
-          data : {},
+          data: {},
           success: res => {
             console.log(res.result.userInfo.openId)
             // 拿到用户的OpenId
             app.globalData.userInfo._openid = res.result.userInfo.openId
             that.setData({
-              userInfo : app.globalData.userInfo
+              userInfo: app.globalData.userInfo
             })
-            
+
           },
-          fail: function(res) {
+          fail: function (res) {
             console.log(res)
           }
         })
-        
+
         // 在数据库中查询此openid，如果没有那么新建用户，否则按原用户登录
 
         wx.cloud.database().collection('user').where({
-          _openid : app.globalData.userInfo._openid
+          _openid: app.globalData.userInfo._openid
         }).get({
           success(res) {
-            if(res.data.length==0) {
+            if (res.data.length == 0) {
               // 没有搜索到则新建用户
               app.globalData.userInfo.user_type = false;
               wx.cloud.database().collection('user').add({
                 // data 字段表示需新增的 JSON 数据
-      
+
                 data: {
                   userName: app.globalData.userInfo.nickName,
                   avatarUrl: app.globalData.userInfo.avatarUrl,
                   email: "未填写",
                   call: "未填写",
-                  user_type : false
+                  user_type: false
                 },
               })
             } else {
@@ -73,7 +73,7 @@ Page({
             wx.setStorageSync('userInfo', app.globalData.userInfo);
           }
         })
-        
+
       }
     })
 
@@ -92,7 +92,7 @@ Page({
       app.globalData.userInfo = wx.getStorageSync('userInfo');
       console.log(app.globalData.userInfo)
       this.setData({
-        userInfo : app.globalData.userInfo
+        userInfo: app.globalData.userInfo
       })
       var that = this;
 
@@ -109,24 +109,24 @@ Page({
           })
         }
       })
-    
-    
-    wx.cloud.database().collection('requirement').where({ //数据查询
-      _openid: this.data.openid //条件
-    }).get({
-      success: function (res) {
-        // res.data 包含该记录的数据
-        console.log(res)
-        // let length=res.data.length>3? 3:res.data.length;
-        // for(let i=0;i<length;i++){
-        //   arr.push(res.data[i])
-        // }
-        // that.setData({
-        //   imageBase64:arr
-        // })
-        wx.hideLoading(); //隐藏正在加载中
-      }
-    });
+
+
+      wx.cloud.database().collection('requirement').where({ //数据查询
+        _openid: this.data.openid //条件
+      }).get({
+        success: function (res) {
+          // res.data 包含该记录的数据
+          console.log(res)
+          // let length=res.data.length>3? 3:res.data.length;
+          // for(let i=0;i<length;i++){
+          //   arr.push(res.data[i])
+          // }
+          // that.setData({
+          //   imageBase64:arr
+          // })
+          wx.hideLoading(); //隐藏正在加载中
+        }
+      });
+    }
   }
-}
 })

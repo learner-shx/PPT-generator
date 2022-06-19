@@ -97,6 +97,8 @@ Page({
         let arr = []
         let ava = []
         let un = []
+        var user_info = utils.getUserInfoFromOpenid(res.data[0]._openid)
+        console.log(user_info.userName)
         // res.data 包含该记录的数据
         var length = res.data.length > 10 ? 10 : res.data.length;
         for (let i = 0; i < length; i++) {
