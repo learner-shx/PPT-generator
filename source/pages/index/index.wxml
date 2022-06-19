@@ -25,7 +25,7 @@
     </view>
   </button>
 
-  <button class="release" bindtap="toRequirement">
+  <button class="release" bindtap="z">
     <!--寻找-->
 
       <view class="img">
