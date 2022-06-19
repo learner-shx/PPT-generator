@@ -22,26 +22,48 @@ const formatDate = date => {
   return month + "月" +  day + "日"
 }
 
-const getUserInfoFromOpenid = _openid => {
 
+function getUserInfoFromOpenid(_openid) {
+  var user_info = {}
   wx.cloud.database().collection('user').where({
     _openid : _openid
   }).get({
     success(res) {
-      console.log(res.data)
-      var user_info = {}
-      user_info._openid = _openid;
-      user_info.userName = res.data.userName;
-      user_info.avatarUrl = res.data.avatarUrl;
-      return;
+      console.log(res)
+      user_info._openid = res.data[0]._openid
+      user_info.userName = res.data[0].userName
+      user_info.avatarUrl = res.data[0].avatarUrl
     }
   })
-  return 1;
+  return user_info;
+}
+
+function getUsersInfoFromOpenids(_openids) {
+  var users_info = []
+  const _ = wx.cloud.database().command;
+  console.log(_openids)
+  wx.cloud.database().collection('user').where({
+    _openid : _.in(_openids)
+  }).get({
+    success(res) {
+      console.log(res)
+      for(var i = 0; i<res.data.length;i++) {
+        var msg = {}
+        var user_info = res.data[i];
+        msg._openid = user_info._openid;
+        msg.userName = user_info.userName;
+        msg.avatarUrl = user_info.avatarUrl;
+        users_info.push(msg);
+      }
+    }
+  })
+  return users_info
 }
 
 
 module.exports = {
   formatTime,
   formatDate,
-  getUserInfoFromOpenid
+  getUserInfoFromOpenid,
+  getUsersInfoFromOpenids
 }

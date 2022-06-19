@@ -6,9 +6,12 @@ Page({
   data: {
     userName: "",
     avatarUrl: "",
+<<<<<<< HEAD
     db: {},
     email:"",
     call:"",
+=======
+>>>>>>> c60a6102160a8038bd37e41a93e9a0e119557f19
     userInfo: {},
     about: "none",
     imageBase64:[]
@@ -16,19 +19,16 @@ Page({
   },
 
   getUserProfile(e) {
+    
     var that = this;
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
-    // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
     wx.getUserProfile({
       desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
-        
-        // 数据库提交开始
         that.setData({
           userName: res.userInfo.nickName,
           avatarUrl: res.userInfo.avatarUrl,
         })
-
+        console.log(res.userInfo)
         app.globalData.userInfo = res.userInfo
         
         // 数据库提交结束
@@ -37,14 +37,13 @@ Page({
           name: "login",
           data : {},
           success: res => {
-            //   console.log('[云函数] [login] user openid: ', res.result.openid)          
-            // this.setData({
-            //    openId:res.result.openid
-            //  })
             console.log(res.result.userInfo.openId)
             // 拿到用户的OpenId
             app.globalData.userInfo._openid = res.result.userInfo.openId
-            wx.setStorageSync('userInfo', app.globalData.userInfo);
+            that.setData({
+              userInfo : app.globalData.userInfo
+            })
+            
           },
           fail: function(res) {
             console.log(res)
@@ -57,9 +56,9 @@ Page({
           _openid : app.globalData.userInfo._openid
         }).get({
           success(res) {
-            console.log(res)
             if(res.data.length==0) {
               // 没有搜索到则新建用户
+              app.globalData.userInfo.user_type = false;
               wx.cloud.database().collection('user').add({
                 // data 字段表示需新增的 JSON 数据
       
@@ -67,19 +66,21 @@ Page({
                   userName: app.globalData.userInfo.nickName,
                   avatarUrl: app.globalData.userInfo.avatarUrl,
                   email: "未填写",
-                  call: "未填写"
+                  call: "未填写",
+                  user_type : false
                 },
               })
+            } else {
+              app.globalData.userInfo = res.data[0]
             }
+            wx.setStorageSync('userInfo', app.globalData.userInfo);
           }
         })
-
         
       }
     })
 
   },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -92,6 +93,10 @@ Page({
         title: '数据加载中...',
       });
       app.globalData.userInfo = wx.getStorageSync('userInfo');
+      console.log(app.globalData.userInfo)
+      this.setData({
+        userInfo : app.globalData.userInfo
+      })
       var that = this;
 
       wx.cloud.database().collection('user').where({ //数据查询
@@ -102,44 +107,29 @@ Page({
             avatarUrl: res.data[0].avatarUrl,
             userName: res.data[0].userName,
             email: res.data[0].email,
-            call: res.data[0].call
+            call: res.data[0].call,
+            user_type: res.data[0].user_type
           })
         }
       })
-    }
-    var arr=[];//暂存图片base64编码
-    //提取用户发布的物品信息
+    
     
     wx.cloud.database().collection('requirement').where({ //数据查询
       _openid: this.data.openid //条件
     }).get({
       success: function (res) {
         // res.data 包含该记录的数据
-        let length=res.data.length>3? 3:res.data.length;
-        for(let i=0;i<length;i++){
-          arr.push(res.data[i])
-        }
-        that.setData({
-          imageBase64:arr
-        })
+        console.log(res)
+        // let length=res.data.length>3? 3:res.data.length;
+        // for(let i=0;i<length;i++){
+        //   arr.push(res.data[i])
+        // }
+        // that.setData({
+        //   imageBase64:arr
+        // })
         wx.hideLoading(); //隐藏正在加载中
       }
     });
-    //提取用户发布的物品信息结束
-    var user_info = utils.getUserInfoFromOpenid(this.data.userInfo._openid)
-    console.log(user_info)
-  },
-
-  showPop() {
-    if (this.data.about === "none") {
-      this.setData({
-        about: "block"
-      })
-    } else {
-      this.setData({
-        about: "none"
-      })
-    }
-  },
-
+  }
+}
 })
