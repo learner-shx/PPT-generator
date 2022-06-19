@@ -1,5 +1,5 @@
 // miniprogram/pages/user/user.js
-
+const utils = require("../../utils/util")
 const app = getApp()
 
 Page({
@@ -126,6 +126,8 @@ Page({
       }
     });
     //提取用户发布的物品信息结束
+    var user_info = utils.getUserInfoFromOpenid(this.data.userInfo._openid)
+    console.log(user_info)
   },
 
   showPop() {

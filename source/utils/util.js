@@ -22,7 +22,26 @@ const formatDate = date => {
   return month + "月" +  day + "日"
 }
 
+const getUserInfoFromOpenid = _openid => {
+
+  wx.cloud.database().collection('user').where({
+    _openid : _openid
+  }).get({
+    success(res) {
+      console.log(res.data)
+      var user_info = {}
+      user_info._openid = _openid;
+      user_info.userName = res.data.userName;
+      user_info.avatarUrl = res.data.avatarUrl;
+      return;
+    }
+  })
+  return 1;
+}
+
+
 module.exports = {
   formatTime,
-  formatDate
+  formatDate,
+  getUserInfoFromOpenid
 }

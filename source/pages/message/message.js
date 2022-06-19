@@ -9,10 +9,12 @@ Page({
 
   onLoad() {
     this.setData({
-      userInfo: app.globalData.userInfo
+      userInfo: app.globalData.userInfo,
+      message_users_info : [] // 与本用户发送信息的其他用户信息
     })
 
     this.getMessages();
+    this.getMessageUsersInfo();
   },
 
   getMessages() {
@@ -37,6 +39,8 @@ Page({
         })
       }
     })
+  },
+  getMessageUsersInfo() {
+    
   }
-
 })
