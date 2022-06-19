@@ -8,6 +8,7 @@ Page({
    */
   data: {
     schoolPicker:["浙江纺织服装学院", "宁波大学", "宁波工程学院"],
+    userInfo : {},
     schoolId:"选712择",
     textHei: '10px',
     openid: "",
@@ -171,13 +172,20 @@ Page({
       });
       // 数据提交开始
 
+      
+      console.log(this.data.userInfo),
+      console.log(this.data.userInfo.avatarUrl),
+      console.log(this.data.userInfo.userName),
       wx.cloud.database().collection('requirement').add({
         // data 字段表示需新增的 JSON 数据
         data: {
           // _openid: wx.getStorageSync('openId').result.openid,会自动添加，不需要自己输入
           describe: this.data.describe,
           money : this.data.money,
-          picList : this.data.picList
+          picList : this.data.picList,
+          status : "unreceived",
+          avatarUrl: this.data.userInfo.avatarUrl,
+          userName: this.data.userInfo.userName
         },
         success: function (res) {
           wx.hideLoading(); //隐藏正在加载中
@@ -352,12 +360,14 @@ Page({
 
   onLoad() {
     this.setData({
-      openid : app.globalData.userInfo._openid
+      openid : app.globalData.userInfo._openid,
+      userInfo : app.globalData.userInfo
     })
   },
   onShow() {
     this.setData({
-      openid : app.globalData.userInfo._openid
+      openid : app.globalData.userInfo._openid,
+      userInfo : app.globalData.userInfo
     })
   }
 })

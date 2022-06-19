@@ -12,48 +12,61 @@
   </view>
 </view>
 
-<view class="content">
-  <view class="title">
-    <view class="font">
-      标题丨{{lose.title}}
-    </view>
-  </view>
-  <view style="display: flex;">
-    <view class="icon">
-      <image src="../../../images/index-icon/xy.png"
-        style="height: 50rpx;width: 50rpx; margin-top: 28rpx;margin-left: 30rpx;"></image>
-    </view>
-    <view class="zjff">{{lose.schoolId}}</view>
-  </view>
-  <view class="img">
-    <image src="data:image/png;base64,{{lose.imageBase64}}" wx:if="{{lose.imageBase64!=''}}" mode="widthFix"></image>
-    <image src="../../../images/img/noImg.png" wx:if="{{lose.imageBase64==''}}" style="width: 350rpx;height: 350rpx;"></image>
-  </view>
-
-  <view class="text" style="margin-bottom: 20rpx;">
-    位置丨{{lose.addRess}}
-  </view>
-
-  <view class="text">
-    备注丨{{lose.remark}}
-  </view>
-</view>
-
 <view class="user">
   <view class="avatarUrl">
-    <image src="{{lose.avatarUrl}}"></image>
+    <image src="{{requirement.avatarUrl}}"></image>
   </view>
-  <view class="userName">{{lose.userName}}</view>
+  <view class="userName">{{requirement.userName}}</view>
   <view class="button" wx:if="{{lose.offOn==0 && lose.upshot=='认领中'}}" bindtap="showPop">认领</view>
   <view class="button1" wx:if="{{lose.offOn==1 && lose.upshot=='认领中'}}">拒绝联系</view>
   <view wx:if="{{lose.upshot=='已认领'}}" class="ok"><image src="../../../images/index-icon/ok.png"></image></view>
 </view>
 
-<view class="detail">
-  <view class="title">物品详情丨</view>
-  <view class="font1">物品类型：{{lose.nowThing}}</view>
-  <view class="font1">认领状态：{{lose.upshot}}</view>
-  <view class="image">
-    <image src="../../../images/index-icon/title.png"></image>
+<view class="content">
+
+  <view class="title">
+    <view class="font">
+      需求描述
+    </view>
   </view>
+  <!-- <view style="display: flex;">
+    <view class="icon">
+      <image src="../../../images/index-icon/xy.png"
+        style="height: 50rpx;width: 50rpx; margin-top: 28rpx;margin-left: 30rpx;"></image>
+    </view>
+    <view class="zjff">{{lose.schoolId}}</view>
+  </view> -->
+  <view class="text" style="font:100rpx;">
+    {{requirement.describe}}
+  </view>
+  <view class="title">
+    <view class="font">
+      补充图片
+    </view>
+  </view>
+  <view class='img-box'>
+    <view class='img-list'>
+      <block wx:for="{{requirement.picList}}" wx:for-index="pic_index">
+        <view class='img-item'>
+          <image src='{{requirement.picList[pic_index]}}' bindlongpress="bindlongpressimg"></image>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="title">
+    <view class="font">
+      悬赏金额：{{requirement.money}} 元
+    </view>
+  </view>
+
+</view>
+
+
+
+<view class="content">
+  <view class="title">悬赏详情</view>
+  <view class="text">悬赏状态：{{requirement.status}}</view>
+  <!-- <view class="font1">认领状态：{{lose.upshot}}</view> -->
+  <view class="button" bindtap="receiveReq">接取悬赏</view>
 </view>

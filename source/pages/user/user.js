@@ -6,12 +6,9 @@ Page({
   data: {
     userName: "",
     avatarUrl: "",
-<<<<<<< HEAD
     db: {},
     email:"",
     call:"",
-=======
->>>>>>> c60a6102160a8038bd37e41a93e9a0e119557f19
     userInfo: {},
     about: "none",
     imageBase64:[]

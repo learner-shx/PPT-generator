@@ -21,7 +21,7 @@
 .content{
   background-color: #fff;
   padding: 20rpx;
-  height: 800rpx;
+  height: 1000rpx;
   width: 85%;
   margin: 0 auto;
   border-radius: 20rpx;
