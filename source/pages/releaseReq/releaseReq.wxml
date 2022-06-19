@@ -11,7 +11,11 @@
   <view wx:if="{{indexTitle==0}}">
     <view class="content">
       <view class="input">
-        <input type="text" placeholder="物品的标题" bindinput="title" value="{{title}}" />
+      <view class="lose" bindtap="indexTitle1">
+        悬赏发布
+        <view class="{{indexTitle==0?'line':''}}"></view>
+      </view>
+        <input type="text" placeholder="请输入您的PPT需求" bindinput="title" value="{{title}}" />
       </view>
 
       <view class="list">

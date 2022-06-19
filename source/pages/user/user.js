@@ -7,9 +7,12 @@ Page({
     userName: "",
     avatarUrl: "",
     db: {},
+    email:"",
+    call:"",
     userInfo: {},
     about: "none",
     imageBase64:[]
+
   },
 
   getUserProfile(e) {
