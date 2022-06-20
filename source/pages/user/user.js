@@ -9,7 +9,7 @@ Page({
     db: {},
     userInfo: {},
     about: "none",
-    imageBase64:[]
+    imageBase64:[],
   },
 
   getUserProfile(e) {
