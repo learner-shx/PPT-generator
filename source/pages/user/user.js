@@ -12,6 +12,15 @@ Page({
     userInfo: {},
     about: "none",
     imageBase64:[],
+    information_info: {}
+  },
+  onShow()
+  {
+    this.setData({
+      information_info : wx.getStorageSync('information_info')
+    })
+    console.log(this.data.information_info)
+    console.log(app.globalData.information_info)
   },
 
   getUserProfile(e) {
@@ -37,7 +46,8 @@ Page({
             // 拿到用户的OpenId
             app.globalData.userInfo._openid = res.result.userInfo.openId
             that.setData({
-              userInfo : app.globalData.userInfo
+              userInfo : app.globalData.userInfo,
+
             })
             
           },
