@@ -41,7 +41,7 @@
   <view class="emailCall">
     <view class="email">
       <view class="img">
-        <image src="../../images/index-icon/school.png"></image>
+        <image src="../../images/index-icon/email.svg"></image>
         <view class="font">邮箱</view>
       </view>
       <view class="content">{{email}}</view>
@@ -49,7 +49,7 @@
 
     <view class="call">
       <view class="img">
-        <image src="../../images/index-icon/call.png"></image>
+        <image src="../../images/index-icon/phone.svg"></image>
         <view class="font">电话</view>
       </view>
       <view class="content">{{call}}</view>

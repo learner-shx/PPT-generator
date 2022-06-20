@@ -7,8 +7,8 @@ Page({
     userName: "",
     avatarUrl: "",
     db: {},
-    email:"",
-    call:"",
+    email:"未填写",
+    call:"未填写",
     userInfo: {},
     about: "none",
     imageBase64:[],
@@ -47,7 +47,6 @@ Page({
             app.globalData.userInfo._openid = res.result.userInfo.openId
             that.setData({
               userInfo : app.globalData.userInfo,
-
             })
             
           },

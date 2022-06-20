@@ -17,9 +17,7 @@
     <image src="{{requirement.avatarUrl}}"></image>
   </view>
   <view class="userName">{{requirement.userName}}</view>
-  <view class="button" wx:if="{{lose.offOn==0 && lose.upshot=='认领中'}}" bindtap="showPop">认领</view>
-  <view class="button1" wx:if="{{lose.offOn==1 && lose.upshot=='认领中'}}">拒绝联系</view>
-  <view wx:if="{{lose.upshot=='已认领'}}" class="ok"><image src="../../../images/index-icon/ok.png"></image></view>
+  <view class="button" bindtap="sendMessage">发信息</view>
 </view>
 
 <view class="content">
@@ -68,5 +66,11 @@
   <view class="title">悬赏详情</view>
   <view class="text">悬赏状态：{{requirement.status}}</view>
   <!-- <view class="font1">认领状态：{{lose.upshot}}</view> -->
-  <view class="button" bindtap="receiveReq">接取悬赏</view>
+  <view wx:if="{{requirement.status=='unreceived'}}">
+    <button class="button" bindtap="receiveReq" >接取悬赏</button>
+  </view>
+  <view wx:if="{{requirement.status=='received'}}">
+    <button class="button" bindtap="release">提交作品</button>
+  </view>
+  
 </view>

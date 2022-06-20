@@ -22,7 +22,8 @@ Page({
     var that = this;
     this.setData({
       userInfo: app.globalData.userInfo,
-      requirement_id: option.id
+      requirement_id: option.id,
+      requirement_status : false
     })
 
     // 获取到该 id 对应的悬赏信息
@@ -39,11 +40,12 @@ Page({
 
   },
 
-  receiveReq() {
+
+  sendMessage() {
     if (this.data.userInfo._openid == this.data.requirement._openid) {
       wx.showModal({
         title: "警告", // 提示的标题
-        content: "不能接自己的悬赏", // 提示的内容
+        content: "不能和自己发信息", // 提示的内容
         showCancel: false, // 是否显示取消按钮，默认true
         cancelColor: "#000000", // 取消按钮的文字颜色，必须是16进制格式的颜色字符串
         confirmText: "确定", // 确认按钮的文字，最多4个字符
@@ -110,8 +112,31 @@ Page({
         }
       }
     })
+  },
 
-    
+  receiveReq() {
+    // 接悬赏
+    var that = this;
+
+    wx.cloud.database().collection('requirement').doc(this.data.requirement_id).update({
+      data : {
+        status : "received"
+      },
+      success(res) {
+        console.log(res);
+        that.setData({
+          requirement_status : true
+        })
+      }
+    })
+
+    wx.showModal({
+      title: "通知", // 提示的标题
+      content: "悬赏已被接取", // 提示的内容
+      showCancel: false, // 是否显示取消按钮，默认true
+      cancelColor: "#000000", // 取消按钮的文字颜色，必须是16进制格式的颜色字符串
+      confirmText: "确定", // 确认按钮的文字，最多4个字符
+      confirmColor: "#576B95", // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
+    })
   }
-
 })
