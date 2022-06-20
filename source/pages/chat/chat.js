@@ -20,7 +20,7 @@ Page({
     },
 
     onShow() {
-    },
+    }, 
 
     getMessage() {
 
