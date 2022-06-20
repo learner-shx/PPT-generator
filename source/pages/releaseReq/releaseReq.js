@@ -7,40 +7,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    schoolPicker:["浙江纺织服装学院", "宁波大学", "宁波工程学院"],
-    userInfo : {},
-    schoolId:"选712择",
+    schoolPicker: ["浙江纺织服装学院", "宁波大学", "宁波工程学院"],
+    userInfo: {},
+    schoolId: "选712择",
     textHei: '10px',
     openid: "",
-    countPic:9,//上传图片最大数量
+    countPic: 9,//上传图片最大数量
     showImgUrl: "", //路径拼接，一般上传返回的都是文件名，
-    uploadImgUrl:'',//图片的上传的路径
+    uploadImgUrl: '',//图片的上传的路径
     indexTitle: 0, //标题当前选择的下坐标
     thing: [{
-        str: "证件"
-      },
-      {
-        str: "服饰"
-      },
-      {
-        str: "数码"
-      },
-      {
-        str: "日用品"
-      },
-      {
-        str: "其他"
-      },
+      str: "证件"
+    },
+    {
+      str: "服饰"
+    },
+    {
+      str: "数码"
+    },
+    {
+      str: "日用品"
+    },
+    {
+      str: "其他"
+    },
     ],
     thingLocation: [{
-        str: "本人代管"
-      },
-      {
-        str: "拾取处"
-      },
-      {
-        str: "其他"
-      }
+      str: "本人代管"
+    },
+    {
+      str: "拾取处"
+    },
+    {
+      str: "其他"
+    }
     ],
     // 失物招领发布变量
     imageBase64: "", //存储图片转换后的base64编码，用于上传
@@ -64,14 +64,14 @@ Page({
     // PPT 悬赏相关变量
     imageBase64: "",
     describe: "",
-    money:0,
-    picList : []
+    money: "",
+    picList: []
   },
 
-  schoolPicker(e){
+  schoolPicker(e) {
     this.setData({
       schoolId: this.data.schoolPicker[e.detail.value]
-    }) 
+    })
   },
 
   callOrVx(e) {
@@ -121,12 +121,12 @@ Page({
   },
   describe(e) {
     this.setData({
-      describe : e.detail.value
+      describe: e.detail.value
     })
   },
   money(e) {
     this.setData({
-      money : e.detail.value
+      money: e.detail.value
     })
   },
 
@@ -165,57 +165,47 @@ Page({
   },
 
   submitButton() { //提交数据库
-    if (this.data.describe && this.data.money) {
-      var that = this;
-      wx.showLoading({
-        title: '数据加载中...',
-      });
-      // 数据提交开始
 
-      
-      console.log(this.data.userInfo),
-      console.log(this.data.userInfo.avatarUrl),
-      console.log(this.data.userInfo.userName),
-      wx.cloud.database().collection('requirement').add({
-        // data 字段表示需新增的 JSON 数据
-        data: {
-          // _openid: wx.getStorageSync('openId').result.openid,会自动添加，不需要自己输入
-          describe: this.data.describe,
-          money : this.data.money,
-          picList : this.data.picList,
-          status : "unreceived",
-          avatarUrl: this.data.userInfo.avatarUrl,
-          userName: this.data.userInfo.userName,
-          uploadTime: wx.cloud.database().serverDate(),
-        },
-        success: function (res) {
-          wx.hideLoading(); //隐藏正在加载中
-          wx.showModal({
-            title: "提交成功", // 提示的标题
-            content: "悬赏发布成功", // 提示的内容
-            showCancel: true, // 是否显示取消按钮，默认true
-            cancelColor: "#000000", // 取消按钮的文字颜色，必须是16进制格式的颜色字符串
-            confirmText: "确定", // 确认按钮的文字，最多4个字符
-            confirmColor: "#576B95", // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
-            complete: function () {
-              wx.reLaunch({
-                url: "../index/index"
+    if (utils.checkDesciptionValidity(this.data.describe) && utils.checkNumberValidity(this.data.money)) {
+      console.log("pass examation")
+    } else return;
+
+    var that = this;
+    // 数据提交开始
+    wx.cloud.database().collection('requirement').add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+        // _openid: wx.getStorageSync('openId').result.openid,会自动添加，不需要自己输入
+        describe: that.data.describe,
+        money: that.data.money,
+        picList: that.data.picList,
+        status: "unreceived",
+        avatarUrl: that.data.userInfo.avatarUrl,
+        userName: that.data.userInfo.userName,
+        uploadTime: wx.cloud.database().serverDate(),
+        acceptedUserList : []
+      },
+      success: function (res) {
+        wx.showModal({
+          title: "提交成功", // 提示的标题
+          content: "悬赏发布成功", // 提示的内容
+          showCancel: false, // 是否显示取消按钮，默认true
+          cancelColor: "#000000", // 取消按钮的文字颜色，必须是16进制格式的颜色字符串
+          confirmText: "确定", // 确认按钮的文字，最多4个字符
+          confirmColor: "#576B95", // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
+          success(res){
+            if(res.confirm){
+              wx.switchTab({
+                url: '../hall/hall',
               })
             }
-          })
-        }
-      })
-      // 数据提交结束
+          }
+        })
+        // 数据提交结束
+        
+      }
+    })
 
-    } else {
-      wx.showToast({
-        title: "纺院社区：请勿留空", // 提示的内容
-        icon: "none", // 图标，默认success
-        image: "", // 自定义图标的本地路径，image 的优先级高于 icon
-        duration: 1500, // 提示的延迟时间，默认1500
-        mask: false, // 是否显示透明蒙层，防止触摸穿透
-      })
-    }
   },
 
 
@@ -274,14 +264,14 @@ Page({
  * 上传图片
 
  */
-  myEventListener:function(e){
+  myEventListener: function (e) {
     console.log("上传的图片结果集合")
     console.log(e.detail.picsList)
     this.setData({
-      picList : e.detail.picsList
+      picList: e.detail.picsList
     })
 
-    
+
   },
 
   uploadimg: function () {
@@ -306,7 +296,7 @@ Page({
                 cancelColor: "#000000", // 取消按钮的文字颜色，必须是16进制格式的颜色字符串
                 confirmText: "确定", // 确认按钮的文字，最多4个字符
                 confirmColor: "#576B95", // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
-                complete: function () {}
+                complete: function () { }
               })
             } else {
               var base64Image = res1.data.replace(/[\r\n]/g, '') // 后台返回的base64数据
@@ -361,14 +351,14 @@ Page({
 
   onLoad() {
     this.setData({
-      openid : app.globalData.userInfo._openid,
-      userInfo : app.globalData.userInfo
+      openid: app.globalData.userInfo._openid,
+      userInfo: app.globalData.userInfo
     })
   },
   onShow() {
     this.setData({
-      openid : app.globalData.userInfo._openid,
-      userInfo : app.globalData.userInfo
+      openid: app.globalData.userInfo._openid,
+      userInfo: app.globalData.userInfo
     })
   }
 })

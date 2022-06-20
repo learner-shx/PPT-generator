@@ -1,62 +1,66 @@
 /* 主标题 */
-.title{
+.title {
   display: flex;
 }
-.title .line{
+.title .line {
   background-color: #ffeb37;
   height: 14rpx;
   border-radius: 35rpx;
   width: 80%;
 }
-.title .lose{
-  margin: 30rpx;
-  font-size: 38rpx;
-}
-.title .seek{
-  margin: 30rpx;
+.title .release {
+  margin: 30rpx 50rpx 0rpx;
   font-size: 38rpx;
 }
 /* 主标题结束 */
 
-.content{
+.content {
   background-color: #fff;
   padding: 20rpx;
-  height: 1000rpx;
+  height: 1020rpx;
   width: 85%;
   margin: 0 auto;
-  border-radius: 20rpx;
+  border-radius: 50rpx;
   margin-top: 30rpx;
-  box-shadow: 0rpx 1rpx 10rpx rgba(0, 0, 0, 0.09);
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+}
+
+.content .input .release {
+  margin: 0rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-left: 30rpx;
+  margin-top: 15rpx;
 }
 
 .content .input textarea {
   background-color: #e2e2e250;
   border-radius: 50rpx;
-  margin: 0 auto;
+  margin-left: 30rpx;
   margin-top: 30rpx;
   height: 400rpx;
-  word-break:break-all;
+  word-break: break-all;
   padding: 20rpx;
   width: 85%;
-  }
+}
 
-.content .input input{
+.content .input input {
   background-color: #e2e2e250;
   border-radius: 50rpx;
   margin: 0 auto;
   margin-top: 30rpx;
   height: 50rpx;
-  word-break:break-all;
+  word-break: break-all;
   padding: 20rpx;
   width: 85%;
 }
-.content .list{
+.content .list {
   width: 95%;
   margin: 0 auto;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
 }
-.content .list .item{
+.content .list .item {
   background-color: #e2e2e250;
   width: 100rpx;
   border-radius: 30rpx;
@@ -66,7 +70,7 @@
   text-align: center;
   color: #252525;
 }
-.content .list .item1{
+.content .list .item1 {
   background-color: #ffeb37;
   width: 100rpx;
   border-radius: 30rpx;
@@ -77,8 +81,7 @@
   color: #252525;
 }
 
-
-.place .font{
+.place .font {
   font-size: 30rpx;
   font-weight: bold;
   color: rgb(63, 63, 63);
@@ -91,7 +94,7 @@
   margin-top: 35rpx;
 }
 
-.place .input input{
+.place .input input {
   background-color: #e2e2e250;
   border-radius: 50rpx;
   margin-top: 10rpx;
@@ -102,21 +105,21 @@
   width: 70%;
 }
 
-.text{
+.text {
   display: flex;
   margin-left: 30rpx;
   margin-top: 50rpx;
 }
 
-.text .textFont{
+.text .textFont {
   color: gray;
 }
 
-.text .input{
+.text .input {
   margin-left: 50rpx;
 }
 
-.thingLocation{
+.thingLocation {
   background-color: #fff;
   padding: 20rpx;
   height: 160rpx;
@@ -127,19 +130,19 @@
   box-shadow: 0rpx 1rpx 10rpx rgba(0, 0, 0, 0.09);
 }
 
-.thingLocation .font{
+.thingLocation .font {
   color: gray;
   margin-left: 20rpx;
 }
 
-.thingLocation .list{
+.thingLocation .list {
   display: flex;
   width: 95%;
   margin-left: 20rpx;
   margin-top: 20rpx;
 }
 
-.thingLocation .list .item{
+.thingLocation .list .item {
   background-color: #e2e2e250;
   width: 130rpx;
   border-radius: 30rpx;
@@ -150,7 +153,7 @@
   text-align: center;
   color: #252525;
 }
-.thingLocation .list .item1{
+.thingLocation .list .item1 {
   background-color: #ffeb37;
   width: 130rpx;
   border-radius: 30rpx;
@@ -161,7 +164,7 @@
   text-align: center;
 }
 
-.addImg .add{
+.addImg .add {
   width: 90%;
   height: 400rpx;
   background-color: #e2e2e29d;
@@ -171,29 +174,29 @@
   text-align: center;
   margin: 40rpx;
 }
-.addImg image{
+.addImg image {
   border-radius: 25rpx;
   margin: 28rpx;
 }
-.addImg .font{
+.addImg .font {
   font-size: 20rpx;
   color: gray;
   margin: 45rpx;
 }
 
-.call{
+.call {
   background-color: #fff;
   border-radius: 30rpx;
   margin: 0 auto;
   width: 80%;
   padding: 30rpx;
 }
-.call .font1{
+.call .font1 {
   font-size: 20rpx;
   color: gray;
   margin-top: 20rpx;
 }
-.call .button{
+.call .button {
   background-color: #ffeb37;
   width: 120rpx;
   padding: 20rpx;
@@ -202,7 +205,7 @@
   margin-left: 100rpx;
   margin-top: -20rpx;
 }
-.call .button1{
+.call .button1 {
   background-color: #eeeeee;
   width: 120rpx;
   padding: 20rpx;
@@ -212,7 +215,7 @@
   margin-top: -20rpx;
 }
 
-.submitButton{
+.submitButton {
   background-color: #ffeb37;
   margin: 0 auto;
   margin-top: 30rpx;
@@ -224,18 +227,18 @@
 }
 
 /* ————寻物启事—————— */
-.seekContent{
+.seekContent {
   background-color: #fff;
   height: 350rpx;
   width: 90%;
   border-radius: 30rpx;
-  margin: 20rpx auto; 
+  margin: 20rpx auto;
 }
-.seekContent .seekTitle{
+.seekContent .seekTitle {
   text-align: center;
   padding: 20rpx;
 }
-.seekContent .seekTitle input{
+.seekContent .seekTitle input {
   background-color: #e2e2e250;
   border-radius: 50rpx;
   margin-top: 10rpx;
@@ -245,13 +248,13 @@
   padding-left: 30rpx;
   width: 88%;
 }
-.seekContent .list{
+.seekContent .list {
   width: 95%;
   margin: 0 auto;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
 }
-.seekContent .list .item{
+.seekContent .list .item {
   background-color: #e2e2e250;
   width: 100rpx;
   border-radius: 30rpx;
@@ -261,7 +264,7 @@
   text-align: center;
   color: #252525;
 }
-.seekContent .list .item1{
+.seekContent .list .item1 {
   background-color: #ffeb37;
   width: 100rpx;
   border-radius: 30rpx;
@@ -272,14 +275,14 @@
   color: #252525;
 }
 
-.call .seekButton .callOrVx1{
+.call .seekButton .callOrVx1 {
   background-color: #ffeb37;
   border-radius: 32rpx;
   padding: 15rpx;
   margin-left: 80rpx;
   margin-top: -20rpx;
 }
-.call .seekButton .callOrVx2{
+.call .seekButton .callOrVx2 {
   color: #fff;
   font-weight: bold;
   background-color: #33ff00;
@@ -288,25 +291,24 @@
   margin-left: 80rpx;
   margin-top: -20rpx;
 }
-.call .input{
+.call .input {
   background-color: #e2e2e250;
   border-radius: 50rpx;
   margin-top: 30rpx;
 }
-.call .input input{
+.call .input input {
   padding: 20rpx;
   margin-left: 10rpx;
 }
-.call .icon{
+.call .icon {
   display: flex;
 }
-.call .icon image{
+.call .icon image {
   margin-top: 15rpx;
   width: 80rpx;
   height: 80rpx;
 }
-.call .icon .font{
+.call .icon .font {
   font-size: 24rpx;
   color: gray;
 }
-

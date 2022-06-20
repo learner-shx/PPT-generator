@@ -1,71 +1,113 @@
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
+const formatTime = (date) => {
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const second = date.getSeconds();
 
-  return `${[year, month, day].map(formatNumber).join('/')} ${[hour, minute, second].map(formatNumber).join(':')}`
-}
+  return `${[year, month, day].map(formatNumber).join("/")} ${[
+    hour,
+    minute,
+    second,
+  ]
+    .map(formatNumber)
+    .join(":")}`;
+};
 
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : `0${n}`
-}
+const formatNumber = (n) => {
+  n = n.toString();
+  return n[1] ? n : `0${n}`;
+};
 
-
-const formatDate = date => {
+const formatDate = (date) => {
   const month = date.getMonth() + 1;
   const day = date.getDate();
 
-  return month + "月" +  day + "日"
-}
+  return month + "月" + day + "日";
+};
 
+const checkDesciptionValidity = (description) => {
+  if (description == "") {
+    // 描述不为空
+    wx.showToast({
+      title: "请填写描述",
+      icon: "none",
+      duration: 2000,
+    });
+    return false;
+  }
+  // 判断描述是否超过200字
+  if (description.length > 200) {
+    wx.showToast({
+      title: "描述不能超过200字",
+      icon: "none",
+      duration: 2000,
+    });
+    return false;
+  }
 
-function getUserInfoFromOpenid(_openid) {
-  var user_info = {}
-  wx.cloud.database().collection('user').where({
-    _openid : _openid
-  }).get({
-    success(res) {
-      user_info._openid = res.data[0]._openid
-      user_info.userName = res.data[0].userName
-      user_info.avatarUrl = res.data[0].avatarUrl
-    }
-  })
-  return user_info;
-}
+  // 敏感词检测
+  // bug
+  // const result = checkSenstiveWords(description);
+  // result.then((res) => {
+  //   return true;
+  // });
 
+  return true;
+};
 
+const checkSenstiveWords = (description) => {
+  var plugin = requirePlugin("chatbot");
+  plugin.init({
+    appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja", //小程序示例账户，仅供学习和参考
+    openid: "123", //用户的openid，非必填，建议传递该参数
+  });
 
+  return new Promise((resolve, reject) => {
+    plugin.api.nlp("sensitive", { q: description, mode: "cnn" }).then((res) => {
+      console.log("sensitive result : ", res);
+      return resolve(res);
+    });
+  });
+};
 
-function getUsersInfoFromOpenids(_openids) {
-  var users_info = []
-  const _ = wx.cloud.database().command;
-  console.log(_openids)
-  wx.cloud.database().collection('user').where({
-    _openid : _.in(_openids)
-  }).get({
-    success(res) {
-      console.log(res)
-      for(var i = 0; i<res.data.length;i++) {
-        var msg = {}
-        var user_info = res.data[i];
-        msg._openid = user_info._openid;
-        msg.userName = user_info.userName;
-        msg.avatarUrl = user_info.avatarUrl;
-        users_info.push(msg);
-      }
-    }
-  })
-  return users_info
-}
+const checkNumberValidity = (number) => {
+  // 判断描述是否含有非法字符
+  var reg = /^[\u4e00-\u9fa5_a-zA-Z0-9]+$/;
+  if (!reg.test(number)) {
+    wx.showToast({
+      title: "描述不能含有非法字符",
+      icon: "none",
+      duration: 2000,
+    });
+    return false;
+  }
+  // 判断数字大小是否合法
+  if (number.length > 5) {
+    wx.showToast({
+      title: "太多了吧~",
+      icon: "none",
+      duration: 2000,
+    });
+    return false;
+  }
 
+  // 判断数字不能为空
+  if (number == "" || number == 0) {
+    wx.showToast({
+      title: "请输入数字",
+      icon: "none",
+      duration: 2000,
+    });
+    return false;
+  }
+  return true;
+};
 
 module.exports = {
   formatTime,
   formatDate,
-  getUserInfoFromOpenid,
-  getUsersInfoFromOpenids
-}
+  checkDesciptionValidity,
+  checkNumberValidity,
+};

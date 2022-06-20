@@ -1,117 +1,55 @@
-<!-- 侧面导航条 -->
-<view class="side">
-  <view class="go" bindtap="goTop">
-    <image src="../../images/common/top.png"></image>
-  </view>
-  <navigator url="../release/release">
-    <view class="add">+</view>
-  </navigator>
-</view>
-
 <!-- 搜索框 -->
 <view class="search">
   <view class="img" bindtap="search">
     <image src="../../images/index-icon/search.png" bindtap="search"></image>
   </view>
   <view class="input">
-    <input type="text" placeholder="搜索"  bindinput="searchText"/>
+    <input type="text" placeholder="搜索" bindinput="searchText" />
   </view>
 </view>
 
-<view class="list">
-  <view class="{{thing[index].str==nowThing ? 'item1':'item'}}" wx:for="{{thing}}" data-index="{{index}}"
-    bindtap="thing">
-    {{thing[index].str}}</view>
-</view>
-<view class="zjff">标签类型选择后需要结合搜索才能实现</view>
+<view class="requirement">
 
-<view style="display: flex;">
-  <view class="showButton" style="background-color: {{BgColor}};">
-    <view class="button" bindtap="showButton" style="margin-left: {{buttonLeft}};"></view>
-  </view>
-  <view style="color: gray;font-size: 26rpx;margin-top: 40rpx;margin-left: 20rpx;">是否隐藏已被认领和寻回的物品</view>
-</view>
-<!--是否显示 已认领/寻回 的物品-->
+  <scroll-view class='scroll-view-header' scroll-with-animation="true" scroll-x="true" scroll-left="{{scrollLeft}}">
+    <view class="scroll-header-item-wraper {{activeTab==index?'title-selected':''}}" wx:for="{{tabTitles}}" bindtap='selectTab' wx:key="unqiue" data-index="{{index}}" id="item-{{index}}">
+      <text class="header-item-title">{{item}}</text>
+    </view>
+  </scroll-view>
 
-<view class="title">
-  <view class="lose" bindtap="indexTitle1">
-    PPT悬赏
-    <view class="{{indexTitle==0?'line':''}}"></view>
-  </view>
-  <view class="seek" bindtap="indexTitle2">
-    PPT制作者
-    <view class="{{indexTitle==1?'line':''}}"></view>
-  </view>
-</view>
+  <scroll-view class='scroll-view-body' id='scroll-view-bodyId' scroll-x="true" scroll-left="{{bodyScrollLeft}}" scroll-with-animation="true">
+    <view class='scroll-view-item' wx:for="{{tabTitles}}" bindtouchend="scrollEnded" wx:key="unique">
 
-<!-- 当选择了PPT需求标题时 -->
-<view wx:if="{{indexTitle==0}}">
-  <view class="loseContent">
-    <view class="content" wx:for="{{requirements}}" data-index="{{index}}" bindtap="reqContent" >
-      <view class="user" style="display: flex;">
-        <view class="imageUser">
-          <image src="{{requirements[index].avatarUrl}}"></image>
+
+      <view class="content" wx:for="{{requirements}}" data-index="{{index}}">
+        <view class="user" style="display: flex;">
+          <view class="imageUser">
+            <image src="{{requirements[index].avatarUrl}}"></image>
+          </view>
+          <view class="userName">{{requirements[index].userName}}</view>
         </view>
-        <view class="userName">{{requirements[index].userName}}</view>
-      </view>
-      <view class ="text">
-        {{requirements[index].describe}}
-      </view>
-      <view class='img-box'>
-        <view class='img-list'>
-          <block wx:for="{{requirements[index].picList}}" wx:for-index="pic_index">
-            <view class='img-item'>
-              <image src='{{requirements[index].picList[pic_index]}}' bindlongpress="bindlongpressimg"></image>
-            </view>
-          </block>
+        <view class="text">{{requirements[index].describe}}</view>
+        <view class='img-box'>
+          <view class='img-list'>
+            <block wx:for="{{requirements[index].picList}}" wx:for-index="pic_index">
+              <view class='img-item'>
+                <image src='{{requirements[index].picList[pic_index]}}' bindtap="preview" data-src='{{requirements[index].picList}}' data-index="{{index}}" mode="aspectFill"></image>
+              </view>
+            </block>
+          </view>
         </view>
-      </view>
 
-      <!-- <view class="img" wx:if="{{requirements[index].imageBase64!=''}}">
-        <image src="data:image/png;base64,{{lose[index].imageBase64}}"></image>
-      </view> -->
-
-      <view class="list">
-        <view class="title">
-          {{lose[index].title}}
+        <view class="reward">赏金：{{requirements[index].money}} 元
+          <view class="button" bindtap="reqContent" data-index="{{index}}" >接取悬赏</view>
         </view>
-        
-      </view>
-      <view class="text">赏金：{{requirements[index].money}} 元</view>
-      <view class="button" bindtap="receiveReq">接取悬赏</view>
-      <!-- <view class="icon">
+        <!-- <view class="icon">
         <image src="../../images/index-icon/title.png"></image>
       </view> -->
-    </view>
-  </view>
-</view>
-
-<!-- 当选择了寻物启事标题时 -->
-<view wx:if="{{indexTitle==1}}">
-  <view class="loseContent">
-    <view class="content" wx:for="{{seek}}" data-index="{{index}}" bindtap="loseContent" wx:if="{{seek[index].upshot!=seekShow}}">
-      <view class="img" wx:if="{{seek[index].seekImageBase64!=''}}">
-        <image src="data:image/png;base64,{{seek[index].seekImageBase64}}"></image>
-      </view>
-      <view class="list">
-        <view class="title">
-          {{seek[index].seekTitle}}
-        </view>
-        <view class="button">{{seek[index].upshot}}</view>
-      </view>
-      <view class="nowThing">类型：{{seek[index].seekNowThing}}</view>
-      <view class="user" style="display: flex;">
-        <view class="imageUser">
-          <image src="{{seek[index].avatarUrl}}"></image>
-        </view>
-        <view class="userName">{{seek[index].userName}}</view>
-        <view class="icon">
-          <image src="../../images/index-icon/title.png"></image>
-        </view>
       </view>
     </view>
-  </view>
-</view>
 
-<view class="buttom" style="color:rgba(180, 180, 180, 0.712);text-align: center;padding-bottom: 20rpx;">——我也是有底线的——
+    <!-- <view class="buttom" style="color:rgba(180, 180, 180, 0.712);text-align: center;padding-bottom: 20rpx;">——我也是有底线的——
+
+    </view> -->
+  </scroll-view>
+
 </view>

@@ -1,57 +1,55 @@
-.about{
-  position:fixed;
-  background-color: rgba(0,0,0,0.4);
-  height: 1500rpx;
-  width: 100%;
-}
-
-.about .content{
-  background-color: #fff;
-  height: 850rpx;
+/* 用户界面 */
+.user {
+  border-radius: 50rpx;
   width: 90%;
-  border-radius: 30rpx;
-  margin: 0 auto;
-  margin-top: 220rpx;
-  text-align: center;
-}
-
-.about .content .img image{
-  width: 150rpx;
-  height: 150rpx;
-  margin-top: 50rpx;
-}
-.about .content .font{
-  font-weight: bold;
-  font-size: 40rpx;
-}
-.about .content .font1{
-  color: #919191;
-  margin-top: 20rpx;
-  font-size: 30rpx;
-}
-.about .content .font2{
-  color: #919191;
-  margin-top: 100rpx;
-  font-size: 24rpx;
-}
-.about .content .avatarUrl image{
-  width: 110rpx;
-  height: 110rpx;
-  border-radius: 50%;
-  margin-top: 130rpx;
-}
-/* 正文内容 */
-
-.content{
+  height: 180rpx;
   background-color: #fff;
-  border-radius: 30rpx;
+  margin: 20rpx auto;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+}
+
+.user .user-info {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.user .avatarUrl image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-top: 40rpx;
+  margin-left: 40rpx;
+  border-radius: 50%;
+  border: gray 5rpx solid;
+}
+.user .userName {
+  font-size: 35rpx;
+  margin-top: 70rpx;
+  margin-left: 20rpx;
+}
+.user .button {
+  border-radius: 10rpx;
+  margin-top: 60rpx;
+  margin-right: 40rpx;
+  height: 75rpx;
+  width: 200rpx;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50rpx;
+  background-color: #ffeb37;
+}
+
+.content {
+  background-color: #fff;
+  border-radius: 50rpx;
   width: 90%;
   margin: 0 auto;
   margin-top: 30rpx;
-  box-shadow: 0rpx 1rpx 10rpx rgba(0, 0, 0, 0.09);
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
   padding-bottom: 40rpx;
 }
-.content .imageUser image{
+.content .imageUser image {
   width: 55rpx;
   height: 55rpx;
   border-radius: 50%;
@@ -59,44 +57,72 @@
   margin-left: 10rpx;
   border: 5rpx gray solid;
 }
-.content .userName{
+.content .userName {
   margin-top: 30rpx;
   margin-left: 15rpx;
 }
-.content .title{
+.content .title {
+  font-size: 42rpx;
+  margin-top: 20rpx;
+  margin-left: 40rpx;
+  font-weight: bold;
+}
+
+.content .money {
   width: 90%;
   font-size: 42rpx;
   margin-top: 20rpx;
   margin-left: 40rpx;
   font-weight: bold;
-  /* overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  -o-text-overflow: ellipsis; */
+  color: #ff4828;
 }
-.content .img image{
+
+.content .img image {
   width: 90%;
   border-radius: 30rpx;
   margin: 30rpx;
 }
-.zjff{
-  background-color: #ffd23c;
-  width: 420rpx;
-  height: 60rpx;
-  line-height: 60rpx;
-  text-align: center;
-  border-radius: 50rpx;
-  margin-top: 25rpx;
-  margin-left: 5rpx;
-  font-size: 30rpx;
-}
-.content .text{
-  margin-left: 30rpx;
-  font-size: 45rpx;
-  color: rgba(0, 0, 0, 0.753);
+
+.content .status {
+  display: flex;
+  justify-content: flex-start;
 }
 
-.content .button{
+.content .text {
+  margin-left: 40rpx;
+  margin-top: 20rpx;
+  font-size: 38rpx;
+  color: #666;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
+}
+
+.unreceived {
+  background-color: #a8a8a8;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  font-size: 32rpx;
+  text-align: center;
+  width: 200rpx;
+  margin-top: 5rpx;
+  color: #252525;
+  float:right;
+}
+
+.received {
+  background-color: #4ef524;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  font-size: 32rpx;
+  text-align: center;
+  width: 200rpx;
+  margin-top: 5rpx;
+  color: #252525;
+  float:right;
+}
+
+.content .button {
   background-color: #ffd23c;
   border-radius: 10rpx;
   padding: 12rpx;
@@ -105,81 +131,6 @@
   width: 145rpx;
   margin-top: 20rpx;
   margin-left: 250rpx;
-}
-
-
-
-
-
-/* 用户界面 */
-.user{
-  border-radius: 30rpx;
-  width: 90%;
-  height: 180rpx;
-  background-color: #fff;
-  margin: 20rpx auto;
-  display: flex;
-  box-shadow: 0rpx 1rpx 10rpx rgba(0, 0, 0, 0.09);
-}
-
-.user .avatarUrl image{
-  width: 100rpx;
-  height: 100rpx;
-  margin-top: 40rpx;
-  margin-left: 40rpx;
-  border-radius: 50%;
-  border: gray 5rpx solid;
-}
-.user .userName{
-  font-size: 35rpx;
-  margin-top: 70rpx;
-  margin-left: 10rpx;
-}
-.user .button{
-  border-radius: 30rpx;
-  margin-top: 60rpx;
-  margin-left: 210rpx;
-  height: 65rpx;
-  width: 170rpx;
-  font-weight: bold;
-  text-align: center;
-  line-height: 65rpx;
-  background-color: #ffeb37;
-}
-
-
-.detail{
-  border-radius: 30rpx;
-  background-color: #fff;
-  margin: 40rpx;
-  width: 90%;
-  height: 350rpx;
-  box-shadow: 0rpx 1rpx 10rpx rgba(0, 0, 0, 0.09);
-}
-.detail .title{
-  margin-left: 30rpx;
-  margin-top: 20rpx;
-  color: gray;
-  font-size: 38rpx;
-}
-.detail .font1{
-  margin-left: 30rpx;
-  margin-top: 20rpx;
-  color: gray;
-  font-size: 28rpx;
-}
-.detail .image image{
-  width: 120rpx;
-  height: 120rpx;
-  margin-left: 30rpx;
-  margin-top: 15rpx;
-}
-
-.ok image{
-  width: 130rpx;
-  height: 130rpx;
-  margin-left: 300rpx;
-  margin-top: 26rpx;
 }
 
 .img-list {
@@ -195,6 +146,7 @@
   width: 30%;
   text-align: left;
   margin-right: 20rpx;
+  margin-left: 15rpx;
   margin-bottom: 10rpx;
 }
 
@@ -233,7 +185,8 @@
   height: 39.5px;
 }
 
-.weui-uploader__input-box:after, .weui-uploader__input-box:before {
+.weui-uploader__input-box:after,
+.weui-uploader__input-box:before {
   content: " ";
   position: absolute;
   top: 50%;
@@ -248,7 +201,8 @@
   height: 2px;
 }
 
-.weui-uploader__input-box:after, .weui-uploader__input-box:before {
+.weui-uploader__input-box:after,
+.weui-uploader__input-box:before {
   content: " ";
   position: absolute;
   top: 50%;
@@ -269,4 +223,3 @@
   margin: auto;
   padding-top: 20rpx;
 }
-

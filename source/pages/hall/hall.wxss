@@ -1,4 +1,5 @@
 /* 侧导航 */
+
 .side{
   background-color: #fff;
   width: 100rpx;
@@ -134,37 +135,77 @@
   background-color: #fff;
   margin-top: 9rpx;
   transition: 0.5s;
-  
 }
-/* .showButton .button:hover .showButton{
-  background-color: rgb(99, 255, 94);
+
+.scroll-view-header {
+  white-space: nowrap;
+  display: flex;
+  justify-content: space-around;
 }
-.showButton .button:hover{
-  margin-left: 110rpx;
-} */
-/* 当选择失物招领时 */
-.loseContent{
+
+.scroll-header-item-wraper {
+  display: inline-flex;
+  padding: 25rpx 30rpx;
+  font-size: 30rpx;
+  font-family: 'PingFangSC-Regular';
+  color: #666666;
+}
+
+.title-selected {
+  color: #2d80ff;
+  border-bottom: 4rpx solid #2d80ff;
+}
+
+.scroll-view-body {
+  white-space: nowrap;
+  height: 100%;
+}
+
+.scroll-view-item {
+  height: 100%;
   width: 100%;
+  display: inline-block;
+  background-color: #e7eaef;
 }
-.loseContent .content{
-  border-radius: 30rpx;
+
+.scroll-view-item .reward {
+  font-weight: bolder;
+  margin-left: 20rpx;
+  color: #ff4828;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.requirement{
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.requirement .content{
+  border-radius: 50rpx;
   float: left;
   background-color: #fff;
-  width: 666rpx;
+  width: 640rpx;
   padding: 20rpx;
-  margin-left: 25rpx;
-  margin-top: 25rpx;
-  margin-bottom: 35rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  margin-top: 10rpx;
+  margin-bottom: 15rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
 }
-.loseContent .content .img{
+.requirement .content .img{
   margin-left: 10rpx;
 }
-.loseContent .content .img image{
+.requirement .content .img image{
   height: 280rpx;
   width: 280rpx;
   border-radius: 30rpx;
 }
-.loseContent .content .title{
+.requirement .content .title{
   margin-top: 10rpx;
   margin-left: 10rpx;
   font-weight: bold;
@@ -174,7 +215,7 @@
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
 }
-.loseContent .content .button{
+.requirement .content .button{
   background-color: #ffd23c;
   border-radius: 30rpx;
   padding: 12rpx;
@@ -182,27 +223,28 @@
   text-align: center;
   width: 145rpx;
   margin-top: 5rpx;
+  color: #252525;
   float:right;
 }
-.loseContent .content .nowThing{
+.requirement .content .nowThing{
   color: gray;
   margin-left: 15rpx;
   font-size: 26rpx;
   margin-top: 10rpx;
 }
-.loseContent .content .imageUser image{
-  width: 55rpx;
-  height: 55rpx;
+.requirement .content .imageUser image{
+  width: 75rpx;
+  height: 75rpx;
   border-radius: 50%;
   margin-top: 20rpx;
   margin-left: 10rpx;
   border: 5rpx gray solid;
 }
-.loseContent .content .userName{
-  margin-top: 30rpx;
-  margin-left: 15rpx;
+.requirement .content .userName{
+  margin-top: 40rpx;
+  margin-left: 20rpx;
 }
-.loseContent .content .icon image{
+.requirement .content .icon image{
   width: 70rpx;
   height: 70rpx;
   margin-top: -5rpx;
@@ -235,60 +277,6 @@
   height: 180rpx;
 }
 
-.submit-btn {
-  width: 100%;
-  background-color: #fff;
-  height: 80rpx;
-  text-align: center;
-  line-height: 80rpx;
-  font-size: 30rpx;
-  position: fixed;
-  bottom: 100rpx;
-}
-
-.chooseimg {
-  background-color: #fff;
-}
-
-.weui-uploader__input-box {
-  float: left;
-  position: relative;
-  margin-right: 9px;
-  margin-bottom: 9px;
-  width: 180rpx;
-  height: 180rpx;
-  border: 1px solid #d9d9d9;
-}
-
-.weui-uploader__input-box:before {
-  width: 2px;
-  height: 39.5px;
-}
-
-.weui-uploader__input-box:after, .weui-uploader__input-box:before {
-  content: " ";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  background-color: #d9d9d9;
-}
-
-.weui-uploader__input-box:after {
-  width: 39.5px;
-  height: 2px;
-}
-
-.weui-uploader__input-box:after, .weui-uploader__input-box:before {
-  content: " ";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  background-color: #d9d9d9;
-}
 
 .tips {
   color: #666;
@@ -297,7 +285,17 @@
 }
 
 .img-box {
-  width: 92%;
+  width: 100%;
   margin: auto;
   padding-top: 20rpx;
+}
+
+.text {
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  font-size: 32rpx;
+  color: #666;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
 }

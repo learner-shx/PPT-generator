@@ -1,4 +1,4 @@
-// pages/hall/loseContent/loseContent.js
+// pages/hall/requirement/requirement.js
 var interstitialAd = null;
 const app = getApp();
 
@@ -38,6 +38,14 @@ Page({
     })
     wx.hideLoading(); //隐藏正在加载中
 
+  },
+  preview(e) {
+    console.log(e)
+    let currentUrl = e.currentTarget.dataset.src
+    wx.previewImage({
+      current: currentUrl, // 当前显示图片的http链接
+      urls: this.data.requirement.picList
+    })
   },
 
 

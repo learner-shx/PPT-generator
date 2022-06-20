@@ -25,10 +25,7 @@ Component({
     data: {
       detailPics: [], //上传的结果图片集合
     },
-  
-    ready: function() {
-      console.log(this.data)
-    },
+
   
     /**
      * 组件的方法列表

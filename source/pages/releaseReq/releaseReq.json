@@ -2,7 +2,7 @@
   "usingComponents": {
     "uploadImages": "uploadImg/uploadImg"
   },
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "悬赏",
   "navigationBarBackgroundColor": "#ffeb37",
   "backgroundColorTop": "left"
 }

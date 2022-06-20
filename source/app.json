@@ -6,7 +6,6 @@
         "pages/release/release",
         "pages/releaseReq/releaseReq",
         "pages/hall/reqContent/reqContent",
-        "pages/hall/seekContent/seekContent",
         "pages/updateUserInfo/updateUserInfo",
         "pages/updateUserInfo/updataCall/updataCall",
         "pages/updateUserInfo/updataEmail/updataEmail",
@@ -18,7 +17,7 @@
     ],
     "window": {
         "backgroundColor": "#F6F6F6",
-        "backgroundTextStyle": "light",
+        "backgroundTextStyle": "dark",
         "navigationBarBackgroundColor": "#ffd23c",
         "navigationBarTitleText": "云开发 QuickStart",
         "navigationBarTextStyle": "black"
@@ -26,9 +25,8 @@
     "tabBar": {
         "color": "#9c9d9b",
         "backgroundColor": "#fff",
-        "selectedColor": "#000",
-        "list": [
-            {
+        "selectedColor": "#0A44DF",
+        "list": [{
                 "pagePath": "pages/index/index",
                 "text": "首页",
                 "iconPath": "images/index-icon/index.png",
@@ -54,6 +52,15 @@
             }
         ]
     },
+    "plugins": {
+        "chatbot": {
+            "version": "1.2.44",
+            "provider": "wx8c631f7e9f2465e1"
+        }
+    },
+    "requiredBackgroundModes": [
+        "audio"
+      ],
     "style": "v2",
     "sitemapLocation": "sitemap.json"
 }

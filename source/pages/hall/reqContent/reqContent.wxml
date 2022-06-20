@@ -1,61 +1,31 @@
-<view class="about" bindtap="showPop" style="display:{{about}};">
-  <view class="content">
-    <view class="img">
-      <image src="../../../images/index-icon/title.png"></image>
-    </view>
-    <view class="font">光 制 作</view>
-    <view class="font1">校 园 失 物 招 领 平 台</view>
-    <view class="avatarUrl"><image src="{{lose.avatarUrl}}"></image></view>
-    <view class="font1">{{lose.userName}}</view>
-    <view class="font1">手机号：{{call}}</view>
-    <view class="font2">请添加好友/通话 - 后介绍物品的详细信息,慎防诈骗</view>
-  </view>
-</view>
-
 <view class="user">
-  <view class="avatarUrl">
-    <image src="{{requirement.avatarUrl}}"></image>
+  <view class="user-info">
+    <view class="avatarUrl">
+      <image src="{{requirement.avatarUrl}}"></image>
+    </view>
+    <view class="userName">{{requirement.userName}}</view>
   </view>
-  <view class="userName">{{requirement.userName}}</view>
-  <view class="button" bindtap="sendMessage">发信息</view>
+  <button class="button" bindtap="sendMessage" disabled="{{requirement._openid==userInfo._openid}}">发信息</button>
 </view>
 
 <view class="content">
 
-  <view class="title">
-    <view class="font">
-      需求描述
-    </view>
-  </view>
-  <!-- <view style="display: flex;">
-    <view class="icon">
-      <image src="../../../images/index-icon/xy.png"
-        style="height: 50rpx;width: 50rpx; margin-top: 28rpx;margin-left: 30rpx;"></image>
-    </view>
-    <view class="zjff">{{lose.schoolId}}</view>
-  </view> -->
-  <view class="text" style="font:100rpx;">
-    {{requirement.describe}}
-  </view>
-  <view class="title">
-    <view class="font">
-      补充图片
-    </view>
-  </view>
+  <view class="title">需求描述</view>
+  <view class="text">{{requirement.describe}}</view>
+  <view class="title" wx:if="{{requirement.picList.length!=0}}">补充图片</view>
+
   <view class='img-box'>
     <view class='img-list'>
-      <block wx:for="{{requirement.picList}}" wx:for-index="pic_index">
+      <block wx:for="{{requirement.picList}}" wx:for-index="index">
         <view class='img-item'>
-          <image src='{{requirement.picList[pic_index]}}' bindlongpress="bindlongpressimg"></image>
+          <image src='{{requirement.picList[index]}}' bindtap="preview" data-src='{{requirement.picList[index]}}' mode="aspectFill"></image>
         </view>
       </block>
     </view>
   </view>
 
-  <view class="title">
-    <view class="font">
-      悬赏金额：{{requirement.money}} 元
-    </view>
+  <view class="money">
+    悬赏金额：{{requirement.money}} 元
   </view>
 
 </view>
@@ -63,14 +33,16 @@
 
 
 <view class="content">
-  <view class="title">悬赏详情</view>
-  <view class="text">悬赏状态：{{requirement.status}}</view>
+  <view class="status">
+    <view class="title">悬赏状态 :</view>
+    <view class="text unreceived" wx:if="{{requirement.status=='unreceived'}}">{{requirement.status}}</view>
+    <view class="text received" wx:if="{{requirement.status=='received'}}">{{requirement.status}}</view>
+  </view> 
   <!-- <view class="font1">认领状态：{{lose.upshot}}</view> -->
   <view wx:if="{{requirement.status=='unreceived'}}">
-    <button class="button" bindtap="receiveReq" >接取悬赏</button>
+    <button class="button" bindtap="receiveReq">接取悬赏</button>
   </view>
-  <view wx:if="{{requirement.status=='received'}}">
-    <button class="button" bindtap="release">提交作品</button>
-  </view>
+  <view class="title">已接 :</view>
   
 </view>
+

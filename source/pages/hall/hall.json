@@ -1,5 +1,7 @@
 {
   "usingComponents": {},
   "navigationBarTitleText": "大厅",
-  "backgroundColorTop": "left"
+  "backgroundColorTop": "left",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }
