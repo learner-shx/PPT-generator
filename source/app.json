@@ -3,7 +3,7 @@
         "pages/index/index",
         "pages/help/help",
         "pages/hall/hall",
-        "pages/release1/release1",
+        "pages/release/release",
         "pages/releaseReq/releaseReq",
         "pages/hall/reqContent/reqContent",
         "pages/hall/seekContent/seekContent",

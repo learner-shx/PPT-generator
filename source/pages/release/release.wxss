@@ -131,5 +131,5 @@ page{
   bottom: 0;
   width: 100%!important;
   /*加一个去弧度  */
-  border-radius: 0;
+  border-radius: 0 ;
 }
