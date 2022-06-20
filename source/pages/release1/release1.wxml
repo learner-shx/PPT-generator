@@ -7,7 +7,7 @@
     <view class="input-limit"><text style="color:{{limit[0].beyondStyle}};">{{limit[0].current}}/{{limit[0].maxlength}}       </text></view>
   </view>
   <view class="description">
-    <textarea maxlength="200" name="description" placeholder="详细介绍一下你的宝贝，比如品牌、型号、规格、成色、购买渠道等" class="textarea-description" placeholder-class="placeholder-description" bindinput="inputDescription" value="{{description}}">
+    <textarea maxlength="200" name="description" placeholder="详细介绍一下" class="textarea-description" placeholder-class="placeholder-description" bindinput="inputDescription" value="{{description}}">
     </textarea>
     <view class="textarea-limit"><text style="color:{{limit[1].beyondStyle}};">{{limit[1].current}}/{{limit[1].maxlength}}       </text></view>
   </view>

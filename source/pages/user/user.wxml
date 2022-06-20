@@ -57,7 +57,57 @@
   </view>
 
 </view>
-
+<view wx:if="{{avatarUrl!=''}}">
+<view class="bottom">
+  <view wx:if="{{information_info==''}}">
+    <view class="bottom-content">
+      <navigator url="../release1/release1">
+        <view class="me-about">
+          <text>成为PPT创作者</text>
+        <image src="../../images/common/next.png"></image>
+       </view>
+      </navigator>
+    </view>
+  </view>
+  <view wx:else>
+    <view class="bottom-content">
+      <navigator url="../release1/release1">
+        <view class="me-about">
+          <text>修改PPT创作者信息</text>
+        <image src="../../images/common/next.png"></image>
+       </view>
+      </navigator>
+      <view class="me-about">
+          <text>{{"标题："+information_info.title}}</text>
+      </view>
+      <view class="me-about">
+          <text>{{"描述："+information_info.description}}</text>
+      </view>
+      <view class="me-about">
+          <text>{{"PPT类型："+information_info.type}}</text>
+      </view>
+      <view class="me-about">
+          <text>{{"价格："+information_info.price}}</text>
+      </view>
+      <view vx:if="{{qqNum!=''}}">
+        <view class="me-about">
+          <text>{{"QQ："+information_info.qqNum}}</text>
+        </view>
+      </view>
+      <view vx:if="{{phoneNum!=''}}">
+        <view class="me-about">
+          <text>{{"电话："+information_info.qqNum}}</text>
+        </view>
+      </view>
+      <view vx:if="{{phoneNum!=''}}">
+        <view class="me-about">
+          <text>{{"微信号："+information_info.wxId}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</view>
 
 <!-- 我发布过的任务 -->
 <view wx:if="{{avatarUrl!=''}}">

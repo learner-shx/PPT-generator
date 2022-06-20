@@ -1,13 +1,9 @@
+const utils = require("../../utils/util")
 var app= getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   * navto : 是否去选择分类
-   * 
-   */
   data: {
-
+    userInfo:{},
+    openid : "",
     title : "",
     description : "",
     price: "",
@@ -15,7 +11,7 @@ Page({
       name: "PPT类型",
       code : ""
     },
-
+    information_info: {},
     phoneNum : "",
     qqNum : "",
     wxId : "",
@@ -165,6 +161,12 @@ Page({
   },
   formsubmit: function(e){
     var that = this
+    that.setData({
+      type : this.data.type,
+      userInfo : app.globalData.userInfo,
+      information_info: that.data.information_info,
+      openid : app.globalData.userInfo._openid
+    })
     if(this.data.canSub ){
       var data = e.detail.value
       if(data.description == ""){
@@ -196,20 +198,54 @@ Page({
             showCancel: false,
             success: function (res) {
               if (res.confirm) {
-                wx.cloud.database().collection('information').add({
-                data: {
-                  title: e.detail.value.title,
-                  description: e.detail.value.description,
-                  price: e.detail.value.price,
-                  type: that.data.type.name,
-                  phoneNum: e.detail.value.phoneNum,
-                  wxId: e.detail.value.wxid,
-                  qqNum: e.detail.value.qqNum,
-                } })
-          
+                wx.cloud.database().collection('information').where({
+                  _openid : that.data.openid
+                }).get({
+                  success(res) {
+                    wx.setStorageSync('information_info', {
+                      title: e.detail.value.title,
+                      description: e.detail.value.description,
+                      price: e.detail.value.price,
+                      type: that.data.type.name,
+                      phoneNum: e.detail.value.phoneNum,
+                      wxId: e.detail.value.wxid,
+                      qqNum: e.detail.value.qqNum,
+                    })
+                    if(res.data.length==0){
+                      wx.cloud.database().collection('information').add({
+                        data: {
+                          title: e.detail.value.title,
+                          description: e.detail.value.description,
+                          price: e.detail.value.price,
+                          type: that.data.type.name,
+                          phoneNum: e.detail.value.phoneNum,
+                          wxId: e.detail.value.wxid,
+                          qqNum: e.detail.value.qqNum,
+                        } })
+                    }
+                    else{
+                      wx.cloud.database().doc('information').update({
+                        data: {
+                          _openid : that.data.openid,
+                          title: e.detail.value.title,
+                          description: e.detail.value.description,
+                          price: e.detail.value.price,
+                          type: that.data.type.name,
+                          phoneNum: e.detail.value.phoneNum,
+                          wxId: e.detail.value.wxid,
+                          qqNum: e.detail.value.qqNum,
+                        } })
+                    }
+                  }
+                })
+
+
              }
+
             }
+
           })
+         app.globalData.information_info = wx.getStorageSync('information_info')
       }
     }
   },
@@ -232,7 +268,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-   
+
   },
 
   /**

@@ -189,7 +189,7 @@
   font-size: 36rpx;
   width: 600rpx;
   text-align: left;
-  background:transparent;
+  background-color: transparent;
 }
 
 /* 发布的物品css */

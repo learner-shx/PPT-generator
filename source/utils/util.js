@@ -37,6 +37,9 @@ function getUserInfoFromOpenid(_openid) {
   return user_info;
 }
 
+
+
+
 function getUsersInfoFromOpenids(_openids) {
   var users_info = []
   const _ = wx.cloud.database().command;
