@@ -130,16 +130,16 @@
       <text>关于</text>
       <image src="../../images/common/next.png"></image>
     </view>
-    <navigator url="../share/share">
-      <view class="me-about">
-        <text>分享</text>
-        <image src="../../images/common/next.png"></image>
-      </view>
-    </navigator>
+  <navigator url="../share/share">
     <view class="me-about">
-      <button open-type="feedback">反馈与建议</button>
+      <text>分享</text>
       <image src="../../images/common/next.png"></image>
     </view>
+  </navigator>
+  <view class="me-about">
+    <button open-type="feedback">反馈与建议</button>
+    <image src="../../images/common/next.png"></image>
+  </view>
     <navigator url="../help/help"><view class="me-about">
       <text>帮助</text>
       <image src="../../images/common/next.png"></image>

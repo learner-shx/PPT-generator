@@ -184,7 +184,7 @@
 }
 .bottom .me-about button{
   position: relative;
-  left: -48rpx;
+  left: -50rpx;
   font-weight: normal;
   font-size: 36rpx;
   width: 600rpx;

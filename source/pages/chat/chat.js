@@ -1,66 +1,85 @@
 // pages/chat/chat.js
+
+const app = getApp()
+const utils = require("../../utils/util")
+
 Page({
 
-    /**
-     * 页面的初始数据
-     */
     data: {
+        inputValue : "",
+    },
+
+    onLoad : function(options) {
+
+        this.setData({
+            userInfo : app.globalData.userInfo,
+            chat_id : options._id,
+            target_userInfo : utils.getUserInfoFromOpenid(options._openid)
+        })
+        console.log(this.data.target_openid)
+    },
+
+    onShow() {
+    }, 
+
+    getMessage() {
 
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-
+    getInputValue(e) {
+        this.data.inputValue = e.detail.value
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
+    sendMessage() {
+        var that = this;
+        wx.cloud.database().collection('message').doc(that.data.chat_id).get({
+            success(res) {
+                console.log(res)
+                var message_list = res.data.message_list;
 
+                var msg = {}
+                msg._openid = that.data.userInfo._openid
+                msg.text = that.data.inputValue
+                msg.time = utils.formatTime(new Date())
+
+                console.log(msg)
+                message_list.push(msg)
+                console.log(message_list)
+                wx.cloud.database().collection('message').doc(that.data.chat_id).update({
+                    data: {
+                        message_list : message_list
+                    },
+                    success(res) {
+                        console.log(res)
+                        wx.showToast({
+                          title: '发送成功',
+                        })
+
+                        that.getChatList(),
+                        that.setData({
+                            inputValue : ''
+                        })
+                    }
+                
+                })
+            }
+        })
     },
 
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
+    getMessageList() {
+        var that = this;
+        wx.cloud.database().collection('message').doc(that.data.chat_id).watch({
+            onChange: function(snapshot) {
+                
+                console.log(snapshot.docs[0].message_list)
+                that.setData({
+                    message_list : snapshot.docs[0].message_list
+                })
+            },
+            onError: function(err){
+                console.log(err)
+            }
+        })
     },
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    }
 })

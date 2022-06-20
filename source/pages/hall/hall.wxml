@@ -47,29 +47,41 @@
 <!-- 当选择了PPT需求标题时 -->
 <view wx:if="{{indexTitle==0}}">
   <view class="loseContent">
-    <view class="content" wx:for="{{lose}}" data-index="{{index}}" bindtap="loseContent" wx:if="{{lose[index].upshot!=loseShow}}">
-      <view class="img" wx:if="{{lose[index].imageBase64!=''}}">
-        <image src="data:image/png;base64,{{lose[index].imageBase64}}"></image>
+    <view class="content" wx:for="{{requirements}}" data-index="{{index}}" bindtap="reqContent" >
+      <view class="user" style="display: flex;">
+        <view class="imageUser">
+          <image src="{{requirements[index].avatarUrl}}"></image>
+        </view>
+        <view class="userName">{{requirements[index].userName}}</view>
       </view>
-      <view class ="title">
+      <view class ="text">
         {{requirements[index].describe}}
       </view>
+      <view class='img-box'>
+        <view class='img-list'>
+          <block wx:for="{{requirements[index].picList}}" wx:for-index="pic_index">
+            <view class='img-item'>
+              <image src='{{requirements[index].picList[pic_index]}}' bindlongpress="bindlongpressimg"></image>
+            </view>
+          </block>
+        </view>
+      </view>
+
+      <!-- <view class="img" wx:if="{{requirements[index].imageBase64!=''}}">
+        <image src="data:image/png;base64,{{lose[index].imageBase64}}"></image>
+      </view> -->
+
       <view class="list">
         <view class="title">
           {{lose[index].title}}
         </view>
-        <view class="button">{{lose[index].upshot}}</view>
+        
       </view>
-      <view class="nowThing">类型：{{lose[index].nowThing}}</view>
-      <view class="user" style="display: flex;">
-        <view class="imageUser">
-          <image src="{{lose[index].avatarUrl}}"></image>
-        </view>
-        <view class="userName">{{lose[index].userName}}</view>
-        <view class="icon">
-          <image src="../../images/index-icon/title.png"></image>
-        </view>
-      </view>
+      <view class="text">赏金：{{requirements[index].money}} 元</view>
+      <view class="button" bindtap="receiveReq">接取悬赏</view>
+      <!-- <view class="icon">
+        <image src="../../images/index-icon/title.png"></image>
+      </view> -->
     </view>
   </view>
 </view>

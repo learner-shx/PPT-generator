@@ -1,4 +1,5 @@
 // pages/hall/hall.js
+const utils = require("../../utils/util")
 var interstitialAd = null;
 var searchTextStr="";
 Page({
@@ -16,23 +17,9 @@ Page({
     nowThing: "",
     lose: [], //失物招领标题
     requirements: [], // 需求标题
-    thing: [{
-        str: "证件"
-      },
-      {
-        str: "服饰"
-      },
-      {
-        str: "数码"
-      },
-      {
-        str: "日用品"
-      },
-      {
-        str: "其他"
-      },
-    ],
-
+    describes:[],
+    avatarUrl:[],
+    userName:[],
   },
 
   thing(e) {
@@ -104,16 +91,21 @@ Page({
     var that = this;
     //提取用户发布的物品信息
 
-    wx.cloud.database().collection('requirement').where({}).get({
+    wx.cloud.database().collection('requirement').orderBy('uploadTime','desc').where({}).get({
       success: function (res) {
+        console.log(res)
         let arr = []
+        let ava = []
+        let un = []
         // res.data 包含该记录的数据
         var length = res.data.length > 10 ? 10 : res.data.length;
         for (let i = 0; i < length; i++) {
           arr.push(res.data[i])
+
         }
+
         that.setData({
-          requirements: arr
+          requirements: arr,
         })
       }
     });
@@ -191,7 +183,7 @@ Page({
     }
   },
 
-  loseContent(e) {
+  reqContent(e) {
     if (this.data.indexTitle == 0) {
       var option = this.data.requirements[e.currentTarget.dataset.index]._id
       wx.navigateTo({ //保留当前页面，跳转到应用内的某个页面（最多打开5个页面，之后按钮就没有响应的）后续可以使用wx.navigateBack 可以返回;
@@ -221,5 +213,9 @@ Page({
         seekShow: "寻回"
       })
     }
+  },
+  receiveReq(e)
+  {
+
   }
 })

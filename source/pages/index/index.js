@@ -59,7 +59,7 @@ Page({
 
     toRequirement() {
       wx.navigateTo({
-        url: '../requirement/requirement',
+        url: '../releaseReq/releaseReq',
       })
     }
   })

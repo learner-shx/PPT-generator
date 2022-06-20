@@ -1,4 +1,6 @@
 // pages/release/release.js
+const utils = require("../../utils/util")
+const app = getApp()
 Page({
 
   /**
@@ -6,9 +8,13 @@ Page({
    */
   data: {
     schoolPicker:["浙江纺织服装学院", "宁波大学", "宁波工程学院"],
-    schoolId:"未选择",
-
+    userInfo : {},
+    schoolId:"选712择",
+    textHei: '10px',
     openid: "",
+    countPic:9,//上传图片最大数量
+    showImgUrl: "", //路径拼接，一般上传返回的都是文件名，
+    uploadImgUrl:'',//图片的上传的路径
     indexTitle: 0, //标题当前选择的下坐标
     thing: [{
         str: "证件"
@@ -58,7 +64,8 @@ Page({
     // PPT 悬赏相关变量
     imageBase64: "",
     describe: "",
-    money:"",
+    money:0,
+    picList : []
   },
 
   schoolPicker(e){
@@ -112,6 +119,16 @@ Page({
       title: e.detail.value
     })
   },
+  describe(e) {
+    this.setData({
+      describe : e.detail.value
+    })
+  },
+  money(e) {
+    this.setData({
+      money : e.detail.value
+    })
+  },
 
   thing(e) {
     if (this.data.indexTitle == 0) {
@@ -148,28 +165,28 @@ Page({
   },
 
   submitButton() { //提交数据库
-    if (this.data.title != "" && this.data.nowThing != "" && this.data.addRess != "" && this.data.nowLocation != "" && this.data.remark != "") {
+    if (this.data.describe && this.data.money) {
       var that = this;
       wx.showLoading({
         title: '数据加载中...',
       });
       // 数据提交开始
 
-      wx.cloud.database().collection('loseThing').add({
+      
+      console.log(this.data.userInfo),
+      console.log(this.data.userInfo.avatarUrl),
+      console.log(this.data.userInfo.userName),
+      wx.cloud.database().collection('requirement').add({
         // data 字段表示需新增的 JSON 数据
         data: {
           // _openid: wx.getStorageSync('openId').result.openid,会自动添加，不需要自己输入
-          avatarUrl: wx.getStorageSync('userInfo').avatarUrl,
-          userName: wx.getStorageSync('userInfo').nickName,
-          remark: this.data.remark,
-          title: this.data.title,
-          nowThing: this.data.nowThing,
-          nowLocation: this.data.nowLocation,
-          imageBase64: this.data.imageBase64,
-          addRess: this.data.addRess,
-          offOn: this.data.offOn,
-          upshot: "认领中",
-          schoolId:this.data.schoolId
+          describe: this.data.describe,
+          money : this.data.money,
+          picList : this.data.picList,
+          status : "unreceived",
+          avatarUrl: this.data.userInfo.avatarUrl,
+          userName: this.data.userInfo.userName,
+          uploadTime: wx.cloud.database().serverDate(),
         },
         success: function (res) {
           wx.hideLoading(); //隐藏正在加载中
@@ -257,6 +274,15 @@ Page({
  * 上传图片
 
  */
+  myEventListener:function(e){
+    console.log("上传的图片结果集合")
+    console.log(e.detail.picsList)
+    this.setData({
+      picList : e.detail.picsList
+    })
+
+    
+  },
 
   uploadimg: function () {
     var that = this;
@@ -334,11 +360,15 @@ Page({
   },
 
   onLoad() {
-    if (wx.getStorageSync('openId').result.userInfo.openId) {
-      this.setData({
-        openid: "不再是null"
-      })
-    }
+    this.setData({
+      openid : app.globalData.userInfo._openid,
+      userInfo : app.globalData.userInfo
+    })
+  },
+  onShow() {
+    this.setData({
+      openid : app.globalData.userInfo._openid,
+      userInfo : app.globalData.userInfo
+    })
   }
-
 })

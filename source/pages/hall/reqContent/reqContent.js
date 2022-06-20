@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    lose:[],
+    requirement:[],
     about:"none",
     call:"",
   },
@@ -22,13 +22,13 @@ Page({
       option: option.id
     })
 
-    wx.cloud.database().collection('loseThing').where({ //数据查询
+    wx.cloud.database().collection('requirement').where({ //数据查询
       _id: this.data.option //条件
     }).get({
       success: function (res) {
         // res.data 包含该记录的数据
         that.setData({
-          lose:res.data[0]
+          requirement:res.data[0]
         })
       }
     })

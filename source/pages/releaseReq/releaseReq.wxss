@@ -21,7 +21,7 @@
 .content{
   background-color: #fff;
   padding: 20rpx;
-  height: 500rpx;
+  height: 1000rpx;
   width: 85%;
   margin: 0 auto;
   border-radius: 20rpx;
@@ -29,12 +29,24 @@
   box-shadow: 0rpx 1rpx 10rpx rgba(0, 0, 0, 0.09);
 }
 
+.content .input textarea {
+  background-color: #e2e2e250;
+  border-radius: 50rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  height: 400rpx;
+  word-break:break-all;
+  padding: 20rpx;
+  width: 85%;
+  }
+
 .content .input input{
   background-color: #e2e2e250;
   border-radius: 50rpx;
   margin: 0 auto;
   margin-top: 30rpx;
   height: 50rpx;
+  word-break:break-all;
   padding: 20rpx;
   width: 85%;
 }
@@ -297,3 +309,4 @@
   font-size: 24rpx;
   color: gray;
 }
+
