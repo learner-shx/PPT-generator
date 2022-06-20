@@ -192,7 +192,7 @@ Page({
           wx.hideLoading(); //隐藏正在加载中
           wx.showModal({
             title: "提交成功", // 提示的标题
-            content: "感谢您的拾金不昧！", // 提示的内容
+            content: "悬赏发布成功", // 提示的内容
             showCancel: true, // 是否显示取消按钮，默认true
             cancelColor: "#000000", // 取消按钮的文字颜色，必须是16进制格式的颜色字符串
             confirmText: "确定", // 确认按钮的文字，最多4个字符

@@ -9,6 +9,7 @@ Page({
         userInfo : app.globalData.userInfo
     })
     this.getMessages()
+    
 },
 
   onLoad() {

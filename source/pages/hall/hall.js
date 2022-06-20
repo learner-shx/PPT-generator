@@ -2,6 +2,7 @@
 const utils = require("../../utils/util")
 var interstitialAd = null;
 var searchTextStr="";
+
 Page({
   /**
    * 页面的初始数据
@@ -192,7 +193,7 @@ Page({
     } else {
       var option = this.data.seek[e.currentTarget.dataset.index]._id
       wx.navigateTo({ //保留当前页面，跳转到应用内的某个页面（最多打开5个页面，之后按钮就没有响应的）后续可以使用wx.navigateBack 可以返回;
-        url: "seekContent/seekContent?id=" + option
+        url: "seekContent/seekContent?req=" + option
       })
     }
   },

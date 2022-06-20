@@ -245,3 +245,8 @@
   margin-top: 55rpx;
   margin-left: 150rpx;
 }
+
+.send-message-btn {
+  display: flex;
+  justify-content: flex-end;
+}

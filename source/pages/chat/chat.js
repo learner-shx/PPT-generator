@@ -10,16 +10,17 @@ Page({
     },
 
     onLoad : function(options) {
-
         this.setData({
             userInfo : app.globalData.userInfo,
-            chat_id : options._id,
-            target_userInfo : utils.getUserInfoFromOpenid(options._openid)
+            chat_id : options.chat_id
         })
-        console.log(this.data.target_openid)
+        console.log("hello!")
+        console.log(options.chat_id)
+        
     },
 
     onShow() {
+        console.log(this.data.chat_id)
     }, 
 
     getMessage() {
