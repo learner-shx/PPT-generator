@@ -14,8 +14,9 @@ Page({
             userInfo : app.globalData.userInfo,
             chat_id : options.chat_id
         })
-        console.log("hello!")
-        console.log(options.chat_id)
+        console.log("start chat!")
+        this.getChatList()
+        this.getTargetUserInfo()
         
     },
 
@@ -31,8 +32,15 @@ Page({
         this.data.inputValue = e.detail.value
     },
 
-    sendMessage() {
+    publishMessage() {
         var that = this;
+        if (this.data.inputValue == "") {
+            wx.showToast({
+              icon : "error",
+              title: '不能发送空消息',
+            })
+            return;
+        }
         wx.cloud.database().collection('message').doc(that.data.chat_id).get({
             success(res) {
                 console.log(res)
@@ -67,14 +75,14 @@ Page({
         })
     },
 
-    getMessageList() {
+    getChatList() {
         var that = this;
         wx.cloud.database().collection('message').doc(that.data.chat_id).watch({
             onChange: function(snapshot) {
                 
                 console.log(snapshot.docs[0].message_list)
                 that.setData({
-                    message_list : snapshot.docs[0].message_list
+                    chatList : snapshot.docs[0].message_list
                 })
             },
             onError: function(err){
@@ -82,5 +90,36 @@ Page({
             }
         })
     },
+    getTargetUserInfo() {
+        var that = this;
+        
+        wx.cloud.database().collection('message').doc(that.data.chat_id).get({
+            success(res) {
+                console.log(res)
+                var target_userName,target_user_avatarUrl;
+                if (that.data.userInfo._openid==res.data.userAInfo._openid){
+                    
+                    target_userName = res.data.userBInfo.userName;
+                    target_user_avatarUrl = res.data.userBInfo.avatarUrl;
+                    console.log("target user is B")
+                    
+                } else {
+                    
+                    target_userName = res.data.userAInfo.userName
+                    target_user_avatarUrl = res.data.userAInfo.avatarUrl
+                    console.log("target user is A")
+                }
+
+                wx.setNavigationBarTitle({
+                    title: target_userName
+                })
+                that.setData({
+                    target_userName: target_userName,
+                    target_user_avatarUrl : target_user_avatarUrl
+                })
+                
+            }
+        })
+    }
 
 })
