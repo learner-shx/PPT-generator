@@ -49,7 +49,7 @@
 
     <view class="call">
       <view class="img">
-        <image src="../../images/index-icon/phone.svg"></image>
+        <image src="../../images/index-icon/phone"></image>
         <view class="font">电话</view>
       </view>
       <view class="content">{{call}}</view>
@@ -58,55 +58,55 @@
 
 </view>
 <view wx:if="{{avatarUrl!=''}}">
-<view class="bottom">
-  <view wx:if="{{information_info==''}}">
-    <view class="bottom-content">
-      <navigator url="../release1/release1">
-        <view class="me-about">
-          <text>成为PPT创作者</text>
-        <image src="../../images/common/next.png"></image>
-       </view>
-      </navigator>
+  <view class="bottom">
+    <view wx:if="{{information_info==''}}">
+      <view class="bottom-content">
+        <navigator url="../release1/release1">
+          <view class="me-about">
+            <text>成为PPT创作者</text>
+            <image src="../../images/common/next.png"></image>
+          </view>
+        </navigator>
+      </view>
     </view>
-  </view>
-  <view wx:else>
-    <view class="bottom-content">
-      <navigator url="../release1/release1">
+    <view wx:else>
+      <view class="bottom-content">
+        <navigator url="../release1/release1">
+          <view class="me-about">
+            <text>修改PPT创作者信息</text>
+            <image src="../../images/common/next.png"></image>
+          </view>
+        </navigator>
         <view class="me-about">
-          <text>修改PPT创作者信息</text>
-        <image src="../../images/common/next.png"></image>
-       </view>
-      </navigator>
-      <view class="me-about">
           <text>{{"标题："+information_info.title}}</text>
-      </view>
-      <view class="me-about">
+        </view>
+        <view class="me-about">
           <text>{{"描述："+information_info.description}}</text>
-      </view>
-      <view class="me-about">
+        </view>
+        <view class="me-about">
           <text>{{"PPT类型："+information_info.type}}</text>
-      </view>
-      <view class="me-about">
+        </view>
+        <view class="me-about">
           <text>{{"价格："+information_info.price}}</text>
-      </view>
-      <view vx:if="{{qqNum!=''}}">
-        <view class="me-about">
-          <text>{{"QQ："+information_info.qqNum}}</text>
         </view>
-      </view>
-      <view vx:if="{{phoneNum!=''}}">
-        <view class="me-about">
-          <text>{{"电话："+information_info.qqNum}}</text>
+        <view vx:if="{{qqNum!=''}}">
+          <view class="me-about">
+            <text>{{"QQ："+information_info.qqNum}}</text>
+          </view>
         </view>
-      </view>
-      <view vx:if="{{phoneNum!=''}}">
-        <view class="me-about">
-          <text>{{"微信号："+information_info.wxId}}</text>
+        <view vx:if="{{phoneNum!=''}}">
+          <view class="me-about">
+            <text>{{"电话："+information_info.qqNum}}</text>
+          </view>
+        </view>
+        <view vx:if="{{phoneNum!=''}}">
+          <view class="me-about">
+            <text>{{"微信号："+information_info.wxId}}</text>
+          </view>
         </view>
       </view>
     </view>
   </view>
-</view>
 </view>
 
 <!-- 我发布过的任务 -->
@@ -122,16 +122,15 @@
     </navigator>
     <!-- 如果没有发布，显示无内容图片 -->
     <view wx:if="{{imageBase64.length==0}}" style="text-align: center;">
-    <image src="../../images/img/noContent.png" style="width: 350rpx; height: 350rpx;margin-top: 50rpx;"></image>
-    <view style="color: gray;">暂未发悬赏</view>
+      <image src="../../images/img/noContent.png" style="width: 350rpx; height: 350rpx;margin-top: 50rpx;"></image>
+      <view style="color: gray;">暂未发悬赏</view>
     </view>
     <!-- 最多显示3个发布 -->
     <view wx:if="{{imageBase64.length>0}}">
       <view wx:for="{{imageBase64}}" data-index="{{index}}">
         <view class="thing">
           <view class="img">
-            <image src="data:image/png;base64,{{imageBase64[index].imageBase64}}"
-              wx:if="{{imageBase64[index].imageBase64!=''}}"></image>
+            <image src="data:image/png;base64,{{imageBase64[index].imageBase64}}" wx:if="{{imageBase64[index].imageBase64!=''}}"></image>
             <image src="../../images/img/noImg.png" wx:if="{{imageBase64[index].imageBase64==''}}"></image>
           </view>
           <view>
@@ -156,19 +155,28 @@
       <text>关于</text>
       <image src="../../images/common/next.png"></image>
     </view>
-  <navigator url="../share/share">
-    <view class="me-about">
-      <text>分享</text>
+    </view>
+    <view class="bottom-content">
+    <navigator url="../share/share">
+      <view class="me-about">
+        <text>分享</text>
+        <image src="../../images/common/next.png"></image>
+      </view>
+    </navigator>
+    </view>
+    <view class="bottom-content">
+    <view class="me-about" >
+      <text>反馈与建议</text>
       <image src="../../images/common/next.png"></image>
     </view>
-  </navigator>
-  <view class="me-about">
-    <button open-type="feedback">反馈与建议</button>
-    <image src="../../images/common/next.png"></image>
-  </view>
-    <navigator url="../help/help"><view class="me-about">
-      <text>帮助</text>
-      <image src="../../images/common/next.png"></image>
-    </view></navigator>
-  </view>
+    </view>
+    <view class="bottom-content">
+    <navigator url="../help/help">
+      <view class="me-about">
+        <text>帮助</text>
+        <image src="../../images/common/next.png"></image>
+      </view>
+    </navigator>
+    </view>
+
 </view>
