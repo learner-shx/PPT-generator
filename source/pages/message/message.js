@@ -4,20 +4,15 @@ const app = getApp();
 Page({
 
   onShow() {
-        
-    this.setData({
-        userInfo : app.globalData.userInfo
-    })
-    this.getMessages()
-    
-},
+
+  },
 
   onLoad() {
 
     this.setData({
       userInfo: app.globalData.userInfo,
-      message_users_info : [] // 与本用户发送信息的其他用户信息
     })
+    this.getMessages()
   },
 
   getMessages() {
@@ -27,21 +22,35 @@ Page({
     wx.cloud.database().collection('message').where(
       DB.or([
         {
-            userA_openid: that.data.userInfo._openid,
-            A_is_visable: true
+          userAInfo: {
+            _openid: this.data.userInfo._openid
+          }
         },
         {
-            userB_openid: that.data.userInfo._openid,
-            B_is_visable: true
+          userBInfo: {
+            _openid: this.data.userInfo._openid
+          }
         }
-    ])
-    ).get({
-      success: res => {
-        console.log(res)
+      ])
+    ).watch({
+      onChange: function (snapshot) {
+        console.log(snapshot.docs)
         that.setData({
-          message: res.data
+          messages: snapshot.docs
         })
+      },
+      onError: function (err) {
+        console.log(err)
       }
     })
+  },
+  startChat(e) {
+    var index = e.currentTarget.dataset.index;
+    var chat_id = this.data.messages[index]._id;
+    wx.navigateTo({
+      url: '../chat/chat?chat_id=' + chat_id,
+    })
   }
+
+
 })

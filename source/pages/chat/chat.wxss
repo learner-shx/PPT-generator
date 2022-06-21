@@ -35,7 +35,7 @@
 
 .test {
     height: 100rpx;
-    background-color: #fff;
+    background-color: #f6f6f6;
 }
 
 .top {

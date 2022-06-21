@@ -1,8 +1,33 @@
 
-<block wx:for="{{message}}">
+<block wx:for="{{messages}}">
+<view class="user-list">
 
-    
+    <block wx:if="{{item.userAInfo._openid==userInfo._openid}}">
+    <view class="left" bindtap="startChat" data-index="{{index}}">
+        <view class="flex-row">
+            <image class="face" src="{{item.userBInfo.avatarUrl}}"></image>  
+                <view>
+                <view class="nick-name">{{item.userBInfo.userName}}</view>
+                <view class="msg">{{item.message_list[item.message_list.length-1].text}}</view>
+            </view>  
+        </view>
+        <view class="time">{{item.message_list[item.message_list.length-1].time}}</view>
+    </view>
+    </block>
 
+    <block wx:else>
+    <view class="left" bindtap="startChat" data-index="{{index}}">
 
+        <view class="flex-row">
+        <image class="face" bindtap="startChat" src="{{item.userAInfo.avatarUrl}}"></image>    
+        <view>
+            <view class="nick-name">{{item.userAInfo.userName}}</view>
+            <view class="msg">{{item.message_list[item.message_list.length-1].text}}</view>
+        </view>
+        </view>
+        <view class="time">{{item.message_list[item.message_list.length-1].time}}</view>
+    </view>
+    </block>
 
+</view>
 </block>
