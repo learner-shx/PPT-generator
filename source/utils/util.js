@@ -72,6 +72,7 @@ const checkSenstiveWords = (description) => {
   });
 };
 
+
 const checkNumberValidity = (number) => {
   // 判断描述是否含有非法字符
   var reg = /^[\u4e00-\u9fa5_a-zA-Z0-9]+$/;
@@ -105,9 +106,23 @@ const checkNumberValidity = (number) => {
   return true;
 };
 
+const sortByProp = (props, method) => {
+  if (method == "asc") {
+    return function (a, b) {
+      return a[props] - b[props];
+    }
+  } else {
+    return function (a, b) {
+      return b[props] - a[props];
+    }
+  }
+};
+
+
 module.exports = {
   formatTime,
   formatDate,
   checkDesciptionValidity,
   checkNumberValidity,
+  sortByProp
 };

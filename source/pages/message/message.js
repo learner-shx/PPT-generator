@@ -1,10 +1,11 @@
 
 const app = getApp();
+const utils = require("../../utils/util");
 
 Page({
 
   onShow() {
-
+    this.getMessages()
   },
 
   onLoad() {
@@ -12,14 +13,14 @@ Page({
     this.setData({
       userInfo: app.globalData.userInfo,
     })
-    this.getMessages()
   },
+
 
   getMessages() {
 
     var that = this;
     const DB = wx.cloud.database().command;
-    wx.cloud.database().collection('message').orderBy('last_send_time','desc').where(
+    wx.cloud.database().collection('message').where(
       DB.or([
         {
           userAInfo: {
@@ -34,6 +35,7 @@ Page({
       ])
     ).watch({
       onChange: function (snapshot) {
+        snapshot.docs.sort(utils.sortByProp('last_send_time','des'))
         console.log(snapshot.docs)
         that.setData({
           messages: snapshot.docs
