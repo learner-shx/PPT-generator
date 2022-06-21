@@ -49,12 +49,12 @@
 </view>
 </view>
 
-<view wx:if="{{requirement.status=='unreceived'}}">
-  <view class="submitButton" bindtap="receiveReq">接取悬赏</view>
+<view wx:if="{{requirement.status=='unreceived'&&status=='unaccepted'}}">
+  <view class="getButton" bindtap="receiveReq">接取悬赏</view>
 </view>
 
-<view wx:if="{{requirement.status=='received'}}">
-  <view class="submitButton" bindtap="submitReq">提交悬赏</view>
+<view wx:if="{{requirement.status=='unreceived'&&status=='accepted'}}">
+  <view class="submitButton" bindtap="submitReq">提交作品</view>
 </view>
 
 <view wx:if="{{requirement.status=='finished'}}">

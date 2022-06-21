@@ -1,7 +1,6 @@
 {
     "pages": [
         "pages/index/index",
-        "pages/help/help",
         "pages/hall/hall",
         "pages/release/release",
         "pages/releaseReq/releaseReq",
@@ -14,7 +13,8 @@
         "pages/user/user",
         "pages/generator/generator",
         "pages/requirement/requirement",
-        "pages/chat/chat"
+        "pages/chat/chat",
+        "pages/uploadReq/uploadReq"
     ],
     "window": {
         "backgroundColor": "#F6F6F6",
@@ -27,7 +27,8 @@
         "color": "#9c9d9b",
         "backgroundColor": "#fff",
         "selectedColor": "#0A44DF",
-        "list": [{
+        "list": [
+            {
                 "pagePath": "pages/index/index",
                 "text": "首页",
                 "iconPath": "images/index-icon/index.png",
@@ -61,7 +62,7 @@
     },
     "requiredBackgroundModes": [
         "audio"
-      ],
+    ],
     "style": "v2",
     "sitemapLocation": "sitemap.json"
 }
