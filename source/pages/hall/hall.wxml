@@ -11,15 +11,13 @@
 <view class="requirement">
 
   <scroll-view class='scroll-view-header' scroll-with-animation="true" scroll-x="true" scroll-left="{{scrollLeft}}">
-    <view class="scroll-header-item-wraper {{activeTab==index?'title-selected':''}}" wx:for="{{tabTitles}}" bindtap='selectTab' wx:key="unqiue" data-index="{{index}}" id="item-{{index}}">
+    <view class="scroll-header-item-wraper {{activeTab==index?'title-selected':''}}"wx:for="{{tabTitles}}"  bindtap='selectTab' wx:key="unqiue" data-index="{{index}}" id="item-{{index}}">
       <text class="header-item-title">{{item}}</text>
     </view>
   </scroll-view>
 
   <scroll-view class='scroll-view-body' id='scroll-view-bodyId' scroll-x="true" scroll-left="{{bodyScrollLeft}}" scroll-with-animation="true">
-    <view class='scroll-view-item' wx:for="{{tabTitles}}" bindtouchend="scrollEnded" wx:key="unique">
-
-
+    <view class='scroll-view-item'  bindtouchend="scrollEnded" wx:key="unique">
       <view class="content" wx:for="{{requirements}}" data-index="{{index}}">
         <view class="user" style="display: flex;">
           <view class="imageUser">
@@ -40,6 +38,23 @@
 
         <view class="reward">赏金：{{requirements[index].money}} 元
           <view class="button" bindtap="reqContent" data-index="{{index}}" >接取悬赏</view>
+        </view>
+        <!-- <view class="icon">
+        <image src="../../images/index-icon/title.png"></image>
+      </view> -->
+      </view>
+    </view>
+    <view class='scroll-view-item'  bindtouchend="scrollEnded" wx:key="unique">
+      <view class="content" wx:for="{{informations}}" data-index="{{index}}">
+        <view class="user" style="display: flex;">
+          <view class="imageUser">
+            <image src="{{informations[index].avatarUrl}}"></image>
+          </view>
+          <view class="userName">{{informations[index].userName}}</view>
+        </view>
+        <view class="text">{{informations[index].title}}</view>
+        <view class="reward">期望价格：{{informations[index].price}} 元
+          <view class="button" bindtap="infContent" data-index="{{index}}" >详细信息</view>
         </view>
         <!-- <view class="icon">
         <image src="../../images/index-icon/title.png"></image>

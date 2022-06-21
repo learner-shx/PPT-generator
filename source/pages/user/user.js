@@ -80,6 +80,7 @@ Page({
             }
             wx.setStorageSync('userInfo', app.globalData.userInfo);
           }
+          
         })
         
       }

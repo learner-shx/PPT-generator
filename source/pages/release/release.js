@@ -197,11 +197,14 @@ Page({
             confirmText: "确认",
             showCancel: false,
             success: function (res) {
+              console.log(res)
               if (res.confirm) {
                 wx.cloud.database().collection('information').where({
                   _openid : that.data.openid
                 }).get({
                   success(res) {
+                    console.log(res),
+                    console.log(app.globalData.userInfo)
                     wx.setStorageSync('information_info', {
                       title: e.detail.value.title,
                       description: e.detail.value.description,
@@ -210,8 +213,12 @@ Page({
                       phoneNum: e.detail.value.phoneNum,
                       wxId: e.detail.value.wxid,
                       qqNum: e.detail.value.qqNum,
+                      userName: app.globalData.userInfo.userName,
+                      avatarUrl: app.globalData.userInfo.avatarUrl,
                     })
+                    console.log(res.data.length)
                     if(res.data.length==0){
+                      console.log(0)
                       wx.cloud.database().collection('information').add({
                         data: {
                           title: e.detail.value.title,
@@ -221,12 +228,14 @@ Page({
                           phoneNum: e.detail.value.phoneNum,
                           wxId: e.detail.value.wxid,
                           qqNum: e.detail.value.qqNum,
+                          userName: app.globalData.userInfo.userName,
+                          avatarUrl: app.globalData.userInfo.avatarUrl,
                         } })
                     }
                     else{
-                      wx.cloud.database().doc('information').update({
+                      console.log(1)
+                      wx.cloud.database().collection('information').doc(res.data[0]._id).update({
                         data: {
-                          _openid : that.data.openid,
                           title: e.detail.value.title,
                           description: e.detail.value.description,
                           price: e.detail.value.price,
@@ -234,7 +243,13 @@ Page({
                           phoneNum: e.detail.value.phoneNum,
                           wxId: e.detail.value.wxid,
                           qqNum: e.detail.value.qqNum,
-                        } })
+                        },
+                        success: function(res) {
+                          console.log(res.data)
+                        }
+                       })
+                        console.log(2)
+                        
                     }
                   }
                 })

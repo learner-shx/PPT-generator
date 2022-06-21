@@ -6,6 +6,7 @@
         "pages/release/release",
         "pages/releaseReq/releaseReq",
         "pages/hall/reqContent/reqContent",
+        "pages/hall/infContent/infContent",
         "pages/updateUserInfo/updateUserInfo",
         "pages/updateUserInfo/updataCall/updataCall",
         "pages/updateUserInfo/updataEmail/updataEmail",

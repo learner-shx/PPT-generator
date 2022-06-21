@@ -14,6 +14,7 @@ Page({
     tabTitles: ["PPT悬赏", "PPT制作者"],
     bodyScrollLeft: 0,
     requirements: [],
+    informations: [],
     pages: 1
   },
 
@@ -96,6 +97,7 @@ Page({
       pages: 1
     })
     this.getRequirments()
+    this.getInformations()
   },
 
   // 下拉刷新
@@ -110,6 +112,8 @@ Page({
     this.getRequirments();
 
   },
+
+  
 
   onLoad() {
   },
@@ -134,6 +138,7 @@ Page({
     wx.cloud.database().collection('requirement').orderBy('uploadTime', 'desc').get({
       success: function (res) {
         console.log(res)
+                console.log(that.data.pages)
         let arr = []
         var length = res.data.length > max_requirments_number ? max_requirments_number : res.data.length;
         // 上拉加载，如果悬赏数多于 max_requirments_number， 说明需要刷新页面增加数量
@@ -168,12 +173,52 @@ Page({
     });
 
   },
+  getInformations() {
 
+    wx.showLoading({
+      title: '数据加载中...',
+    });
+
+    var that = this;
+    var max_requirments_number = this.data.pages * 10
+    console.log(max_requirments_number)
+    wx.cloud.database().collection('information').get({
+      success: function (res) {
+        
+        console.log(res)
+        let arr = []
+        var length = res.data.length > max_requirments_number ? max_requirments_number : res.data.length;
+        // 上拉加载，如果悬赏数多于 max_requirments_number， 说明需要刷新页面增加数量
+        if (res.data.length > max_requirments_number) {
+          that.data.pages = that.data.pages + 1;
+        }
+        console.log(that.data.pages)
+        for (let i = 0; i < length; i++) {
+          arr.push(res.data[i])
+        }
+
+        that.setData({
+          informations: arr,
+        })
+      }
+    });
+
+    //提取用户发布的寻物启事
+
+  },
   reqContent(e) {
     console.log(e)
     var option = this.data.requirements[e.currentTarget.dataset.index]._id
     wx.navigateTo({ //保留当前页面，跳转到应用内的某个页面（最多打开5个页面，之后按钮就没有响应的）后续可以使用wx.navigateBack 可以返回;
       url: "reqContent/reqContent?id=" + option
+    })
+
+  },
+  infContent(e) {
+    console.log(e)
+    var option = this.data.informations[e.currentTarget.dataset.index]._id
+    wx.navigateTo({ //保留当前页面，跳转到应用内的某个页面（最多打开5个页面，之后按钮就没有响应的）后续可以使用wx.navigateBack 可以返回;
+      url: "infContent/infContent?id=" + option
     })
 
   },

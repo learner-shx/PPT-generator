@@ -1,0 +1,39 @@
+<view class="user">
+  <view class="user-info">
+    <view class="avatarUrl">
+      <image src="{{information.avatarUrl}}"></image>
+    </view>
+    <view class="userName">{{information.userName}}</view>
+  </view>
+  <button class="button" bindtap="sendMessage" disabled="{{information._openid==userInfo._openid}}">发信息</button>
+</view>
+
+<view class="content">
+  <view class="text">{{information.title}}</view>
+</view>
+
+<view class="content">
+  <view class="title">描述</view>
+  <view class="text">{{information.description}}</view>
+  <view class="title">PPT类型</view>
+  <view class="text">{{information.type}}</view>
+  <view class="title">期望价格</view>
+  <view class="text">{{information.price}}</view>
+</view>
+
+<view vx:if="{{information.qqNum!=value&&information.wxID!=value&&information.phoneNum!=value}}">
+  <view class="content">
+    <view vx:if="information.qqNum!=undefined">
+      <view class="title">QQ</view>
+      <view class="text">{{information.qqNum}}</view>
+    </view>
+    <view vx:if="information.qqNum!=undefined">
+      <view class="title">微信</view>
+      <view class="text">{{information.wxId}}</view>
+    </view>
+    <view vx:if="information.qqNum!=undefined">
+      <view class="title">电话</view>
+      <view class="text">{{information.phoneNum}}</view>
+    </view>
+  </view>
+</view>
