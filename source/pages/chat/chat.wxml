@@ -1,39 +1,38 @@
 
-
+<view class="chat_content">
 <block wx:for="{{chatList}}">
+    
+    <block wx:if="{{item._openid!=userInfo._openid}}">
+        <view class="top">
+            <image class="face" src="{{target_user_avatarUrl}}"></image>
+            <view class="bot">
+                <text>{{item.text}}</text>
+            </view>
+        </view>
 
-<block wx:if="{{item._openid!=userInfo._openid}}">
-<view class="top">
-    <image class = "face" src="{{target_user_avatarUrl}}"></image>
-    <view class="bot">
-    <text >{{item.text}}</text>
-</view>
-</view>
+    </block>
 
+    <block wx:if="{{item._openid==userInfo._openid}}">
+        <view class="top-right">
+            <view class="bot-right">
+                <text>{{item.text}}</text>
+            </view>
+            <image class="face-right" src="{{userInfo.avatarUrl}}"></image>
+        </view>
+    </block>
+    
 </block>
-
-<block wx:if="{{item._openid==userInfo._openid}}">
-<view class="top-right">
-    <view class="bot-right">
-    <text>{{item.text}}</text>
-    </view>
-    <image class = "face-right" src="{{userInfo.avatarUrl}}"></image>
 </view>
-</block>
-
-
-</block>
-
 
 
 
 <view class="pub-comment">
 
-<view class = "pub-left">
+    <view class="pub-left">
 
-    <input class = "pub-input" bindinput="getInputValue" value="{{inputValue}}"></input>
-</view>
+        <input class="pub-input" bindinput="getInputValue" value="{{inputValue}}"></input>
+    </view>
 
-<view class = "pub-button" bindtap="publishMessage">发送</view>
+    <view class="pub-button" bindtap="publishMessage">发送</view>
 
 </view>

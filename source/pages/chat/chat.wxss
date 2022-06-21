@@ -1,80 +1,88 @@
-
-
 .pub-comment {
-    background-color: #f7f7f7;
-    padding: 20rpx 40rpx;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
+  background-color: #f3f3f3;
+  padding: 20rpx 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
 }
 
 .pub-left {
-    background-color: #fff;
-    color: #7f7f7f;
-    border-radius: 10rpx;
-    margin-right: 20rpx;
-
+  background-color: #fff;
+  color: #7f7f7f;
+  border-radius: 50rpx;
+  margin-right: 20rpx;
 }
 
 .pub-input {
-    padding: 10rpx 20rpx;
-    width: 500rpx;
+  padding: 10rpx 20rpx;
+  width: 500rpx;
 }
 
 .pub-button {
-    color: #7f7f7f;
-    border : solid 1rpx #7f7f7f;
-    border-radius: 10rpx;
-    padding: 10rpx 20rpx;
+  color: #7f7f7f;
+  border: solid 1rpx #7f7f7f;
+  border-radius: 50rpx;
+  padding: 10rpx 20rpx;
+}
+
+.chat_content {
+    margin-bottom: 120rpx;
 }
 
 .top {
-    display: flex;
-    flex-direction: row;
-    margin : 20rpx 20rpx 0 20rpx;
-    align-items: center;
+  display: flex;
+  margin: 20rpx 20rpx 0 20rpx;
+  align-items: center;
 }
 
 .top-right {
-    display: flex;
-    flex-direction: row;
-    margin : 20rpx 20rpx 0rpx 20rpx;
-    align-items: center;
-    position: relative;
-    justify-content: flex-end;
+  display: flex;
+  margin: 20rpx 20rpx 0rpx 20rpx;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .face {
-    width: 100rpx;
-    height: 100rpx;
-    border-radius: 10rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  flex-shrink:0
 }
 
 .face-right {
-    width: 100rpx;
-    height: 100rpx;
-    border-radius: 10rpx;
-    right: 10rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  right: 10rpx;
+  flex-shrink:0
 }
 
 .bot {
-    margin-left: 20rpx;
-    margin-right: 20rpx;
-    padding: 10rpx 10rpx;
-    background-color: #f7f7f7;
-    border-radius: 10rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding: 10rpx 10rpx;
+  background-color: #dadada;
+  border-radius: 10rpx;
 }
 
 .bot-right {
-    margin-left: 20rpx;
-    margin-right: 20rpx;
-    padding: 10rpx 10rpx;
-    background-color: #f7f7f7;
-    border-radius: 10rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding: 10rpx 10rpx;
+  background-color: #dadada;
+  border-radius: 10rpx;
 }
 
 .nick {
-    margin-top: 20rpx;
+  margin-top: 20rpx;
+}
+
+text {
+  font-size: 30rpx;
+  color: black;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
 }

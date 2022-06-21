@@ -37,12 +37,29 @@
     <view class="title">悬赏状态 :</view>
     <view class="text unreceived" wx:if="{{requirement.status=='unreceived'}}">{{requirement.status}}</view>
     <view class="text received" wx:if="{{requirement.status=='received'}}">{{requirement.status}}</view>
-  </view> 
-  <!-- <view class="font1">认领状态：{{lose.upshot}}</view> -->
-  <view wx:if="{{requirement.status=='unreceived'}}">
-    <button class="button" bindtap="receiveReq">接取悬赏</button>
   </view>
-  <view class="title">已接 :</view>
-  
+  <!-- <view class="font1">认领状态：{{lose.upshot}}</view> -->
+
+  <view class="title">已接用户 :</view>
+  <view wx:for="{{requirement.acceptedUserList}}">
+    <view class="user-info">
+      <view class="avatarUrl">
+        <image src="{{item.avatarUrl}}"></image>
+      </view>
+      <view class="userName">{{item.userName}}</view>
+    </view>
+  </view>
+
 </view>
 
+<view wx:if="{{requirement.status=='unreceived'}}">
+  <view class="submitButton" bindtap="receiveReq">接取悬赏</view>
+</view>
+
+<view wx:if="{{requirement.status=='received'}}">
+  <view class="submitButton" bindtap="submitReq">提交悬赏</view>
+</view>
+
+<view wx:if="{{requirement.status=='finished'}}">
+  <view class="finishedButton">已结束</view>
+</view>

@@ -50,17 +50,6 @@ Page({
 
 
   sendMessage() {
-    if (this.data.userInfo._openid == this.data.requirement._openid) {
-      wx.showModal({
-        title: "警告", // 提示的标题
-        content: "不能和自己发信息", // 提示的内容
-        showCancel: false, // 是否显示取消按钮，默认true
-        cancelColor: "#000000", // 取消按钮的文字颜色，必须是16进制格式的颜色字符串
-        confirmText: "确定", // 确认按钮的文字，最多4个字符
-        confirmColor: "#576B95", // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
-      })
-      return;
-    }
 
     console.log("receive the reward")
     var that = this;

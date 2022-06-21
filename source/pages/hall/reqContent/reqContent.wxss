@@ -36,7 +36,6 @@
   width: 200rpx;
   font-weight: bold;
   text-align: center;
-  line-height: 50rpx;
   background-color: #ffeb37;
 }
 
@@ -122,15 +121,26 @@
   float:right;
 }
 
-.content .button {
-  background-color: #ffd23c;
-  border-radius: 10rpx;
-  padding: 12rpx;
-  font-size: 30rpx;
+.submitButton {
+  background-color: #ffeb37;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  border-radius: 30rpx;
+  width: 80%;
   text-align: center;
-  width: 145rpx;
-  margin-top: 20rpx;
-  margin-left: 250rpx;
+  padding: 30rpx;
+  margin-bottom: 100rpx;
+}
+
+.finishedButton {
+  background-color: #c0c0c0;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  border-radius: 30rpx;
+  width: 80%;
+  text-align: center;
+  padding: 30rpx;
+  margin-bottom: 100rpx;
 }
 
 .img-list {

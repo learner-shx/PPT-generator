@@ -36,7 +36,7 @@ Page({
         var that = this;
         if (this.data.inputValue == "") {
             wx.showToast({
-              icon : "error",
+              icon : "none",
               title: '不能发送空消息',
             })
             return;
