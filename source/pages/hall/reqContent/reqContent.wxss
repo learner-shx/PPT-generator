@@ -67,6 +67,15 @@
   font-weight: bold;
 }
 
+.title image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-top: 40rpx;
+  margin-left: 40rpx;
+  border-radius: 50%;
+  border: gray 5rpx solid;
+}
+
 .content .money {
   width: 90%;
   font-size: 42rpx;
@@ -85,6 +94,8 @@
 .content .status {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
+  margin-top: 20rpx;
 }
 
 .content .text {
@@ -99,7 +110,7 @@
 
 .unreceived {
   background-color: #a8a8a8;
-  border-radius: 10rpx;
+  border-radius: 50rpx;
   padding: 10rpx;
   font-size: 32rpx;
   text-align: center;
@@ -111,12 +122,11 @@
 
 .received {
   background-color: #4ef524;
-  border-radius: 10rpx;
+  border-radius: 50rpx;
   padding: 10rpx;
   font-size: 32rpx;
   text-align: center;
   width: 200rpx;
-  margin-top: 5rpx;
   color: #252525;
   float:right;
 }

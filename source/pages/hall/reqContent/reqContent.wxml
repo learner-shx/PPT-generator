@@ -39,17 +39,14 @@
     <view class="text received" wx:if="{{requirement.status=='received'}}">{{requirement.status}}</view>
   </view>
   <!-- <view class="font1">认领状态：{{lose.upshot}}</view> -->
+</view>
 
-  <view class="title">已接用户 :</view>
+<view class="content">
+<view class="title">已接用户 :
   <view wx:for="{{requirement.acceptedUserList}}">
-    <view class="user-info">
-      <view class="avatarUrl">
-        <image src="{{item.avatarUrl}}"></image>
-      </view>
-      <view class="userName">{{item.userName}}</view>
-    </view>
+    <image src="{{item.avatarUrl}}"></image>
   </view>
-
+</view>
 </view>
 
 <view wx:if="{{requirement.status=='unreceived'}}">

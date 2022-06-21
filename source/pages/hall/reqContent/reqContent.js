@@ -15,16 +15,20 @@ Page({
 
 
   onLoad: function (option) {
-    wx.showLoading({
-      title: '数据加载中...',
-    });
-
-    var that = this;
+    
+    
     this.setData({
       userInfo: app.globalData.userInfo,
       requirement_id: option.id
     })
+    this.loadRequirement()
+  },
 
+  loadRequirement() {
+    var that = this;
+    wx.showLoading({
+      title: '数据加载中...',
+    });
     // 获取到该 id 对应的悬赏信息
     wx.cloud.database().collection('requirement').doc(this.data.requirement_id).get({
       success: function (res) {
@@ -36,8 +40,9 @@ Page({
       }
     })
     wx.hideLoading(); //隐藏正在加载中
-
   },
+
+
   preview(e) {
     console.log(e)
     let currentUrl = e.currentTarget.dataset.src
@@ -131,17 +136,18 @@ Page({
           avatarUrl: that.data.userInfo.avatarUrl
         }
         acceptedUserList.push(acceptedUserInfo);
-        wx.cloud.database().collection('requirement').doc(this.data.requirement_id).update({
+        console.log(acceptedUserList)
+        wx.cloud.database().collection('requirement').doc(that.data.requirement_id).update({
           data : {
             status : "received",
             acceptedUserList : acceptedUserList
+          },
+          success(ress) {
+            console.log(ress)
           }
         })
       }
     })
-
-
-    
 
     wx.showModal({
       title: "通知", // 提示的标题
@@ -151,5 +157,7 @@ Page({
       confirmText: "确定", // 确认按钮的文字，最多4个字符
       confirmColor: "#576B95", // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
     })
+
+    this.loadRequirement()
   }
 })
