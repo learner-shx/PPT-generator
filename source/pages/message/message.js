@@ -5,14 +5,15 @@ const utils = require("../../utils/util");
 Page({
 
   onShow() {
-    this.getMessages()
+    if (app.globalData.userInfo != null) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+      })
+      this.getMessages()
+    }
   },
 
   onLoad() {
-
-    this.setData({
-      userInfo: app.globalData.userInfo,
-    })
   },
 
 
@@ -35,7 +36,7 @@ Page({
       ])
     ).watch({
       onChange: function (snapshot) {
-        snapshot.docs.sort(utils.sortByProp('last_send_time','des'))
+        snapshot.docs.sort(utils.sortByProp('last_send_time', 'des'))
         console.log(snapshot.docs)
         that.setData({
           messages: snapshot.docs
