@@ -110,9 +110,8 @@
 
 .unreceived {
   background-color: #a8a8a8;
-  border-radius: 50rpx;
+  border-radius: 10rpx;
   padding: 10rpx;
-  font-size: 32rpx;
   text-align: center;
   width: 200rpx;
   margin-top: 5rpx;
@@ -131,8 +130,19 @@
   float:right;
 }
 
-.submitButton {
+.getButton {
   background-color: #ffeb37;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  border-radius: 30rpx;
+  width: 80%;
+  text-align: center;
+  padding: 30rpx;
+  margin-bottom: 100rpx;
+}
+
+.submitButton {
+  background-color: #4ef524;
   margin: 0 auto;
   margin-top: 30rpx;
   border-radius: 30rpx;
