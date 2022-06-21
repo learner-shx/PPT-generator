@@ -165,7 +165,17 @@ Page({
       cancelColor: "#000000", // 取消按钮的文字颜色，必须是16进制格式的颜色字符串
       confirmText: "确定", // 确认按钮的文字，最多4个字符
       confirmColor: "#576B95", // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
+      success(res) {
+        if (res.confirm){
+          wx.navigateTo({
+            url: '../../uploadReq/uploadReq?id=' + that.data.requirement_id
+          })
+        }
+      }
     })
+  },
+
+  submitReq() {
     wx.navigateTo({
       url: '../../uploadReq/uploadReq?id=' + this.data.requirement_id
     })

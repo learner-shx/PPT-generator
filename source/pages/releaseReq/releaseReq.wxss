@@ -6,7 +6,7 @@
   background-color: #ffeb37;
   height: 14rpx;
   border-radius: 35rpx;
-  width: 80%;
+  width: 100%;
 }
 .title .release {
   margin: 30rpx 50rpx 0rpx;
@@ -311,4 +311,25 @@
 .call .icon .font {
   font-size: 24rpx;
   color: gray;
+}
+
+.login-image {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.login-image image {
+}
+
+.login-image .text {
+  color: gray
+}
+
+.login {
+  color: #000;
+  background-color: #ffd23c;
 }
