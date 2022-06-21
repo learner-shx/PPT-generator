@@ -91,7 +91,8 @@ Page({
                 avatarUrl : that.data.requirement.avatarUrl
               },
               message_type : true, // true 为用户消息, false 为系统消息
-              message_list : []
+              message_list : [],
+              last_send_time : wx.cloud.database().serverDate()
             },
             success(ress) {
               console.log(ress)

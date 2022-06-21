@@ -19,7 +19,7 @@ Page({
 
     var that = this;
     const DB = wx.cloud.database().command;
-    wx.cloud.database().collection('message').where(
+    wx.cloud.database().collection('message').orderBy('last_send_time','desc').where(
       DB.or([
         {
           userAInfo: {

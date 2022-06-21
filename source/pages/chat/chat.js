@@ -7,6 +7,7 @@ Page({
 
     data: {
         inputValue : "",
+        disabled_send : false
     },
 
     onLoad : function(options) {
@@ -29,6 +30,7 @@ Page({
 
     getInputValue(e) {
         this.data.inputValue = e.detail.value
+        
     },
 
     publishMessage() {
@@ -40,6 +42,9 @@ Page({
             })
             return;
         }
+        this.setData({
+            disable_send : true
+        })
         wx.cloud.database().collection('message').doc(that.data.chat_id).get({
             success(res) {
                 console.log(res)
@@ -55,7 +60,8 @@ Page({
                 console.log(message_list)
                 wx.cloud.database().collection('message').doc(that.data.chat_id).update({
                     data: {
-                        message_list : message_list
+                        message_list : message_list,
+                        last_send_time : wx.cloud.database().serverDate(),
                     },
                     success(res) {
                         console.log(res)
@@ -63,14 +69,17 @@ Page({
                           title: '发送成功',
                         })
 
-                        that.getChatList(),
+                        that.getChatList()
                         that.setData({
-                            inputValue : ''
+                            inputValue : ""
                         })
                     }
                 
                 })
             }
+        })
+        this.setData({
+            disable_send : false
         })
     },
 
