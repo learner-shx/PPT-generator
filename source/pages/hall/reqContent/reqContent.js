@@ -22,8 +22,7 @@ Page({
     var that = this;
     this.setData({
       userInfo: app.globalData.userInfo,
-      requirement_id: option.id,
-      requirement_status : false
+      requirement_id: option.id
     })
 
     // 获取到该 id 对应的悬赏信息
@@ -86,9 +85,7 @@ Page({
                 userName : that.data.requirement.userName,
                 avatarUrl : that.data.requirement.avatarUrl
               },
-              message_type : true, // true 为用户消息
-              A_is_visable : true,
-              B_is_visable : true,
+              message_type : true, // true 为用户消息, false 为系统消息
               message_list : []
             },
             success(ress) {
@@ -113,19 +110,38 @@ Page({
 
   receiveReq() {
     // 接悬赏
+    if (this.data.requirement._openid == this.data.userInfo._openid) {
+      wx.showToast({
+        title: '您是该悬赏发布者',
+        icon: 'none'
+      })
+      return;
+    }
+
     var that = this;
 
-    wx.cloud.database().collection('requirement').doc(this.data.requirement_id).update({
-      data : {
-        status : "received"
-      },
-      success(res) {
-        console.log(res);
-        that.setData({
-          requirement_status : true
+    wx.cloud.database().collection('requirement').doc(this.data.requirement_id).get({
+      success: function (res) {
+        console.log(res)
+        // res.data 包含该记录的数据
+        var acceptedUserList = res.data.acceptedUserList;
+        var acceptedUserInfo = {
+          _openid: that.data.userInfo._openid,
+          userName: that.data.userInfo.userName,
+          avatarUrl: that.data.userInfo.avatarUrl
+        }
+        acceptedUserList.push(acceptedUserInfo);
+        wx.cloud.database().collection('requirement').doc(this.data.requirement_id).update({
+          data : {
+            status : "received",
+            acceptedUserList : acceptedUserList
+          }
         })
       }
     })
+
+
+    
 
     wx.showModal({
       title: "通知", // 提示的标题

@@ -1,6 +1,6 @@
 
-<view class="chat_content">
-<block wx:for="{{chatList}}">
+<scroll-view scroll-y="true" scroll-into-view="{{scrollLast}}" scroll-with-animation="true" class='chat_content'>
+<view wx:for="{{chatList}}">
     
     <block wx:if="{{item._openid!=userInfo._openid}}">
         <view class="top">
@@ -20,9 +20,9 @@
             <image class="face-right" src="{{userInfo.avatarUrl}}"></image>
         </view>
     </block>
-    
-</block>
 </view>
+<view id="toView" class="test"></view>
+</scroll-view>
 
 
 

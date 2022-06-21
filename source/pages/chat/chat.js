@@ -17,7 +17,6 @@ Page({
         console.log("start chat!")
         this.getChatList()
         this.getTargetUserInfo()
-        
     },
 
     onShow() {
@@ -83,6 +82,9 @@ Page({
                 console.log(snapshot.docs[0].message_list)
                 that.setData({
                     chatList : snapshot.docs[0].message_list
+                })
+                that.setData({
+                    scrollLast : "toView"
                 })
             },
             onError: function(err){
