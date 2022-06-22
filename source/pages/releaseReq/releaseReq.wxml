@@ -31,12 +31,12 @@
       <uploadImages bindmyevent="myEventListener" count='{{countPic}}' showUrl="{{showImgUrl}}" uploadUrl="{{uploadImgUrl}}"></uploadImages>
     </view>
 
-    <view class="submitButton" bindtap="submitButton" hover-class="submitButton-hover">发布</view>
+    
 
   </view>
 
 </view>
-
+<view class="submitButton" bindtap="submitButton" hover-class="submitButton-hover">发布</view>
 
 <view wx:if="{{openid==''}}">
 <view class="login-image">

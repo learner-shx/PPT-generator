@@ -20,9 +20,6 @@
       <view class="row-input">{{PPT_style[PPT_style_index]}}
       </view>
     </view>
-      <view class="row-back">
-        <text class="iconfont icon-gengduo"></text>
-      </view>
     </view>
 
 </view>

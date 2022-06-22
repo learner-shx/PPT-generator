@@ -40,15 +40,12 @@
   text-align: center;
 }
 
-.title .admin{
-  color: #000;
-  background-color: #ffd23c;
-}
 .title .login .img{
   margin-top: -350rpx;
   margin-left: 80rpx;
   margin-bottom: 50rpx;
   display: flex;
+  z-index: 1;
 }
 .title .login .font{
   font-size: 45rpx;
@@ -77,6 +74,11 @@
   border-bottom-left-radius: 80rpx;
 }
 
+.filter image {
+  width: 40%;
+  margin-left: 500rpx;
+}
+
 /* 学校和电话 */
 .emailCall{
   background-color: #fff;
@@ -85,44 +87,62 @@
   margin: 0 auto;
   border-radius: 50rpx;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
   box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
 }
 .emailCall .img{
   display: flex;
   margin-top: 20rpx;
 }
+
+.emailCall .email .img {
+  display:  flex;
+  align-items: center;
+}
+
+.emailCall .call .img {
+  display:  flex;
+  align-items: center;
+}
+
+
 .emailCall .email .img .font{
   color: #b6b6b6;
   font-size: 28rpx;
-  margin-top: 10rpx;
   margin-left: 10rpx;
 }
 .emailCall .call .img .font{
   color: #b6b6b6;
   font-size: 28rpx;
-  margin-top: 10rpx;
   margin-left: 10rpx;
 }
 
 .emailCall .email{
   margin-top: 30rpx;
+  margin-left: 50rpx;
+  display: flex;
+  align-items: center;
 }
+
+
 .emailCall .call{
   margin-top: 30rpx;
+  margin-left: 50rpx;
+  display: flex;
+  align-items: center;
 }
 
 .emailCall .email .content{
   margin-top: 20rpx;
   font-size: 32rpx;
   font-weight: bold;
-  margin-left: 12rpx;
+  margin-left: 20rpx;
 }
 .emailCall .call .content{
   margin-top: 20rpx;
   font-size: 32rpx;
   font-weight: bold;
-  margin-left: 12rpx;
+  margin-left: 20rpx;
 }
 
 .emailCall .email .img image{
@@ -225,7 +245,6 @@
 }
 
 
-/* 下方部分的css */
 .bottom{
   margin-top: 50rpx;
 }
@@ -266,60 +285,6 @@
   width: 600rpx;
   text-align: left;
   background-color: transparent;
-}
-
-/* 发布的物品css */
-.thing{
-  display: flex;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  -o-text-overflow: ellipsis;
-  width: 600rpx;
-}
-.thing .img image{
-  width: 150rpx;
-  height: 150rpx;
-  border-radius: 25rpx;
-  margin-left:30rpx;
-  margin-top: 20rpx;
-}
-.thing .title{
-  font-size: 32rpx;
-  margin-top: 25rpx;
-  margin-left: 40rpx;
-  color: rgb(22, 22, 22);
-}
-.thing .upshot{
-  font-size: 26rpx;
-  margin-top: 65rpx;
-  margin-left: 40rpx;
-  color: gray;
-}
-.thing .button{
-  display: flex;
-}
-.On{
-  background-color: #ffd23c;
-  height: 55rpx;
-  text-align: center;
-  line-height: 55rpx;
-  border-radius: 30rpx;
-  width: 140rpx;
-  font-size: 24rpx;
-  margin-top: 55rpx;
-  margin-left: 150rpx;
-}
-.off{
-  background-color: #e1e1e1;
-  height: 55rpx;
-  text-align: center;
-  line-height: 55rpx;
-  border-radius: 30rpx;
-  width: 140rpx;
-  font-size: 24rpx;
-  margin-top: 55rpx;
-  margin-left: 150rpx;
 }
 
 .send-message-btn {

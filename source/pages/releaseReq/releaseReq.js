@@ -9,7 +9,7 @@ Page({
   data: {
     // PPT 悬赏相关变量
     imageBase64: "",
-    describe: "",
+    description: "",
     money: "",
     picList: [],
     countPic: 9,//上传图片最大数量
@@ -20,7 +20,7 @@ Page({
 
   describe(e) {
     this.setData({
-      describe: e.detail.value
+      description: e.detail.value
     })
   },
   money(e) {

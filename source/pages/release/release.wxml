@@ -1,57 +1,36 @@
-<!--release wxml / 发布编辑页-->
-<form id="" bindsubmit="formsubmit">
- <view class="top">
-  <view class="title">
-    <input type="text" maxlength="15" name="title" placeholder="取一个标题吧，记得多带一些关键字" class="input-title" placeholder-class="placeholder-title" bindinput="inputTitle" value="{{title}}">
-    </input>
-    <view class="input-limit"><text style="color:{{limit[0].beyondStyle}};">{{limit[0].current}}/{{limit[0].maxlength}}       </text></view>
-  </view>
+<view class="top top-content">
+  <view class="self-intro">自我介绍</view>
   <view class="description">
-    <textarea maxlength="200" name="description" placeholder="详细介绍一下" class="textarea-description" placeholder-class="placeholder-description" bindinput="inputDescription" value="{{description}}">
+    <textarea maxlength="200" placeholder="介绍一下自己吧" placeholder-class="placeholder-description" bindinput="inputDescription" id="description" value="{{description}}">
     </textarea>
-    <view class="textarea-limit"><text style="color:{{limit[1].beyondStyle}};">{{limit[1].current}}/{{limit[1].maxlength}}       </text></view>
+    <view class="textarea-limit"><text style="color:{{limit.beyondStyle}};">{{limit.current}}/{{limit.maxlength}} </text></view>
   </view>
   <view class="image">
+  </view>
+</view>
+<view class="content body-content">
+  <view class="row">
+    <view class="row-add">意向价格</view>
+    <view class="row-input">
+      <input type="digit" id="price" placeholder="出价" bindinput='handleInput' value="{{price}}"></input>
+    </view>
+  </view>
+  <view class="row" bindtap="selectPPTtype">
+    <view class="row-add">擅长领域</view>
+    <view class="row-input">{{PPT_type[PPT_type_index]}}</view>
+  </view>
+  <view class="row">
+    <view class="row-add">电话号</view>
+    <view class="row-input">
+      <input type="number" maxlength="15" id="phone_number" placeholder="必填" value="{{phone_number}}" bindinput="handleInput"></input>
+    </view>
+  </view>
+  <view class="row">
+    <view class="row-add">邮箱</view>
+    <view class="row-input">
+      <input type="text" id="email" placeholder="必填" value="{{email}}" bindinput="handleInput"></input>
+    </view>
+  </view>
+</view>
 
-    
-  </view>
- </view>
-  <view class="content">
-    <view class="row">
-      <view class="row-add">价格</view>
-      <view class="row-input">
-        <input type="digit" name="price" placeholder="打算卖多少" bindinput='inputPrice' value="{{price}}"></input>
-      </view>
-    </view>
-    <view class="row" bindtap="selectSch">
-      <view class="row-add">分类</view>
-      <view class="row-input">
-        <text>{{type.name}}</text>
-      </view>
-      <view class="row-back">
-        <text class="iconfont icon-gengduo"></text>
-      </view>
-    </view>
-    <view class="row">
-      <view class="row-add">手机号</view>
-      <view class="row-input">
-        <input type="number" maxlength="11" name="phoneNum" placeholder="选填" value="{{phoneNum}}" bindfocus="autoload"></input>
-      </view>
-    </view>
-    <view class="row">
-      <view class="row-add">QQ号</view>
-      <view class="row-input">
-        <input type="number" maxlength="12" name="qqNum" placeholder="选填" value="{{qqNum}}" bindfocus="autoload"></input>
-      </view>
-    </view>
-    <view class="row">
-      <view class="row-add">邮箱</view>
-      <view class="row-input">
-        <input type="text" maxlength="20" name="wxid" placeholder="选填" value="{{wxId}}" bindfocus="autoload"></input>
-      </view>
-    </view>
-  </view>
-  <view class="conbtn">
-    <button id="submit" form-type="submit" class="btn" style="background:{{btncolor}};">发布</button>
-  </view>
-</form>
+<view class="submitButton{{enable_submit?'':'-disable'}}" bindtap="{{enable_submit?'submitForm':''}}" hover-class="submitButton-hover">确认注册</view>

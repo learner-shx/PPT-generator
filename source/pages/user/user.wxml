@@ -14,7 +14,9 @@
   <view class="login">
     <!-- <image src="{{userInfo.avatarUrl}}"></image> -->
     <view wx:if="{{avatarUrl!=''}}">
-      <view class="filter"></view>
+      <view class="filter">
+        <image src="../../images/index-icon/ppt_maker.svg" wx:if="{{user_type}}"></image>
+      </view>
       <!--模糊背景-->
       <view class="img">
         <view class="image">
@@ -32,6 +34,7 @@
       <button class="admin" style="display:{{adminDisplay}}" type="primary" bindtap="getUserProfile">登录</button>
       <!--获取用户信息-->
     </view>
+
   </view>
 </view>
 
@@ -57,51 +60,7 @@
   </view>
 
 </view>
-<view wx:if="{{avatarUrl!=''}}">
-  <view class="bottom">
-    <view wx:if="{{information_info==''}}">
-      <view class="bottom-content">
-        <navigator url="../release/release">
-          <view class="me-about">
-            <text>成为PPT创作者</text>
-            <image src="../../images/common/next.png"></image>
-          </view>
-        </navigator>
-      </view>
-    </view>
-    <view wx:else>
-      <view class="information-content">
-        <navigator url="../release/release">
-          <view class="me-about">
-            <text>修改PPT创作者信息</text>
-            <image src="../../images/common/next.png"></image>
-          </view>
-        </navigator>
-        <view class="me-about">
-          <text>{{"标题："+information_info.title}}</text>
-        </view>
-        <view class="me-about">
-          <text>{{"描述："+information_info.description}}</text>
-        </view>
-        <view class="me-about">
-          <text>{{"PPT类型："+information_info.type}}</text>
-        </view>
-        <view class="me-about">
-          <text>{{"价格："+information_info.price}}</text>
-        </view>
-          <view class="me-about">
-            <text>{{"QQ："+information_info.qqNum}}</text>
-          </view>
-          <view class="me-about">
-            <text>{{"电话："+information_info.phoneNum}}</text>
-          </view>
-          <view class="me-about">
-            <text>{{"邮箱："+information_info.wxId}}</text>
-        </view>
-      </view>
-    </view>
-  </view>
-</view>
+
 
 <!-- 我发布过的任务 -->
 <view wx:if="{{avatarUrl!=''}}">
@@ -115,30 +74,30 @@
       </view>
     </navigator>
     <!-- 如果没有发布，显示无内容图片 -->
-    <view wx:if="{{requirements.length==0}}" style="text-align: center;">
+    <view wx:if="{{realsed_requirements.length==0}}" style="text-align: center;">
       <image src="../../images/img/noContent.png" style="width: 350rpx; height: 350rpx;margin-top: 50rpx;"></image>
       <view style="color: gray;">暂未发悬赏</view>
     </view>
-    <view wx:if="{{requirements.length>0}}">
-      <view class="content" wx:for="{{requirements}}" data-index="{{index}}" >
+    <view wx:if="{{realsed_requirements.length>0}}">
+      <view class="content" wx:for="{{realsed_requirements}}" data-index="{{index}}">
         <view class="user" style="display: flex;">
           <view class="imageUser">
-            <image src="{{requirements[index].avatarUrl}}"></image>
+            <image src="{{realsed_requirements[index].avatarUrl}}"></image>
           </view>
-          <view class="userName">{{requirements[index].userName}}</view>
+          <view class="userName">{{realsed_requirements[index].userName}}</view>
         </view>
-        <view class="text">{{requirements[index].describe}}</view>
+        <view class="text">{{realsed_requirements[index].describe}}</view>
         <view class='img-box'>
           <view class='img-list'>
-            <block wx:for="{{requirements[index].picList}}" wx:for-index="pic_index">
+            <block wx:for="{{realsed_requirements[index].picList}}" wx:for-index="pic_index">
               <view class='img-item'>
-                <image src='{{requirements[index].picList[pic_index]}}' bindtap="preview" data-src='{{requirements[index].picList}}' data-index="{{index}}" mode="aspectFill"></image>
+                <image src='{{realsed_requirements[index].picList[pic_index]}}' bindtap="preview" data-src='{{realsed_requirements[index].picList}}' data-index="{{index}}" mode="aspectFill"></image>
               </view>
             </block>
           </view>
         </view>
-        <view class="reward">赏金：{{requirements[index].money}} 元
-          <view class="button" bindtap="reqContent" data-index="{{index}}" >接取悬赏</view>
+        <view class="reward">赏金：{{realsed_requirements[index].money}} 元
+          <view class="button" bindtap="reqContent" data-index="{{index}}">接取悬赏</view>
         </view>
         <!-- <view class="icon">
         <image src="../../images/index-icon/title.png"></image>
@@ -149,34 +108,36 @@
 </view>
 
 <!-- 下方表格 -->
+
 <view class="bottom">
-  <view class="bottom-content">
-    <view class="me-about" bindtap="showPop">
-      <text>关于</text>
-      <image src="../../images/common/next.png"></image>
-    </view>
-    </view>
-    <view class="bottom-content">
-    <navigator url="../share/share">
+<view class="bottom-content">
+    <navigator url="../help/help">
       <view class="me-about">
-        <text>分享</text>
+        <text>修改信息</text>
         <image src="../../images/common/next.png"></image>
       </view>
     </navigator>
+  </view>
+  <view class="bottom-content">
+    <view class="me-about" bindtap="showPop">
+      <text>关于我们</text>
+      <image src="../../images/common/next.png"></image>
     </view>
-    <view class="bottom-content">
-    <view class="me-about" >
+  </view>
+  <view class="bottom-content">
+    <view class="me-about">
       <text>反馈与建议</text>
       <image src="../../images/common/next.png"></image>
     </view>
-    </view>
-    <view class="bottom-content">
+  </view>
+  <view class="bottom-content">
     <navigator url="../help/help">
       <view class="me-about">
         <text>帮助</text>
         <image src="../../images/common/next.png"></image>
       </view>
     </navigator>
-    </view>
+  </view>
+  
 
 </view>

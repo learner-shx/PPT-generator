@@ -12,7 +12,7 @@
   margin: 30rpx 50rpx 0rpx;
   font-size: 38rpx;
 }
-/* 主标题结束 */
+
 
 .content {
   background-color: #fff;
@@ -119,29 +119,6 @@
   margin-left: 50rpx;
 }
 
-.thingLocation {
-  background-color: #fff;
-  padding: 20rpx;
-  height: 160rpx;
-  width: 85%;
-  margin: 0 auto;
-  border-radius: 20rpx;
-  margin-top: 30rpx;
-  box-shadow: 0rpx 1rpx 10rpx rgba(0, 0, 0, 0.09);
-}
-
-.thingLocation .font {
-  color: gray;
-  margin-left: 20rpx;
-}
-
-.thingLocation .list {
-  display: flex;
-  width: 95%;
-  margin-left: 20rpx;
-  margin-top: 20rpx;
-}
-
 .thingLocation .list .item {
   background-color: #e2e2e250;
   width: 130rpx;
@@ -184,36 +161,6 @@
   margin: 45rpx;
 }
 
-.call {
-  background-color: #fff;
-  border-radius: 30rpx;
-  margin: 0 auto;
-  width: 80%;
-  padding: 30rpx;
-}
-.call .font1 {
-  font-size: 20rpx;
-  color: gray;
-  margin-top: 20rpx;
-}
-.call .button {
-  background-color: #ffeb37;
-  width: 120rpx;
-  padding: 20rpx;
-  text-align: center;
-  border-radius: 35rpx;
-  margin-left: 100rpx;
-  margin-top: -20rpx;
-}
-.call .button1 {
-  background-color: #eeeeee;
-  width: 120rpx;
-  padding: 20rpx;
-  text-align: center;
-  border-radius: 35rpx;
-  margin-left: 100rpx;
-  margin-top: -20rpx;
-}
 
 .submitButton {
   background-color: #ffeb37;
