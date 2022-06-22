@@ -321,10 +321,6 @@
   align-items: center;
 }
 
-
-.login-image image {
-}
-
 .login-image .text {
   color: gray
 }
