@@ -12,11 +12,24 @@ Page({
     userInfo: {},
     about: "none",
     imageBase64: [],
-    information_info: {}
+    information_info: {},
+    requirements: {}
   },
   onShow() {
+
+
+    wx.cloud.database().collection('requirement').where({ //数据查询
+      _openid: app.globalData.userInfo._openid //条件
+    }).get({
+      success: function (res) {
+        console.log(res.data)
+        requirements = wx.setStorageSync('requirements',res.data)
+      }
+    })
+
     this.setData({
-      information_info: wx.getStorageSync('information_info')
+      information_info: wx.getStorageSync('information_info'),
+      requirements: wx.getStorageSync('requirements')
     })
 
     if (app.globalData.userInfo!=null) {
@@ -41,14 +54,18 @@ Page({
         }
       })
 
-      wx.cloud.database().collection('requirement').where({ //数据查询
-        _openid: that.data.openid //条件
-      }).get({
-        success: function (res) {
-          
-        }
-      });
+
     }
+    
+  },
+
+  reqContent(e) {
+    console.log(e)
+    var option = this.data.requirements[e.currentTarget.dataset.index]._id
+    wx.navigateTo({ //保留当前页面，跳转到应用内的某个页面（最多打开5个页面，之后按钮就没有响应的）后续可以使用wx.navigateBack 可以返回;
+      url: "../hall/reqContent/reqContent?id=" + option
+    })
+
   },
 
   getUserProfile(e) {
@@ -148,11 +165,12 @@ Page({
         }
       })
 
-      wx.cloud.database().collection('requirement').where({ //数据查询
+      wx.cloud.database().collection('requirement').orderBy('uploadTime', 'desc').where({ //数据查询
         _openid: this.data.openid //条件
       }).get({
         success: function (res) {
           wx.hideLoading(); //隐藏正在加载中
+          requirements = setStorageSync("requirements",res.data)
         }
       });
     }

@@ -139,7 +139,6 @@
 .task{
   background-color: #fff;
   width: 90%;
-  height: 650rpx;
   margin: 0 auto;
   border-radius: 50rpx;
   margin-top: 60rpx;
@@ -159,7 +158,71 @@
   width: 30rpx;
   height: 30rpx;
 }
+.task .content{
+  border-radius: 50rpx;
+  float: left;
+  background-color: #fff;
+  width: 94%;
+  padding: 20rpx;
+  margin-right: 30rpx;
+  margin-top: 10rpx;
+  margin-bottom: 5rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+}
 
+.task .content .img{
+  margin-left: 10rpx;
+}
+.task .content .img image{
+  height: 280rpx;
+  width: 280rpx;
+  border-radius: 30rpx;
+}
+.task .content .title{
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+  font-weight: bold;
+  width: 117rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.task .content .button{
+  background-color: #ffd23c;
+  border-radius: 30rpx;
+  padding: 12rpx;
+  font-size: 32rpx;
+  text-align: center;
+  width: 145rpx;
+  margin-top: 5rpx;
+  color: #252525;
+  float:right;
+}
+.task .content .nowThing{
+  color: gray;
+  margin-left: 15rpx;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+}
+.task .content .imageUser image{
+  width: 75rpx;
+  height: 75rpx;
+  border-radius: 50%;
+  margin-top: 20rpx;
+  margin-left: 10rpx;
+  border: 5rpx gray solid;
+}
+.task .content .userName{
+  margin-top: 40rpx;
+  margin-left: 20rpx;
+}
+.task .content .icon image{
+  width: 70rpx;
+  height: 70rpx;
+  margin-top: -5rpx;
+  margin-left: 70rpx;
+}
 
 
 /* 下方部分的css */

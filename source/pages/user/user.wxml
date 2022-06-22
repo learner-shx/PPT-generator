@@ -96,7 +96,7 @@
             <text>{{"电话："+information_info.phoneNum}}</text>
           </view>
           <view class="me-about">
-            <text>{{"微信号："+information_info.wxId}}</text>
+            <text>{{"邮箱："+information_info.wxId}}</text>
         </view>
       </view>
     </view>
@@ -115,30 +115,36 @@
       </view>
     </navigator>
     <!-- 如果没有发布，显示无内容图片 -->
-    <view wx:if="{{imageBase64.length==0}}" style="text-align: center;">
+    <view wx:if="{{requirements.length==0}}" style="text-align: center;">
       <image src="../../images/img/noContent.png" style="width: 350rpx; height: 350rpx;margin-top: 50rpx;"></image>
       <view style="color: gray;">暂未发悬赏</view>
     </view>
-    <!-- 最多显示3个发布 -->
-    <view wx:if="{{imageBase64.length>0}}">
-      <view wx:for="{{imageBase64}}" data-index="{{index}}">
-        <view class="thing">
-          <view class="img">
-            <image src="data:image/png;base64,{{imageBase64[index].imageBase64}}" wx:if="{{imageBase64[index].imageBase64!=''}}"></image>
-            <image src="../../images/img/noImg.png" wx:if="{{imageBase64[index].imageBase64==''}}"></image>
+    <view wx:if="{{requirements.length>0}}">
+      <view class="content" wx:for="{{requirements}}" data-index="{{index}}" >
+        <view class="user" style="display: flex;">
+          <view class="imageUser">
+            <image src="{{requirements[index].avatarUrl}}"></image>
           </view>
-          <view>
-            <view class="title">标题：{{imageBase64[index].title}}</view>
-            <view class="button">
-              <view class="upshot">{{imageBase64[index].upshot}}</view>
-              <view class="On" wx:if="{{imageBase64[index].offOn==0}}">开启验证</view>
-              <view class="off" wx:if="{{imageBase64[index].offOn==1}}">无需验证</view>
-            </view>
+          <view class="userName">{{requirements[index].userName}}</view>
+        </view>
+        <view class="text">{{requirements[index].describe}}</view>
+        <view class='img-box'>
+          <view class='img-list'>
+            <block wx:for="{{requirements[index].picList}}" wx:for-index="pic_index">
+              <view class='img-item'>
+                <image src='{{requirements[index].picList[pic_index]}}' bindtap="preview" data-src='{{requirements[index].picList}}' data-index="{{index}}" mode="aspectFill"></image>
+              </view>
+            </block>
           </view>
         </view>
+        <view class="reward">赏金：{{requirements[index].money}} 元
+          <view class="button" bindtap="reqContent" data-index="{{index}}" >接取悬赏</view>
+        </view>
+        <!-- <view class="icon">
+        <image src="../../images/index-icon/title.png"></image>
+      </view> -->
       </view>
     </view>
-    <!-- 显示3个结束 -->
   </view>
 </view>
 

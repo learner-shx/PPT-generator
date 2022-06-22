@@ -25,7 +25,7 @@
   <view class="content">
       <view class="title">QQ</view>
       <view class="text">{{information.qqNum}}</view>
-      <view class="title">微信</view>
+      <view class="title">邮箱</view>
       <view class="text">{{information.wxId}}</view>
       <view class="title">电话</view>
       <view class="text">{{information.phoneNum}}</view>

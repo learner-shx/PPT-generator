@@ -261,6 +261,7 @@ Page({
 
           })
          app.globalData.information_info = wx.getStorageSync('information_info')
+         wx.navigateBack()
       }
     }
   },
