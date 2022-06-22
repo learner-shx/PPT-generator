@@ -33,7 +33,7 @@
         <input class="pub-input" bindinput="getInputValue" value="{{inputValue}}"></input>
     </view>
 
-    <view class="pub-button" bindtap="publishMessage" wx:if="{{!disabled_send}}">发送</view>
-    <view class="pub-button" bindtap="publishMessage" wx:else>发送</view>
+    <view class="pub-button{{inputValue==''?'':'-with-text'}}" bindtap="publishMessage" wx:if="{{!disabled_send}}">发送</view>
+    <view class="pub-button" wx:if="{{disabled_send}}">发送</view>
 
 </view>

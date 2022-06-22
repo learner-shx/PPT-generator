@@ -22,6 +22,15 @@
 
 .pub-button {
   color: #7f7f7f;
+  background-color: #76C4F5;
+  border: solid 1rpx #7f7f7f;
+  border-radius: 50rpx;
+  padding: 10rpx 20rpx;
+}
+
+.pub-button-with-text {
+  color: #fff;
+  background-color: #0099FF;
   border: solid 1rpx #7f7f7f;
   border-radius: 50rpx;
   padding: 10rpx 20rpx;
@@ -71,17 +80,18 @@
 .bot {
   margin-left: 20rpx;
   margin-right: 20rpx;
-  padding: 10rpx 10rpx;
-  background-color: #dadada;
-  border-radius: 10rpx;
+  padding: 20rpx 20rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
 }
 
 .bot-right {
   margin-left: 20rpx;
   margin-right: 20rpx;
-  padding: 10rpx 10rpx;
-  background-color: #dadada;
-  border-radius: 10rpx;
+  padding: 20rpx 20rpx;
+  color: #fff;
+  background-color: #0099FF;
+  border-radius: 20rpx;
 }
 
 .nick {
@@ -90,7 +100,6 @@
 
 text {
   font-size: 30rpx;
-  color: black;
   word-wrap: break-word;
   word-break: break-all;
   white-space: pre-line;

@@ -29,7 +29,9 @@ Page({
     },
 
     getInputValue(e) {
-        this.data.inputValue = e.detail.value
+        this.setData({
+            inputValue : e.detail.value
+        }) 
         
     },
 
