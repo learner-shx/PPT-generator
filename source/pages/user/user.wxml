@@ -70,7 +70,7 @@
       </view>
     </view>
     <view wx:else>
-      <view class="bottom-content">
+      <view class="information-content">
         <navigator url="../release/release">
           <view class="me-about">
             <text>修改PPT创作者信息</text>
@@ -89,20 +89,14 @@
         <view class="me-about">
           <text>{{"价格："+information_info.price}}</text>
         </view>
-        <view vx:if="{{qqNum!=''}}">
           <view class="me-about">
             <text>{{"QQ："+information_info.qqNum}}</text>
           </view>
-        </view>
-        <view vx:if="{{phoneNum!=''}}">
           <view class="me-about">
-            <text>{{"电话："+information_info.qqNum}}</text>
+            <text>{{"电话："+information_info.phoneNum}}</text>
           </view>
-        </view>
-        <view vx:if="{{phoneNum!=''}}">
           <view class="me-about">
             <text>{{"微信号："+information_info.wxId}}</text>
-          </view>
         </view>
       </view>
     </view>

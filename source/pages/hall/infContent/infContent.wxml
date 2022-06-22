@@ -23,17 +23,11 @@
 
 <view vx:if="{{information.qqNum!=value&&information.wxID!=value&&information.phoneNum!=value}}">
   <view class="content">
-    <view vx:if="information.qqNum!=undefined">
       <view class="title">QQ</view>
       <view class="text">{{information.qqNum}}</view>
-    </view>
-    <view vx:if="information.qqNum!=undefined">
       <view class="title">微信</view>
       <view class="text">{{information.wxId}}</view>
-    </view>
-    <view vx:if="information.qqNum!=undefined">
       <view class="title">电话</view>
       <view class="text">{{information.phoneNum}}</view>
-    </view>
   </view>
 </view>

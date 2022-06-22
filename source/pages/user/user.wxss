@@ -175,6 +175,14 @@
   padding-bottom: 35rpx;
   box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
 }
+.information-content{
+  width: 90%; 
+  border-radius: 50rpx;
+  margin: 0 auto;
+  background-color: rgb(253, 253, 253);
+  padding-bottom: 35rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+}
 .me-about{
   display: flex;
   margin: 20rpx 40rpx;
