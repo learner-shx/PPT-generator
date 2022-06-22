@@ -156,15 +156,8 @@ Page({
                 url: '../user/user',
               })
             }
-<<<<<<< HEAD
           }
         })
-=======
-
-          })
-         app.globalData.information_info = wx.getStorageSync('information_info')
-         
->>>>>>> 5b8d7fa3b095f86ff5fb6dbbd1f2b457d1a93c2a
       }
     })
   }
