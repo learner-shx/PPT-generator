@@ -7,20 +7,18 @@
 </view>
 
 <view class="content">
-  <view class="input">
-    <view class="release">
-      补充信息
-    </view>
-    <textarea placeholder="请输入您的补充信息" bindinput="describe" value="{{describe}}" autoheight />
-  </view>
 
   <view class="input">
-    <view class="release">
-      上传文件
+    <view class="release upload-button" bindtap="uploadPPTfile">
+      上传PPT文件
+    </view>
+    <view class="ppt-image">
+    <image src="{{has_uploaded?'../../images/index-icon/PPT.svg':''}}"></image>
     </view>
   </view>
 
 
-  <view class="submitButton" bindtap="submitReq" hover-class="submitButton-hover">提交</view>
+
 
 </view>
+  <view class="submitButton" bindtap="submitReq" hover-class="submitButton-hover">提交</view>

@@ -7,6 +7,10 @@ Page({
     },
 
 
+    handleInput(e) {
+        
+    },
+
     ppttest() {
         return;
         wx.cloud.callFunction({

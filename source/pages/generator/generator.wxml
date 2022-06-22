@@ -12,7 +12,7 @@
         <view class="text">
             悬赏信息
         </view>
-        <textarea placeholder="请输入您的PPT需求" bindinput="describe" value="{{describe}}" autoheight />
+        <textarea placeholder="请输入您的PPT需求" bindinput="handleInput" value="{{describe}}" autoheight />
     </view>
     <view class="kind" bindtap="selctPPTstyle">
     <view class='row-start'>
