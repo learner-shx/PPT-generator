@@ -61,7 +61,6 @@
 
 </view>
 
-
 <!-- 我发布过的任务 -->
 <view wx:if="{{avatarUrl!=''}}">
   <view class="task">
