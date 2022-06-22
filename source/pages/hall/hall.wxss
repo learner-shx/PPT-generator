@@ -158,7 +158,7 @@
 
 .scroll-view-body {
   white-space: nowrap;
-  height: 100%;
+  height: 100vh;
 }
 
 .scroll-view-item {

@@ -15,16 +15,15 @@ Page({
     bodyScrollLeft: 0,
     requirements: [],
     informations: [],
-    pages: 1,
-    offSetLeft : 0
+    pages: 1
   },
 
   preview(e) {
     console.log(e)
     let currentUrl = e.currentTarget.dataset.src
     let index = e.currentTarget.dataset.index
-    console.log(index)
-    console.log(this.data.requirements[index].picList)
+    // console.log(index)
+    // console.log(this.data.requirements[index].picList)
     wx.previewImage({
       current: currentUrl, // 当前显示图片的http链接
       urls: this.data.requirements[index].picList
@@ -88,9 +87,7 @@ Page({
           offsetLeft += rects[i].width;
         }
         console.log(offsetLeft);
-        that.setData({
-          offSetLeft : offsetLeft
-        })
+        
         that.scrollTopBar(offsetLeft, endIndex);
       }).exec();
     }).exec();
