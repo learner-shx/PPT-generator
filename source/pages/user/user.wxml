@@ -59,7 +59,7 @@
 </view>
 <view wx:if="{{avatarUrl!=''}}">
   <view class="bottom">
-    <view wx:if="{{information_info==''}}">
+    <view wx:if="{{information_info.length==0}}">
       <view class="bottom-content">
         <navigator url="../release/release">
           <view class="me-about">

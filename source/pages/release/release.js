@@ -231,6 +231,7 @@ Page({
                           userName: app.globalData.userInfo.userName,
                           avatarUrl: app.globalData.userInfo.avatarUrl,
                         } })
+                        wx.navigateBack()
                     }
                     else{
                       console.log(1)
@@ -249,7 +250,7 @@ Page({
                         }
                        })
                         console.log(2)
-                        
+                        wx.navigateBack()
                     }
                   }
                 })
@@ -261,7 +262,7 @@ Page({
 
           })
          app.globalData.information_info = wx.getStorageSync('information_info')
-         wx.navigateBack()
+         
       }
     }
   },
