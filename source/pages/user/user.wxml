@@ -61,23 +61,18 @@
 
 </view>
 
-<!-- 我发布过的任务 -->
 <view wx:if="{{avatarUrl!=''}}">
-  <view class="task">
-    <navigator url="../thingList/thingList">
-      <view class="title">
-        <view class="font">我发布的悬赏</view>
-        <view class="next">
-          <image src="../../images/common/next.png"></image>
-        </view>
-      </view>
-    </navigator>
-    <!-- 如果没有发布，显示无内容图片 -->
-    <view wx:if="{{realsed_requirements.length==0}}" style="text-align: center;">
-      <image src="../../images/img/noContent.png" style="width: 350rpx; height: 350rpx;margin-top: 50rpx;"></image>
-      <view style="color: gray;">暂未发悬赏</view>
+  <view class='list-title' bindtap="changeRealsedStatus">
+    <view class="req-font" >已发布的悬赏</view>
+    <view class="li" wx:if="{{!show_released_req}}"></view>
+  </view>
+
+  <view class="task" style="display:{{show_released_req?true:'none'}};">
+    <view style="text-align: center;" wx:if="{{realsed_requirements.length==0}}">
+      <image src="../../images/img/noContent.png" class="no-release-img"></image>
+      <view class='no-release-font'>暂未发悬赏</view>
     </view>
-    <view wx:if="{{realsed_requirements.length>0}}">
+    <view wx:else class='sub-reqlist'>
       <view class="content" wx:for="{{realsed_requirements}}" data-index="{{index}}">
         <view class="user" style="display: flex;">
           <view class="imageUser">
@@ -98,18 +93,49 @@
         <view class="reward">赏金：{{realsed_requirements[index].money}} 元
           <view class="button" bindtap="reqContent" data-index="{{index}}">接取悬赏</view>
         </view>
-        <!-- <view class="icon">
-        <image src="../../images/index-icon/title.png"></image>
-      </view> -->
       </view>
     </view>
   </view>
 </view>
 
-<!-- 下方表格 -->
+<view wx:if="{{avatarUrl!=''}}">
+  <view class='list-title' bindtap="changeSolvedStatus">
+    <view class="req-font" >已解决的悬赏</view>
+    <view class="li" wx:if="{{!show_solved_req}}"></view>
+  </view>
+
+  <view class="task" style="display:{{show_solved_req?true:'none'}};">
+    <view style="text-align: center;" wx:if="{{finished_requirements.length==0}}">
+      <image src="../../images/img/noContent.png" class="no-release-img"></image>
+      <view class='no-release-font'>暂未解决悬赏</view>
+    </view>
+    <view wx:else class='sub-reqlist'>
+      <view class="content" wx:for="{{finished_requirements}}" data-index="{{index}}">
+        <view class="user" style="display: flex;">
+          <view class="imageUser">
+            <image src="{{finished_requirements[index].avatarUrl}}"></image>
+          </view>
+          <view class="userName">{{finished_requirements[index].userName}}</view>
+        </view>
+        <view class="text">{{finished_requirements[index].describe}}</view>
+        <view class='img-box'>
+          <view class='img-list'>
+            <block wx:for="{{finished_requirements[index].picList}}" wx:for-index="pic_index">
+              <view class='img-item'>
+                <image src='{{finished_requirements[index].picList[pic_index]}}' bindtap="preview" data-src='{{finished_requirements[index].picList}}' data-index="{{index}}" mode="aspectFill"></image>
+              </view>
+            </block>
+          </view>
+        </view>
+        <view class="reward">赏金：{{finished_requirements[index].money}} 元
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
 
 <view class="bottom">
-<view class="bottom-content">
+  <view class="bottom-content">
     <navigator url="../help/help">
       <view class="me-about">
         <text>修改信息</text>
@@ -137,6 +163,6 @@
       </view>
     </navigator>
   </view>
-  
+
 
 </view>

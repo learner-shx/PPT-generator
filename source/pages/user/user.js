@@ -11,7 +11,38 @@ Page({
     call: "未填写",
     userInfo: {},
     about: "none",
+    maxShownRequirement : {
+      released : 3,
+      solved : 3
+    },
+    show_released_req : false,
+    show_solved_req : false
   },
+  changeRealsedStatus() {
+    if (this.data.show_released_req==false){
+      this.setData({
+        show_released_req : true
+      })
+    } else {
+      this.setData({
+        show_released_req : false
+      })
+    }
+    
+  },
+
+  changeSolvedStatus() {
+    if (this.data.show_solved_req==false){
+      this.setData({
+        show_solved_req : true
+      })
+    } else {
+      this.setData({
+        show_solved_req : false
+      })
+    }
+  },
+
   onShow() {
 
     if (app.globalData.userInfo != null) {
@@ -37,7 +68,7 @@ Page({
       wx.cloud.database().collection('requirement').orderBy('uploadTime', 'desc').where({ //数据查询
         _openid: app.globalData.userInfo._openid,
         status : 'unreceived'
-      }).get({
+      }).limit(that.data.maxShownRequirement.released).get({
         success: function (res) {
           console.log(res)
           that.setData({
@@ -48,7 +79,7 @@ Page({
 
       wx.cloud.database().collection('requirement').orderBy('uploadTime', 'desc').where({ //数据查询
         acceptedWorkID : app.globalData.userInfo._openid
-      }).get({
+      }).limit(that.data.maxShownRequirement.solved).get({
         success: function (res) {
           console.log(res)
           that.setData({
@@ -63,11 +94,26 @@ Page({
 
   reqContent(e) {
     console.log(e)
-    var option = this.data.requirements[e.currentTarget.dataset.index]._id
+    var option = this.data.realsed_requirements[e.currentTarget.dataset.index]._id
     wx.navigateTo({ //保留当前页面，跳转到应用内的某个页面（最多打开5个页面，之后按钮就没有响应的）后续可以使用wx.navigateBack 可以返回;
       url: "../hall/reqContent/reqContent?id=" + option
     })
+  },
 
+  showFullReq() {
+
+  },
+
+  preview(e) {
+    console.log(e)
+    let currentUrl = e.currentTarget.dataset.src
+    let index = e.currentTarget.dataset.index
+    // console.log(index)
+    // console.log(this.data.requirements[index].picList)
+    wx.previewImage({
+      current: currentUrl, // 当前显示图片的http链接
+      urls: this.data.realsed_requirements[index].picList
+    })
   },
 
   getUserProfile(e) {

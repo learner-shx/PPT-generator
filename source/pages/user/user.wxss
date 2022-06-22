@@ -1,11 +1,11 @@
-.about{
-  position:fixed;
-  background-color: rgba(0,0,0,0.4);
+.about {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
   height: 1500rpx;
   width: 100%;
 }
 
-.about .content{
+.about .content {
   background-color: #fff;
   height: 700rpx;
   width: 90%;
@@ -15,59 +15,59 @@
   text-align: center;
 }
 
-.about .content .img image{
+.about .content .img image {
   width: 150rpx;
   height: 150rpx;
   margin-top: 50rpx;
 }
-.about .content .font{
+.about .content .font {
   font-weight: bold;
   font-size: 40rpx;
 }
-.about .content .font1{
+.about .content .font1 {
   color: #919191;
   margin-top: 20rpx;
   font-size: 30rpx;
 }
-.about .content .font2{
+.about .content .font2 {
   color: #919191;
   margin-top: 220rpx;
   font-size: 26rpx;
 }
 
 /* 上方登录部分的css */
-.title .login{
+.title .login {
   text-align: center;
 }
 
-.title .login .img{
+.title .login .img {
   margin-top: -350rpx;
   margin-left: 80rpx;
   margin-bottom: 50rpx;
   display: flex;
   z-index: 1;
 }
-.title .login .font{
+.title .login .font {
   font-size: 45rpx;
   margin-top: 50rpx;
   margin-left: 30rpx;
   color: rgb(26, 26, 26);
 }
-.update image{
+.update image {
   width: 60rpx;
   height: 60rpx;
   margin-top: 52rpx;
 }
-.title .login .img .image image{
+.title .login .img .image image {
   height: 120rpx;
   width: 120rpx;
   border-radius: 50%;
   border: #fff solid 10rpx;
 }
-.loginButton{
+.loginButton {
   margin-top: 50rpx;
 }
-.filter{
+.filter {
   background-color: #ffd23c;
   height: 400rpx;
   border-bottom-right-radius: 80rpx;
@@ -80,7 +80,7 @@
 }
 
 /* 学校和电话 */
-.emailCall{
+.emailCall {
   background-color: #fff;
   width: 90%;
   height: 230rpx;
@@ -90,115 +90,120 @@
   flex-direction: column;
   box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
 }
-.emailCall .img{
+.emailCall .img {
   display: flex;
   margin-top: 20rpx;
 }
 
 .emailCall .email .img {
-  display:  flex;
+  display: flex;
   align-items: center;
 }
 
 .emailCall .call .img {
-  display:  flex;
+  display: flex;
   align-items: center;
 }
 
-
-.emailCall .email .img .font{
+.emailCall .email .img .font {
   color: #b6b6b6;
   font-size: 28rpx;
   margin-left: 10rpx;
 }
-.emailCall .call .img .font{
+.emailCall .call .img .font {
   color: #b6b6b6;
   font-size: 28rpx;
   margin-left: 10rpx;
 }
 
-.emailCall .email{
+.emailCall .email {
   margin-top: 30rpx;
   margin-left: 50rpx;
   display: flex;
   align-items: center;
 }
 
-
-.emailCall .call{
+.emailCall .call {
   margin-top: 30rpx;
   margin-left: 50rpx;
   display: flex;
   align-items: center;
 }
 
-.emailCall .email .content{
+.emailCall .email .content {
   margin-top: 20rpx;
   font-size: 32rpx;
   font-weight: bold;
   margin-left: 20rpx;
 }
-.emailCall .call .content{
+.emailCall .call .content {
   margin-top: 20rpx;
   font-size: 32rpx;
   font-weight: bold;
   margin-left: 20rpx;
 }
 
-.emailCall .email .img image{
+.emailCall .email .img image {
   width: 40rpx;
   height: 50rpx;
 }
-.emailCall .call .img image{
+.emailCall .call .img image {
   width: 40rpx;
   height: 50rpx;
 }
-
 
 /* 我的发布 */
-.task{
+.task {
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   width: 90%;
   margin: 0 auto;
   border-radius: 50rpx;
-  margin-top: 60rpx;
+  margin-top: 20rpx;
   box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
 }
-.task .title{
+.task .title {
   display: flex;
 }
-.task .title .font{
-  margin:30rpx;
+.task .title .font {
+  margin: 30rpx;
   font-size: 32rpx;
 }
-.task .title .next{
-  margin-top:36rpx;
+.task .title .next {
+  margin-top: 36rpx;
 }
-.task .next image{
+.task .next image {
   width: 30rpx;
   height: 30rpx;
 }
-.task .content{
+
+.task .sub-reqlist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.task .content {
   border-radius: 50rpx;
-  float: left;
   background-color: #fff;
-  width: 94%;
+  width: 88%;
   padding: 20rpx;
-  margin-right: 30rpx;
   margin-top: 10rpx;
   margin-bottom: 5rpx;
+  margin-left: 20rpx;
   box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
 }
 
-.task .content .img{
+.task .content .img {
   margin-left: 10rpx;
 }
-.task .content .img image{
+.task .content .img image {
   height: 280rpx;
   width: 280rpx;
   border-radius: 30rpx;
 }
-.task .content .title{
+.task .content .title {
   margin-top: 10rpx;
   margin-left: 10rpx;
   font-weight: bold;
@@ -208,7 +213,7 @@
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
 }
-.task .content .button{
+.task .content .button {
   background-color: #ffd23c;
   border-radius: 30rpx;
   padding: 12rpx;
@@ -217,15 +222,20 @@
   width: 145rpx;
   margin-top: 5rpx;
   color: #252525;
-  float:right;
+  float: right;
 }
-.task .content .nowThing{
-  color: gray;
-  margin-left: 15rpx;
-  font-size: 26rpx;
-  margin-top: 10rpx;
+
+.task .content .text {
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  font-size: 32rpx;
+  color: #666;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
 }
-.task .content .imageUser image{
+
+.task .content .imageUser image {
   width: 75rpx;
   height: 75rpx;
   border-radius: 50%;
@@ -233,11 +243,11 @@
   margin-left: 10rpx;
   border: 5rpx gray solid;
 }
-.task .content .userName{
+.task .content .userName {
   margin-top: 40rpx;
   margin-left: 20rpx;
 }
-.task .content .icon image{
+.task .content .icon image {
   width: 70rpx;
   height: 70rpx;
   margin-top: -5rpx;
@@ -245,11 +255,8 @@
 }
 
 
-.bottom{
-  margin-top: 50rpx;
-}
-.bottom-content{
-  width: 90%; 
+.bottom-content {
+  width: 90%;
   border-radius: 50rpx;
   margin: 0 auto;
   height: 70rpx;
@@ -257,27 +264,27 @@
   padding-bottom: 35rpx;
   box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
 }
-.information-content{
-  width: 90%; 
+.information-content {
+  width: 90%;
   border-radius: 50rpx;
   margin: 0 auto;
   background-color: rgb(253, 253, 253);
   padding-bottom: 35rpx;
   box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
 }
-.me-about{
+.me-about {
   display: flex;
   margin: 20rpx 40rpx;
   padding: 30rpx 0rpx;
   justify-content: space-between;
   border-bottom: 2rpx solid rgb(238, 238, 238);
 }
-.me-about image{
+.me-about image {
   align-self: center;
   width: 35rpx;
   height: 35rpx;
 }
-.bottom .me-about button{
+.bottom .me-about button {
   position: relative;
   left: -50rpx;
   font-weight: normal;
@@ -290,4 +297,101 @@
 .send-message-btn {
   display: flex;
   justify-content: flex-end;
+}
+
+.req-font {
+  margin: 10rpx 40rpx 0rpx;
+  font-size: 38rpx;
+  font-weight: bolder;
+}
+
+.line {
+  background-color: #ffeb37;
+  height: 14rpx;
+  border-radius: 35rpx;
+  width: 35%;
+}
+
+.no-release-img {
+  width: 350rpx;
+  height: 350rpx;
+  margin-top: 50rpx;
+}
+
+.no-release-font {
+  color: gray;
+  margin-bottom: 50rpx;
+}
+
+.img-box {
+  width: 100%;
+  margin: auto;
+  padding-top: 20rpx;
+}
+
+.img-list {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.img-item {
+  width: 30%;
+  text-align: left;
+  margin-right: 20rpx;
+  margin-bottom: 10rpx;
+}
+
+.img-item image {
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.reward {
+  font-weight: bolder;
+  margin-left: 20rpx;
+  color: #ff4828;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  background-color: #ffd23c;
+  border-radius: 30rpx;
+  padding: 12rpx;
+  font-size: 32rpx;
+  text-align: center;
+  width: 145rpx;
+  margin-top: 5rpx;
+  color: #252525;
+  float: right;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+}
+
+.button-hover {
+  box-shadow: 10rpx 10rpx 20rpx 10rpx #e1e1e1;
+}
+
+.li {
+  background-color: #ffd23c;
+  border-radius: 50%;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.list-title {
+  background-color: #fff;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  padding: 0rpx 0rpx 12rpx 0rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
 }
