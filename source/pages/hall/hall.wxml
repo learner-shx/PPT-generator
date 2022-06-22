@@ -17,8 +17,8 @@
   </scroll-view>
 
   <scroll-view class='scroll-view-body' id='scroll-view-bodyId' scroll-x="true" scroll-left="{{bodyScrollLeft}}" scroll-with-animation="true">
-    <view class='scroll-view-item'  bindtouchend="scrollEnded" wx:key="unique">
-      <view class="content" wx:for="{{requirements}}" data-index="{{index}}">
+    <view class='scroll-view-item'  bindtouchend="scrollEnded" wx:for="{{tabTitles}}">
+      <view class="content" wx:for="{{requirements}}" data-index="{{index}}" wx:if="{{offSetLeft==0}}">
         <view class="user" style="display: flex;">
           <view class="imageUser">
             <image src="{{requirements[index].avatarUrl}}"></image>
@@ -43,9 +43,8 @@
         <image src="../../images/index-icon/title.png"></image>
       </view> -->
       </view>
-    </view>
-    <view class='scroll-view-item'  bindtouchend="scrollEnded" wx:key="unique">
-      <view class="content" wx:for="{{informations}}" data-index="{{index}}">
+
+      <view class="content" wx:for="{{informations}}" data-index="{{index}}"wx:if="{{offSetLeft!=0}}">
         <view class="user" style="display: flex;">
           <view class="imageUser">
             <image src="{{informations[index].avatarUrl}}"></image>
@@ -56,11 +55,9 @@
         <view class="reward">期望价格：{{informations[index].price}} 元
           <view class="button" bindtap="infContent" data-index="{{index}}" >详细信息</view>
         </view>
-        <!-- <view class="icon">
-        <image src="../../images/index-icon/title.png"></image>
-      </view> -->
       </view>
     </view>
+
 
     <!-- <view class="buttom" style="color:rgba(180, 180, 180, 0.712);text-align: center;padding-bottom: 20rpx;">——我也是有底线的——
 

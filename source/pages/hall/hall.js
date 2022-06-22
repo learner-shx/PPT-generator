@@ -15,7 +15,8 @@ Page({
     bodyScrollLeft: 0,
     requirements: [],
     informations: [],
-    pages: 1
+    pages: 1,
+    offSetLeft : 0
   },
 
   preview(e) {
@@ -60,7 +61,7 @@ Page({
     let that = this;
     var nodeId = "#item-" + index;
     wx.createSelectorQuery().select(nodeId).boundingClientRect(function (rect) {
-      // console.log(rect)
+      console.log(rect)
       var res = wx.getSystemInfoSync();
       let targetOffSetLeft = offSetLeft - (res.windowWidth / 2) + (rect.width / 2);
       that.setData({
@@ -86,7 +87,10 @@ Page({
         for (var i = 0; i < endIndex; i++) {
           offsetLeft += rects[i].width;
         }
-        // console.log(offsetLeft);
+        console.log(offsetLeft);
+        that.setData({
+          offSetLeft : offsetLeft
+        })
         that.scrollTopBar(offsetLeft, endIndex);
       }).exec();
     }).exec();
@@ -113,7 +117,7 @@ Page({
 
   },
 
-  
+
 
   onLoad() {
   },
@@ -134,18 +138,16 @@ Page({
 
     var that = this;
     var max_requirments_number = this.data.pages * 10
-    console.log(max_requirments_number)
+    // console.log(max_requirments_number)
     wx.cloud.database().collection('requirement').orderBy('uploadTime', 'desc').get({
       success: function (res) {
-        console.log(res)
-                console.log(that.data.pages)
         let arr = []
         var length = res.data.length > max_requirments_number ? max_requirments_number : res.data.length;
         // 上拉加载，如果悬赏数多于 max_requirments_number， 说明需要刷新页面增加数量
         if (res.data.length > max_requirments_number) {
           that.data.pages = that.data.pages + 1;
         }
-        console.log(that.data.pages)
+        // console.log(that.data.pages)
         for (let i = 0; i < length; i++) {
           arr.push(res.data[i])
         }
@@ -181,10 +183,10 @@ Page({
 
     var that = this;
     var max_requirments_number = this.data.pages * 10
-    console.log(max_requirments_number)
+    // console.log(max_requirments_number)
     wx.cloud.database().collection('information').get({
       success: function (res) {
-        
+
         console.log(res)
         let arr = []
         var length = res.data.length > max_requirments_number ? max_requirments_number : res.data.length;
@@ -192,7 +194,7 @@ Page({
         if (res.data.length > max_requirments_number) {
           that.data.pages = that.data.pages + 1;
         }
-        console.log(that.data.pages)
+        // console.log(that.data.pages)
         for (let i = 0; i < length; i++) {
           arr.push(res.data[i])
         }
