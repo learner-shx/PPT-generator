@@ -8,7 +8,7 @@ Page({
 
 
     ppttest() {
-
+        return;
         wx.cloud.callFunction({
             name: 'pptxGenJsWriteFile',
             data: {

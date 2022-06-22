@@ -21,6 +21,6 @@
   </view>
 
 
-  <view class="submitButton" bindtap="submitButton">发布</view>
+  <view class="submitButton" bindtap="submitReq" hover-class="submitButton-hover">提交</view>
 
 </view>

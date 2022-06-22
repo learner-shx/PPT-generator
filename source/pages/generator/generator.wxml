@@ -27,4 +27,4 @@
 
 </view>
 
-<view class="submitButton" bindtap="ppttest">一键生成</view>
+<view class="submitButton" bindtap="ppttest" hover-class="submitButton-hover">一键生成</view>

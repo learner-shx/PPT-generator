@@ -70,6 +70,12 @@
   text-align: center;
   padding: 30rpx;
   margin-bottom: 100rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+}
+
+.submitButton-hover {
+  background-color: #ffeb37;
+  box-shadow: 10rpx 10rpx 20rpx 10rpx #e1e1e1;
 }
 
 .login-image {
@@ -104,7 +110,7 @@
 .kind {
   display: flex;
   height: 100rpx;
-  width: 100%;  
+  width: 100%;
   margin-bottom: 3rpx;
   background: #ffffff;
   border-bottom: 2rpx solid rgb(238, 238, 238);
@@ -118,7 +124,6 @@
   font-weight: bold;
 }
 .row-input {
-  text-align: left;
   font-size: 30rpx;
   color: #808080;
   font-family: Arial Normal;

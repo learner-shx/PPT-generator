@@ -4,7 +4,7 @@
     <image src="../../images/index-icon/search.png" bindtap="search"></image>
   </view>
   <view class="input">
-    <input type="text" placeholder="搜索" bindinput="searchText" />
+    <input type="text" placeholder="搜索" bindinput="handleInput" />
   </view>
 </view>
 
@@ -37,7 +37,7 @@
         </view>
 
         <view class="reward">赏金：{{requirements[index].money}} 元
-          <view class="button" bindtap="reqContent" data-index="{{index}}" >接取悬赏</view>
+          <view class="button" bindtap="reqContent" data-index="{{index}}" hover-class="button-hover">接取悬赏</view>
         </view>
         <!-- <view class="icon">
         <image src="../../images/index-icon/title.png"></image>

@@ -224,6 +224,11 @@
   text-align: center;
   padding: 30rpx;
   margin-bottom: 100rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+}
+
+.submitButton-hover {
+  box-shadow: 10rpx 10rpx 20rpx 10rpx #e1e1e1;
 }
 
 /* ————寻物启事—————— */

@@ -13,7 +13,7 @@
 
 <!-- 发布和寻找 -->
 <view class="function">
-  <button class="release" bindtap="toGenerator">
+  <button class="release" bindtap="toGenerator" hover-class="release-hover">
     <!--发布-->
 
       <view class="img">
@@ -25,7 +25,7 @@
     </view>
   </button>
 
-  <button class="release" bindtap="toRequirement">
+  <button class="release" bindtap="toRequirement" hover-class="release-hover">
     <!--寻找-->
 
       <view class="img">

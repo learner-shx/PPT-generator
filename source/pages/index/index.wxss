@@ -77,6 +77,12 @@
   border-radius: 50rpx;
   box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
 }
+
+.function .release-hover{
+  box-shadow: 10rpx 10rpx 20rpx 10rpx #e1e1e1;
+}
+
+
 .function .img image{
   width: 80rpx;
   height: 80rpx;

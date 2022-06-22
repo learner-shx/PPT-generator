@@ -2,7 +2,6 @@
 
 const windowWidth = wx.getSystemInfoSync().windowWidth;
 
-
 Page({
   /**
    * 页面的初始数据
@@ -15,7 +14,8 @@ Page({
     bodyScrollLeft: 0,
     requirements: [],
     informations: [],
-    pages: 1
+    pages: 1,
+    time: 0
   },
 
   preview(e) {
@@ -87,7 +87,7 @@ Page({
           offsetLeft += rects[i].width;
         }
         console.log(offsetLeft);
-        
+
         that.scrollTopBar(offsetLeft, endIndex);
       }).exec();
     }).exec();
@@ -111,24 +111,25 @@ Page({
   onReachBottom: function () {
     console.log("get the bottom")
     this.getRequirments();
-
   },
 
-
-
-  onLoad() {
+  handleInput(e) {
+    clearTimeout(this.data.time)
+    var that = this;
+    this.data.time = setTimeout(() => {
+      that.searchText(e.detail.value)
+    },1000)
   },
 
-  searchText(e) {
-    console.log(e);
-    // this.setData({
-    //   searchTextStr:"23"
-    // })
-    searchTextStr = e.detail.value;
+  searchText(value) {
+    console.log(value)
+    this.setData({
+      searchContentText : value
+    })
   },
 
   getRequirments() {
-
+    console.log("search requirement")
     wx.showLoading({
       title: '数据加载中...',
     });
