@@ -45,7 +45,7 @@
       </view>
     </view>
     <view class="row">
-      <view class="row-add">微信号</view>
+      <view class="row-add">邮箱</view>
       <view class="row-input">
         <input type="text" maxlength="20" name="wxid" placeholder="选填" value="{{wxId}}" bindfocus="autoload"></input>
       </view>
