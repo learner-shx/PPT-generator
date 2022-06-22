@@ -57,5 +57,6 @@
     "tabSize": 2
   },
   "cloudfunctionRoot": "cloudfunctions/",
-  "condition": {}
+  "condition": {},
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/"
 }

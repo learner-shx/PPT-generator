@@ -1,0 +1,4 @@
+node_modules/
+source/node_modules
+source/miniprogram_npm
+source/cloudfunctions

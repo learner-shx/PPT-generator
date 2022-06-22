@@ -1,2 +1,3 @@
 <!--pages/generator/generator.wxml-->
 <text>pages/generator/generator.wxml</text>
+<button bindtap="ppttest">ppttest</button>

@@ -1,4 +1,5 @@
 // pages/generator/generator.js
+// const PptxGenJS = require('pptxgenjs')
 Page({
 
     /**
@@ -62,5 +63,20 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+    ppttest:function(e)
+    {
+
+      wx.cloud.callFunction({
+        name: 'pptxGenJsWriteFile',
+        data: {
+          // ppt : pres, // 这个 CloudID 值到云函数端会被替换
+          filepath : 'ppttest.pptx',
+        },
+        success(res)
+        {
+          console.log(res)
+        }
+      })
     }
 })

@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "pptxgenjs": "^3.10.0"
+  },
+  "name": "ppt-generator",
+  "description": "<div align=center><img src=\"https://raw.githubusercontent.com/learner-lu/picbed/master/logo_transparent.png\" height=\"500\"></div>",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/learner-shx/PPT-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/learner-shx/PPT-generator/issues"
+  },
+  "homepage": "https://github.com/learner-shx/PPT-generator#readme"
+}
