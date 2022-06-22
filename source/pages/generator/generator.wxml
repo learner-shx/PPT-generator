@@ -1,3 +1,30 @@
-<!--pages/generator/generator.wxml-->
-<text>pages/generator/generator.wxml</text>
-<button bindtap="ppttest">ppttest</button>
+<view class="title">
+    <view class="release">
+        PPT自动生成
+        <view class="line"></view>
+    </view>
+</view>
+
+<!-- 物品的描述和标题+地点 -->
+
+<view class="content">
+    <view class="input">
+        <view class="text">
+            悬赏信息
+        </view>
+        <textarea placeholder="请输入您的PPT需求" bindinput="describe" value="{{describe}}" autoheight />
+    </view>
+    <view class="kind" bindtap="selctPPTstyle">
+    <view class='row-start'>
+      <view class='text'>分类</view>
+      <view class="row-input">{{PPT_style[PPT_style_index]}}
+      </view>
+    </view>
+      <view class="row-back">
+        <text class="iconfont icon-gengduo"></text>
+      </view>
+    </view>
+
+</view>
+
+<view class="submitButton" bindtap="ppttest">一键生成</view>
