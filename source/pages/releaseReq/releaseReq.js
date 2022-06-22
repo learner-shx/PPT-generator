@@ -146,8 +146,6 @@ Page({
     this.setData({
       picList: e.detail.picsList
     })
-
-
   },
 
   uploadimg: function () {

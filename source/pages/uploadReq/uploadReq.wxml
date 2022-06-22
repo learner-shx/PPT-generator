@@ -1,2 +1,26 @@
-<!--pages/uploadReq/uploadReq.wxml-->
-<text>pages/uploadReq/uploadReq.wxml</text>
+
+<view class="title">
+  <view class="release">
+    提交作品
+    <view class="line"></view>
+  </view>
+</view>
+
+<view class="content">
+  <view class="input">
+    <view class="release">
+      补充信息
+    </view>
+    <textarea placeholder="请输入您的补充信息" bindinput="describe" value="{{describe}}" autoheight />
+  </view>
+
+  <view class="input">
+    <view class="release">
+      上传文件
+    </view>
+  </view>
+
+
+  <view class="submitButton" bindtap="submitButton">发布</view>
+
+</view>

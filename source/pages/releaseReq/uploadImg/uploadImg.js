@@ -33,9 +33,6 @@ Component({
     methods: {
   
       uploadDetailImage: function(e) { //这里是选取图片的方法
-        wx.cloud.init({
-            env : "kamilu-3g69c1hh0c963d36"
-          })
         var that = this;
         var pics = [];
         var detailPics = that.data.detailPics;
