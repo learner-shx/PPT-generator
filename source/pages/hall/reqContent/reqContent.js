@@ -38,7 +38,7 @@ Page({
         })
         var requirement = res.data;
         var acceptedUserOpenid = requirement.acceptedUserList.map(item => item._openid)
-        var submittedUserOpenid = requirement.submittedUserList.map(item => item._openid)
+        var submittedUserOpenid = requirement.submittedUserList.map(item => item.userInfo._openid)
         console.log(acceptedUserOpenid)
         console.log(submittedUserOpenid)
         console.log(app.globalData.userInfo._openid)

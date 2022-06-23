@@ -46,7 +46,11 @@ Page({
                             success(res) {
                                 console.log(res)
                                 var submittedUserList = res.data.submittedUserList;
-                                submittedUserList.push(that.data.userInfo);
+                                var submittedInfo = {
+                                    userInfo : that.data.userInfo,
+                                    ppt_path : that.data.requirement_ppt
+                                }
+                                submittedUserList.push(submittedInfo);
                                 console.log(submittedUserList)
                                 wx.cloud.database().collection('requirement').doc(that.data.requirement_id).update({
                                     data : {
