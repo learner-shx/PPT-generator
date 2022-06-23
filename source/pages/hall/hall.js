@@ -270,7 +270,7 @@ Page({
   sendMessage(e) {
     console.log("receive the reward")
     var that = this;
-    var index = e.currentTarget.data.index;
+    var index = e.currentTarget.dataset.index;
     const DB = wx.cloud.database().command;
     wx.cloud.database().collection('message').where(
       DB.or([
