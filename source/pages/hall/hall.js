@@ -1,6 +1,7 @@
 // pages/hall/hall.js
 
 const windowWidth = wx.getSystemInfoSync().windowWidth;
+const app = getApp()
 
 Page({
   /**
@@ -192,6 +193,13 @@ Page({
   },
 
   reqContent(e) {
+    if (app.globalData.userInfo == null) {
+      wx.showToast({
+        title: '请先登录',
+        icon : 'error'
+      })
+      return;
+    }
     console.log(e)
     var option = this.data.requirements[e.currentTarget.dataset.index]._id
     wx.navigateTo({ //保留当前页面，跳转到应用内的某个页面（最多打开5个页面，之后按钮就没有响应的）后续可以使用wx.navigateBack 可以返回;
