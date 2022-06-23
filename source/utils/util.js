@@ -28,6 +28,7 @@ const formatDate = (date) => {
 };
 
 const checkDesciptionValidity = (description) => {
+  console.log(description)
   if (description == "") {
     // 描述不为空
     wx.showToast({
