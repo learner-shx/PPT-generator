@@ -39,9 +39,6 @@
         <view class="reward">赏金：{{requirements[index].money}} 元
           <view class="button" bindtap="reqContent" data-index="{{index}}" hover-class="button-hover">接取悬赏</view>
         </view>
-        <!-- <view class="icon">
-        <image src="../../images/index-icon/title.png"></image>
-      </view> -->
       </view>
 
       <view class="content" wx:for="{{informations}}" data-index="{{index}}"wx:if="{{activeTab==1}}">
