@@ -1,6 +1,7 @@
 // pages/hall/requirement/requirement.js
 var interstitialAd = null;
 const app = getApp();
+const utils = require("../../../utils/util")
 
 Page({
 
@@ -15,7 +16,7 @@ Page({
   },
 
   onLoad: function (option) {
-
+    console.log(app.globalData.userInfo)
     this.setData({
       userInfo: app.globalData.userInfo,
       requirement_id: option.id
@@ -40,9 +41,9 @@ Page({
         var submittedUserOpenid = requirement.submittedUserList.map(item => item._openid)
         console.log(acceptedUserOpenid)
         console.log(submittedUserOpenid)
-        console.log(that.data.userInfo._openid)
-        if (acceptedUserOpenid.indexOf(that.data.userInfo._openid) != -1) {
-          if (submittedUserOpenid.indexOf(that.data.userInfo._openid) != -1) {
+        console.log(app.globalData.userInfo._openid)
+        if (acceptedUserOpenid.indexOf(app.globalData.userInfo._openid) != -1) {
+          if (submittedUserOpenid.indexOf(app.globalData.userInfo._openid) != -1) {
             console.log("已经提交")
             that.setData({
               status: 'finished'
@@ -82,7 +83,7 @@ Page({
       DB.or([
         {
           userAInfo: {
-            _openid: that.data.userInfo._openid
+            _openid: app.globalData.userInfo._openid
           },
           userBInfo: {
             _openid: that.data.requirement._openid
@@ -90,7 +91,7 @@ Page({
         },
         {
           userBInfo: {
-            _openid: that.data.userInfo._openid
+            _openid: app.globalData.userInfo._openid
           },
           userAInfo: {
             _openid: that.data.requirement._openid
@@ -104,14 +105,18 @@ Page({
           console.log("never build message connection before")
           wx.cloud.database().collection("message").add({
             data: {
-              userAInfo: that.data.userInfo,
+              userAInfo: app.globalData.userInfo,
               userBInfo: {
                 _openid: that.data.requirement._openid,
                 userName: that.data.requirement.userName,
                 avatarUrl: that.data.requirement.avatarUrl
               },
               message_type: true, // true 为用户消息, false 为系统消息
-              message_list: [],
+              message_list: [{
+                _openid : app.globalData.userInfo._openid,
+                text : '我们已经成为好友了，快来一起聊天吧!',
+                time : utils.formatTime(new Date())
+              }],
               last_send_time: wx.cloud.database().serverDate()
             },
             success(ress) {
@@ -152,9 +157,9 @@ Page({
         // res.data 包含该记录的数据
         var acceptedUserList = res.data.acceptedUserList;
         var acceptedUserInfo = {
-          _openid: that.data.userInfo._openid,
-          userName: that.data.userInfo.userName,
-          avatarUrl: that.data.userInfo.avatarUrl
+          _openid: app.globalData.userInfo._openid,
+          userName: app.globalData.userInfo.userName,
+          avatarUrl: app.globalData.userInfo.avatarUrl
         }
         acceptedUserList.push(acceptedUserInfo);
         console.log(acceptedUserList)

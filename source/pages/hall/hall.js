@@ -60,7 +60,7 @@ Page({
     let that = this;
     var nodeId = "#item-" + index;
     wx.createSelectorQuery().select(nodeId).boundingClientRect(function (rect) {
-      console.log(rect)
+      // console.log(rect)
       var res = wx.getSystemInfoSync();
       let targetOffSetLeft = offSetLeft - (res.windowWidth / 2) + (rect.width / 2);
       that.setData({
