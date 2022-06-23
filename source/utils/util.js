@@ -1,18 +1,8 @@
 const formatTime = (date) => {
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
+  
   const hour = date.getHours();
   const minute = date.getMinutes();
-  const second = date.getSeconds();
-
-  return `${[year, month, day].map(formatNumber).join("/")} ${[
-    hour,
-    minute,
-    second,
-  ]
-    .map(formatNumber)
-    .join(":")}`;
+  return hour + ':' + minute
 };
 
 const formatNumber = (n) => {
@@ -28,6 +18,7 @@ const formatDate = (date) => {
 };
 
 const checkDesciptionValidity = (description) => {
+  console.log(description)
   if (description == "") {
     // 描述不为空
     wx.showToast({
@@ -88,7 +79,7 @@ const debounce = (fn, interval) => {
 
 const checkNumberValidity = (number) => {
   // 判断描述是否含有非法字符
-  var reg = /^[\u4e00-\u9fa5_a-zA-Z0-9]+$/;
+  var reg = /^[0-9]+$/;
   if (!reg.test(number)) {
     wx.showToast({
       title: "描述不能含有非法字符",
@@ -110,7 +101,7 @@ const checkNumberValidity = (number) => {
   // 判断数字不能为空
   if (number == "" || number == 0) {
     wx.showToast({
-      title: "请输入数字",
+      title: "请输入非0数字",
       icon: "none",
       duration: 2000,
     });

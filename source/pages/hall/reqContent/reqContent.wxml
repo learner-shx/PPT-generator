@@ -42,8 +42,9 @@
   <!-- <view class="font1">认领状态：{{lose.upshot}}</view> -->
 </view>
 
-<view class="content">
-<view class="title">已接用户 :
+<view class="accepted-user">
+<view class="title">已接用户 :</view>
+<view class="title">
   <view wx:for="{{requirement.acceptedUserList}}">
     <image src="{{item.avatarUrl}}"></image>
   </view>
@@ -59,7 +60,7 @@
 </view>
 
 <view wx:if="{{requirement.status=='unreceived'&&status=='finished'}}">
-  <view class="finish-submit-button" bindtap="submitReq" hover-class="submitButton-hover">已提交</view>
+  <view class="finish-submit-button" hover-class="submitButton-hover">已提交</view>
 </view>
 
 <view wx:if="{{requirement.status=='finished'}}">

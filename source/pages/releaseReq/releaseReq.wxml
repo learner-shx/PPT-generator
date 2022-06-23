@@ -36,7 +36,7 @@
   </view>
 
 </view>
-<view class="submitButton" bindtap="submitButton" hover-class="submitButton-hover">发布</view>
+<view class="submitButton" bindtap="submitButton" hover-class="submitButton-hover" wx:if="{{openid}}">发布</view>
 
 <view wx:if="{{openid==''}}">
 <view class="login-image">

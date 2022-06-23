@@ -1,6 +1,6 @@
 
 const app = getApp()
-
+const utils = require('../../utils/util')
 
 Page({
     data: {
@@ -23,9 +23,12 @@ Page({
             userInfo: app.globalData.userInfo
         })
 
+
+
     },
 
     submitReq() {
+        var that = this
         if (this.data.requirement_ppt == null) {
             wx.showToast({
                 title: '请上传PPT',
@@ -44,11 +47,23 @@ Page({
                         wx.cloud.database().collection('requirement').doc(that.data.requirement_id).get({
                             success(res) {
                                 console.log(res)
+                                that.setData({
+                                    target_userInfo : {
+                                        _openid : res.data._openid,
+                                        avatarUrl : res.data.avatarUrl,
+                                        userName : res.data.userName
+                                    }
+                                })
                                 var submittedUserList = res.data.submittedUserList;
-                                submittedUserList.push(that.data.userInfo);
-                                wx.cloud.database.collection('requirement').doc(that.data.requirement_id).update({
-                                    data : {
-                                        submittedUserList : submittedUserList
+                                var submittedInfo = {
+                                    userInfo: that.data.userInfo,
+                                    ppt_path: that.data.requirement_ppt
+                                }
+                                submittedUserList.push(submittedInfo);
+                                console.log(submittedUserList)
+                                wx.cloud.database().collection('requirement').doc(that.data.requirement_id).update({
+                                    data: {
+                                        submittedUserList: submittedUserList
                                     },
                                     success(res) {
                                         console.log("successfully submit")
@@ -61,6 +76,7 @@ Page({
                                             confirmText: "确定", // 确认按钮的文字，最多4个字符
                                             confirmColor: "#576B95", // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
                                             success(res) {
+                                                that.sendSystemMessage();
                                                 wx.switchTab({
                                                     url: '../hall/hall',
                                                 })
@@ -70,12 +86,71 @@ Page({
                                 })
                             }
                         })
-                        
+
                     }
 
                 }
             })
         }
+    },
+
+    sendSystemMessage() {
+        console.log("send system message to notice");
+        var that = this;
+        wx.cloud.database().collection('message').where({
+            userAInfo : {
+                _openid : 'SYSTEM'
+            },
+            userBInfo : {
+                _openid : that.data.target_userInfo._openid
+            }
+        }).get({
+            success(res) {
+                if (res.data.length == 0){
+                    console.log("no connection before")
+                    wx.cloud.database().collection("message").add({
+                        data: {
+                            userAInfo: {
+                                _openid : 'SYSTEM',
+                                userName : '系统消息',
+                                avatarUrl : '../../images/index-icon/system.svg'
+                            },
+                            userBInfo: that.data.target_userInfo,
+                            message_type: false, // true 为用户消息, false 为系统消息
+                            message_list: [{
+                                _openid: 'SYSTEM',
+                                text: that.data.userInfo.userName + '完成了你的悬赏,快来看看吧',
+                                time: utils.formatTime(new Date())
+                            }],
+                            last_send_time: wx.cloud.database().serverDate()
+                        },
+                    })
+                } else {
+                    var msg = {
+                        _openid: 'SYSTEM',
+                        text: that.data.userInfo.userName + '完成了你的悬赏，快来看看吧',
+                        time: utils.formatTime(new Date())
+                    }
+                    var message_list = res.data[0].message_list
+                    message_list.push(msg)
+                    wx.cloud.database().collection('message').where({
+                        userAInfo : {
+                            _openid : 'SYSTEM'
+                        },
+                        userBInfo : {
+                            _openid : that.data.target_userInfo._openid
+                        }
+                    }).update({
+                        data : {
+                            message_list : message_list
+                        }
+                    })
+
+                }
+            }
+        })
+
+        
     },
 
     uploadPPTfile(e) {
@@ -108,7 +183,7 @@ Page({
                     })
                 } else {
                     wx.showLoading({
-                      title: '正在上传',
+                        title: '正在上传',
                     })
                     wx.cloud.uploadFile({
                         cloudPath: that.data.openid + "_" + file_info.name, // 在云端存储的路径
@@ -123,7 +198,7 @@ Page({
                         wx.hideLoading({
                             success(res) {
                                 wx.showToast({
-                                  title: '上传完成',
+                                    title: '上传完成',
                                 })
                             }
                         })

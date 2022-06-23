@@ -97,7 +97,7 @@ Page({
 
   submitButton() { //提交数据库
 
-    if (utils.checkDesciptionValidity(this.data.describe) && utils.checkNumberValidity(this.data.money)) {
+    if (utils.checkDesciptionValidity(this.data.description) && utils.checkNumberValidity(this.data.money)) {
       console.log("pass check")
     } else return;
 
@@ -107,7 +107,7 @@ Page({
       // data 字段表示需新增的 JSON 数据
       data: {
         // _openid: wx.getStorageSync('openId').result.openid,会自动添加，不需要自己输入
-        describe: that.data.describe,
+        describe: that.data.description,
         money: that.data.money,
         picList: that.data.picList,
         status: "unreceived",

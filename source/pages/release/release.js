@@ -13,7 +13,7 @@ Page({
     limit : {
       beyondStyle: "#9494A2",
       current : 0,
-      maxlength : 200
+      maxlength : 100
     },
 
     validity_check : {
@@ -23,8 +23,13 @@ Page({
     },
 
     enable_submit : false
-
   },
+  onShow() {
+    this.setData({
+      userInfo : app.globalData.userInfo
+    })
+  },
+
   selectPPTtype: function(){
     var that = this
     wx.showActionSheet({
@@ -143,21 +148,42 @@ Page({
         expertise_areas : that.data.PPT_type[that.data.PPT_type_index]
       },
       success(res) {
-        console.log(res),
-        wx.showModal({
-          content: "PPT制作者注册成功", // 提示的内容
-          showCancel: false, // 是否显示取消按钮，默认true
-          cancelColor: "#000000", // 取消按钮的文字颜色，必须是16进制格式的颜色字符串
-          confirmText: "确定", // 确认按钮的文字，最多4个字符
-          confirmColor: "#576B95", // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
-          success(res){
-            if(res.confirm){
-              wx.switchTab({
-                url: '../user/user',
-              })
+        console.log(res)
+        if (that.data.userInfo.user_type==false)
+        {
+          wx.showModal({
+            content: "PPT制作者注册成功", // 提示的内容
+            showCancel: false, // 是否显示取消按钮，默认true
+            cancelColor: "#000000", // 取消按钮的文字颜色，必须是16进制格式的颜色字符串
+            confirmText: "确定", // 确认按钮的文字，最多4个字符
+            confirmColor: "#576B95", // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
+            success(res){
+              if(res.confirm){
+                app.globalData.userInfo.user_type = true;
+                wx.switchTab({
+                  url: '../user/user',
+                })
+              }
             }
-          }
-        })
+          })
+        }
+        else{
+          wx.showModal({
+            content: "PPT制作者信息修改成功", // 提示的内容
+            showCancel: false, // 是否显示取消按钮，默认true
+            cancelColor: "#000000", // 取消按钮的文字颜色，必须是16进制格式的颜色字符串
+            confirmText: "确定", // 确认按钮的文字，最多4个字符
+            confirmColor: "#576B95", // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
+            success(res){
+              if(res.confirm){
+                wx.switchTab({
+                  url: '../user/user',
+                })
+              }
+            }
+          })
+        }
+
       }
     })
   }

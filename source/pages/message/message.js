@@ -39,7 +39,7 @@ Page({
         snapshot.docs.sort(utils.sortByProp('last_send_time', 'des'))
         console.log(snapshot.docs)
         that.setData({
-          messages: snapshot.docs
+          messages : snapshot.docs
         })
       },
       onError: function (err) {

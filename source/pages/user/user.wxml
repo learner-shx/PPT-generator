@@ -4,8 +4,9 @@
       <image src="../../images/index-icon/title.png"></image>
     </view>
     <!-- <view class="font"></view> -->
-    <view class="font1">易 PPT 平 台 v0.1</view>
-    <view class="font2">开发人员：孙含笑 徐梓峻 陆知行 陶文琪</view>
+    <view class="font1">PPT 平 台 v0.1</view>
+    <view class="font1">开发人员：孙含笑 徐梓峻 陆知行 陶文琪</view>
+    <view class="font1">项目地址：https://github.com/learner-shx/PPT-generator</view>
     <view class="font1">来自： 武汉大学</view>
   </view>
 </view>
@@ -23,11 +24,6 @@
           <image src="{{avatarUrl}}"></image>
         </view>
         <view class="font">{{userName}}</view>
-        <navigator url="../updateUserInfo/updateUserInfo">
-          <view class="update">
-            <image src="../../images/index-icon/update.png"></image>
-          </view>
-        </navigator>
       </view>
     </view>
     <view wx:else class="loginButton">
@@ -58,8 +54,16 @@
       <view class="content">{{call}}</view>
     </view>
   </view>
+</view>
+
+<view wx:if="{{avatarUrl&&!user_type}}">
+
+  <view class='list-title' bindtap="registerPPTmaker">
+    <view class = "bePPTmaker-font" >成为PPT制作者</view>
+  </view>
 
 </view>
+
 
 <view wx:if="{{avatarUrl!=''}}">
   <view class='list-title' bindtap="changeRealsedStatus">
@@ -98,6 +102,9 @@
   </view>
 </view>
 
+
+
+
 <view wx:if="{{avatarUrl!=''}}">
   <view class='list-title' bindtap="changeSolvedStatus">
     <view class="req-font" >已解决的悬赏</view>
@@ -135,13 +142,11 @@
 </view>
 
 <view class="bottom">
-  <view class="bottom-content">
-    <navigator url="../help/help">
-      <view class="me-about">
+  <view class="bottom-content" wx:if="{{avatarUrl}}">
+      <view class="me-about" bindtap="registerPPTmaker">
         <text>修改信息</text>
         <image src="../../images/common/next.png"></image>
       </view>
-    </navigator>
   </view>
   <view class="bottom-content">
     <view class="me-about" bindtap="showPop">
@@ -149,20 +154,15 @@
       <image src="../../images/common/next.png"></image>
     </view>
   </view>
-  <view class="bottom-content">
+  <view class="feed-back-button">
+  <button class="button-type" open-type="feedback" style="display: contents" >
     <view class="me-about">
-      <text>反馈与建议</text>
+      反馈与建议
       <image src="../../images/common/next.png"></image>
     </view>
-  </view>
-  <view class="bottom-content">
-    <navigator url="../help/help">
-      <view class="me-about">
-        <text>帮助</text>
-        <image src="../../images/common/next.png"></image>
-      </view>
-    </navigator>
-  </view>
+  </button>
+</view>
+
 
 
 </view>

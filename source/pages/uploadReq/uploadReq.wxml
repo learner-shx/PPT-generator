@@ -21,4 +21,5 @@
 
 
 </view>
-  <view class="submitButton" bindtap="submitReq" hover-class="submitButton-hover">提交</view>
+  <view class="submitButton{{has_uploaded?'':'-disable'}}" bindtap="{{has_uploaded?'submitReq':''}}" hover-class="submitButton-hover">提交</view>
+

@@ -264,6 +264,23 @@
   padding-bottom: 35rpx;
   box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
 }
+
+.feed-back-button {
+  width: 90%;
+  border-radius: 50rpx;
+  margin: 0 auto;
+  height: 70rpx;
+  background-color: rgb(253, 253, 253);
+  padding-bottom: 35rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+}
+
+.button-type {
+  font-weight :normal;
+  font-size: 32rpx;
+}
+
+
 .information-content {
   width: 90%;
   border-radius: 50rpx;
@@ -303,6 +320,13 @@
   margin: 10rpx 40rpx 0rpx;
   font-size: 38rpx;
   font-weight: bolder;
+}
+
+.bePPTmaker-font {
+  margin: 10rpx 40rpx 0rpx;
+  font-size: 38rpx;
+  font-weight: bolder;
+  color: goldenrod
 }
 
 .line {
@@ -395,3 +419,5 @@
   margin-bottom: 20rpx;
   box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
 }
+
+

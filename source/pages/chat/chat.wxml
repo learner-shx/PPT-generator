@@ -6,7 +6,7 @@
         <view class="top">
             <image class="face" src="{{target_user_avatarUrl}}"></image>
             <view class="bot">
-                <text>{{item.text}}</text>
+                <text user-select="true">{{item.text}}</text>
             </view>
         </view>
 
@@ -15,7 +15,7 @@
     <block wx:if="{{item._openid==userInfo._openid}}">
         <view class="top-right">
             <view class="bot-right">
-                <text>{{item.text}}</text>
+                <text user-select="true">{{item.text}}</text>
             </view>
             <image class="face-right" src="{{userInfo.avatarUrl}}"></image>
         </view>
@@ -30,7 +30,7 @@
 
     <view class="pub-left">
 
-        <input class="pub-input" bindinput="getInputValue" value="{{inputValue}}"></input>
+        <input class="pub-input" bindinput="handleInput" value="{{inputValue}}"></input>
     </view>
 
     <view class="pub-button{{inputValue==''?'':'-with-text'}}" bindtap="publishMessage" wx:if="{{!disabled_send}}">发送</view>

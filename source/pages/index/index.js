@@ -29,7 +29,7 @@ Page({
       // wx.cloud.database().collection('announcement').add({
       //   data : {
       //     time : utils.formatDate(new Date()),
-      //     content : "v0.0.1版本，初步开发"
+      //     content : "v0.0.1版本，极限验收"
       //   },
       //   success(res) {
       //     console.log(res)
