@@ -211,5 +211,16 @@ Page({
       })
 
     }
-  }
+  },
+  showPop() {
+    if (this.data.about === "none") {
+      this.setData({
+        about: "block"
+      })
+    } else {
+      this.setData({
+        about: "none"
+      })
+    }
+  },
 })

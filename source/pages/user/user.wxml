@@ -4,8 +4,9 @@
       <image src="../../images/index-icon/title.png"></image>
     </view>
     <!-- <view class="font"></view> -->
-    <view class="font1">易 PPT 平 台 v0.1</view>
-    <view class="font2">开发人员：孙含笑 徐梓峻 陆知行 陶文琪</view>
+    <view class="font1">PPT 平 台 v0.1</view>
+    <view class="font1">开发人员：孙含笑 徐梓峻 陆知行 陶文琪</view>
+    <view class="font1">项目地址：https://github.com/learner-shx/PPT-generator</view>
     <view class="font1">来自： 武汉大学</view>
   </view>
 </view>
