@@ -9,13 +9,13 @@ Page({
    */
   data: {
   },
-  
+
   onShow() {
     this.loadRequirement()
   },
 
   onLoad: function (option) {
-  
+
     this.setData({
       userInfo: app.globalData.userInfo,
       requirement_id: option.id
@@ -35,21 +35,23 @@ Page({
         that.setData({
           requirement: res.data
         })
-        // 判断是否已经报名
-        var acceptedUserOpenid = that.data.requirement.acceptedUserList.map(item => item._openid)
-        var submittedUserOpenid = that.data.requirement.submittedUserList.map(item => item._openid)
+        var requirement = res.data;
+        var acceptedUserOpenid = requirement.acceptedUserList.map(item => item._openid)
+        var submittedUserOpenid = requirement.submittedUserList.map(item => item._openid)
         console.log(acceptedUserOpenid)
-        if (acceptedUserOpenid.indexOf(that.data.userInfo._openid)!=-1) {
-          if (submittedUserOpenid.indexOf(that.data.userInfo._openid)!=-1){
+        console.log(submittedUserOpenid)
+        console.log(that.data.userInfo._openid)
+        if (acceptedUserOpenid.indexOf(that.data.userInfo._openid) != -1) {
+          if (submittedUserOpenid.indexOf(that.data.userInfo._openid) != -1) {
             console.log("已经提交")
             that.setData({
-            status : 'finished'
-          })
+              status: 'finished'
+            })
           } else {
             console.log("已经报名")
             that.setData({
-            status : 'accepted'
-          })
+              status: 'accepted'
+            })
           }
         } else {
           console.log("未报名")
@@ -57,9 +59,10 @@ Page({
             status: 'unaccepted'
           })
         }
+        wx.hideLoading(); //隐藏正在加载中
       }
     })
-    wx.hideLoading(); //隐藏正在加载中
+
   },
 
   preview(e) {
@@ -78,22 +81,22 @@ Page({
     wx.cloud.database().collection('message').where(
       DB.or([
         {
-            userAInfo : {
-              _openid : that.data.userInfo._openid
-            },
-            userBInfo : {
-              _openid : that.data.requirement._openid
-            }
+          userAInfo: {
+            _openid: that.data.userInfo._openid
+          },
+          userBInfo: {
+            _openid: that.data.requirement._openid
+          }
         },
         {
-          userBInfo : {
-            _openid : that.data.userInfo._openid
+          userBInfo: {
+            _openid: that.data.userInfo._openid
           },
-          userAInfo : {
-            _openid : that.data.requirement._openid
+          userAInfo: {
+            _openid: that.data.requirement._openid
           }
         }
-    ])
+      ])
     ).get({
       success(res) {
         console.log(res.data)
@@ -103,13 +106,13 @@ Page({
             data: {
               userAInfo: that.data.userInfo,
               userBInfo: {
-                _openid : that.data.requirement._openid,
-                userName : that.data.requirement.userName,
-                avatarUrl : that.data.requirement.avatarUrl
+                _openid: that.data.requirement._openid,
+                userName: that.data.requirement.userName,
+                avatarUrl: that.data.requirement.avatarUrl
               },
-              message_type : true, // true 为用户消息, false 为系统消息
-              message_list : [],
-              last_send_time : wx.cloud.database().serverDate()
+              message_type: true, // true 为用户消息, false 为系统消息
+              message_list: [],
+              last_send_time: wx.cloud.database().serverDate()
             },
             success(ress) {
               console.log(ress)
@@ -156,8 +159,8 @@ Page({
         acceptedUserList.push(acceptedUserInfo);
         console.log(acceptedUserList)
         wx.cloud.database().collection('requirement').doc(that.data.requirement_id).update({
-          data : {
-            acceptedUserList : acceptedUserList
+          data: {
+            acceptedUserList: acceptedUserList
           },
           success(ress) {
             console.log(ress)
@@ -174,7 +177,7 @@ Page({
       confirmText: "确定", // 确认按钮的文字，最多4个字符
       confirmColor: "#576B95", // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
       success(res) {
-        if (res.confirm){
+        if (res.confirm) {
           wx.navigateTo({
             url: '../../uploadReq/uploadReq?id=' + that.data.requirement_id
           })
