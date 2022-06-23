@@ -29,7 +29,10 @@
   margin-left: 30rpx;
   margin-top: 15rpx;
 }
-
+.content .input .txt_word {
+  word-wrap: break-word;
+  white-space: pre-line
+}
 .content .kind {
   display: flex;
   justify-content: space-between;
