@@ -163,7 +163,6 @@ Page({
           success(res) {
             if (res.data.length == 0) {
               // 没有搜索到则新建用户
-              app.globalData.userInfo.user_type = false;
               wx.cloud.database().collection('user').add({
                 data: {
                   userName: app.globalData.userInfo.nickName,
@@ -175,6 +174,13 @@ Page({
                   expertise_areas : null,
                   introduction : '这个人很神秘，什么也没有写'
                 },
+                success(res) {
+                  wx.cloud.database().collection('user').doc(app.globalData.userInfo._openid).get({
+                    success(ress) {
+                      app.globalData.userInfo = ress.data;
+                    }
+                  })
+                }
               })
             } else {
               app.globalData.userInfo = res.data[0]
