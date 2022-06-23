@@ -153,21 +153,6 @@ Page({
         that.setData({
           requirements: arr,
         })
-      }
-    });
-
-    //提取用户发布的寻物启事
-    wx.cloud.database().collection('PPTMakerInfo').get({
-      success: function (res) {
-        let arr1 = []
-        // res.data 包含该记录的数据
-        var seeklength = res.data.seeklength > 10 ? 10 : res.data.length;
-        for (let i = 0; i < seeklength; i++) {
-          arr1.push(res.data[i])
-        }
-        that.setData({
-          seek: arr1
-        })
         wx.hideLoading(); //隐藏正在加载中
       }
     });
