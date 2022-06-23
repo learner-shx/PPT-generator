@@ -11,34 +11,34 @@ Page({
     call: "未填写",
     userInfo: {},
     about: "none",
-    maxShownRequirement : {
-      released : 3,
-      solved : 3
+    maxShownRequirement: {
+      released: 3,
+      solved: 3
     },
-    show_released_req : false,
-    show_solved_req : false
+    show_released_req: false,
+    show_solved_req: false
   },
   changeRealsedStatus() {
-    if (this.data.show_released_req==false){
+    if (this.data.show_released_req == false) {
       this.setData({
-        show_released_req : true
+        show_released_req: true
       })
     } else {
       this.setData({
-        show_released_req : false
+        show_released_req: false
       })
     }
-    
+
   },
 
   changeSolvedStatus() {
-    if (this.data.show_solved_req==false){
+    if (this.data.show_solved_req == false) {
       this.setData({
-        show_solved_req : true
+        show_solved_req: true
       })
     } else {
       this.setData({
-        show_solved_req : false
+        show_solved_req: false
       })
     }
   },
@@ -73,7 +73,7 @@ Page({
       })
       wx.cloud.database().collection('requirement').orderBy('uploadTime', 'desc').where({ //数据查询
         _openid: app.globalData.userInfo._openid,
-        status : 'unreceived'
+        status: 'unreceived'
       }).limit(that.data.maxShownRequirement.released).get({
         success: function (res) {
           console.log(res)
@@ -84,7 +84,7 @@ Page({
       });
 
       wx.cloud.database().collection('requirement').orderBy('uploadTime', 'desc').where({ //数据查询
-        acceptedWorkID : app.globalData.userInfo._openid
+        acceptedWorkID: app.globalData.userInfo._openid
       }).limit(that.data.maxShownRequirement.solved).get({
         success: function (res) {
           console.log(res)
@@ -94,7 +94,7 @@ Page({
           wx.hideLoading();
         }
       });
-      
+
     }
 
   },
@@ -141,27 +141,19 @@ Page({
         wx.cloud.callFunction({
           name: "login",
           data: {},
-          success: res => {
-            console.log(res.result.userInfo.openId)
+          success: ress => {
+            console.log(ress.result.userInfo.openId)
             // 拿到用户的OpenId
-            app.globalData.userInfo._openid = res.result.userInfo.openId
-            that.setData({
-              userInfo: app.globalData.userInfo,
-            })
-
+            app.globalData.userInfo._openid = ress.result.userInfo.openId
           },
-          fail: function (res) {
-            console.log(res)
-          }
         })
-
         // 在数据库中查询此openid，如果没有那么新建用户，否则按原用户登录
 
         wx.cloud.database().collection('user').where({
           _openid: app.globalData.userInfo._openid
         }).get({
-          success(res) {
-            if (res.data.length == 0) {
+          success(ress) {
+            if (ress.data.length == 0) {
               // 没有搜索到则新建用户
               wx.cloud.database().collection('user').add({
                 data: {
@@ -170,21 +162,28 @@ Page({
                   email: "未填写",
                   call: "未填写",
                   user_type: false,
-                  intentional_price : 0,
-                  expertise_areas : null,
-                  introduction : '这个人很神秘，什么也没有写'
+                  intentional_price: 0,
+                  expertise_areas: null,
+                  introduction: '这个人很神秘，什么也没有写'
                 },
-                success(res) {
-                  wx.cloud.database().collection('user').doc(app.globalData.userInfo._openid).get({
-                    success(ress) {
-                      app.globalData.userInfo = ress.data;
+                success(fin){
+                  wx.cloud.database().collection('user').where({
+                    _openid : app.globalData.userInfo._openid
+                  }).get({
+                    success(re) {
+                      app.globalData.userInfo = re.data[0];
                     }
                   })
                 }
               })
-            } else {
-              app.globalData.userInfo = res.data[0]
+              
             }
+            else {
+              app.globalData.userInfo = ress.data[0]
+            }
+            that.setData({
+              userInfo : app.globalData.userInfo
+            })
             wx.setStorageSync('userInfo', app.globalData.userInfo);
             that.onShow()
           }
@@ -204,13 +203,13 @@ Page({
 
     if (wx.getStorageSync('userInfo')) {
       console.log("get storage userInfo")
-      
+
       app.globalData.userInfo = wx.getStorageSync('userInfo');
       console.log(app.globalData.userInfo)
       this.setData({
         userInfo: app.globalData.userInfo
       })
-      
+
     }
   }
 })
