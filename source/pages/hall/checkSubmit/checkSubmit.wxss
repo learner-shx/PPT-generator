@@ -1,0 +1,97 @@
+.no-submit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200rpx;
+}
+
+.no-submit .font {
+  color: gray;
+  margin-top: 100rpx;
+  margin-bottom: 50rpx;
+}
+.submitButton {
+  background-color: #ffeb37;
+  margin-bottom: 50rpx;
+  margin-left: 50rpx;
+  border-radius: 30rpx;
+  width: 80%;
+  text-align: center;
+  padding: 30rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+  bottom: 0;
+  position: fixed;
+}
+
+.submitButton-disable {
+  background-color: #fafafa;
+  color: #d4d4d4;
+  border-radius: 30rpx;
+  width: 80%;
+  text-align: center;
+  padding: 30rpx;
+  margin-bottom: 50rpx;
+  margin-left: 50rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+  bottom: 0;
+  position: fixed;
+}
+
+.submitButton-hover {
+  box-shadow: 10rpx 10rpx 20rpx 10rpx #e1e1e1;
+}
+
+.submit-item {
+  background-color: #fff;
+  width: 90%;
+  border-radius: 30rpx;
+  margin: 0 auto;
+  margin-top: 50rpx;
+  box-shadow: 10rpx 10rpx 20rpx 10rpx #e1e1e1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.submit-item-selected {
+  background-color: #fff;
+  width: 90%;
+  border-radius: 30rpx;
+  margin: 0 auto;
+  margin-top: 50rpx;
+  box-shadow: 0rpx 0rpx 15rpx 5rpx #f5b041;
+  display: flex;
+  justify-content: space-between;
+}
+
+.avatar-name {
+  display: flex;
+}
+
+.userName {
+  margin-top: 30rpx;
+  margin-left: 20rpx;
+}
+
+.button-preview {
+  background-color: #ffd23c;
+  border-radius: 30rpx;
+  font-size: 32rpx;
+  width: 145rpx;
+  color: #2b2b2b;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30rpx;
+  margin-top: 12rpx;
+  height: 80rpx;
+}
+
+.imageUser image {
+  width: 75rpx;
+  height: 75rpx;
+  border-radius: 50%;
+  margin-top: 20rpx;
+  margin-left: 10rpx;
+  border: 5rpx gray solid;
+}

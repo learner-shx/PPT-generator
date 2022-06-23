@@ -51,7 +51,7 @@ Page({
             return;
         }
         var that = this;
-        console.log(that.data.PPT_style[that.data.PPT_style_index]);
+        // console.log(that.data.PPT_style[that.data.PPT_style_index]);
         var suffix;
         if (that.data.PPT_style[that.data.PPT_style_index] == '简约ppt') {
             suffix = '.pptx';
@@ -59,12 +59,7 @@ Page({
         else {
             suffix = '.html';
         }
-
-
-
-
         wx.cloud.callFunction({
-
             name: 'pdc_1',
             data: {
                 step: 0,
@@ -105,7 +100,7 @@ Page({
         }).then(res => {
             // get temp file URL
             // res.fileList[0]);
-            console.log(res.fileList[0]);
+            console.log(res);
             that.setData({
                 downloadUrl: res.fileList[0].tempFileURL,
             })

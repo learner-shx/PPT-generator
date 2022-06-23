@@ -159,7 +159,7 @@ page {
 
 .submitButton-disable {
   background-color: #FAFAFA;
-  color: #EEEEEE;
+  color: #d4d4d4;
   margin: 0 auto;
   margin-top: 30rpx;
   border-radius: 30rpx;
