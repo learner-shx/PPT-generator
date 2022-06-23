@@ -2,6 +2,7 @@
 
 const windowWidth = wx.getSystemInfoSync().windowWidth;
 const app = getApp()
+const utils = require('../../utils/util')
 
 Page({
   /**
@@ -314,6 +315,7 @@ Page({
         console.log(that.data.selected_ppt_maker)
         if (res.data.length == 0) {
           console.log("never build message connection before")
+          // console.log(app.globalData.userInfo)
           wx.cloud.database().collection("message").add({
             data: {
               userAInfo: app.globalData.userInfo,
