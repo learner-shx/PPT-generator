@@ -1,6 +1,6 @@
 
 const app = getApp()
-
+const utils = require('../../utils/util')
 
 Page({
     data: {
@@ -22,6 +22,8 @@ Page({
             openid: app.globalData.userInfo._openid,
             userInfo: app.globalData.userInfo
         })
+
+
 
     },
 
@@ -45,6 +47,13 @@ Page({
                         wx.cloud.database().collection('requirement').doc(that.data.requirement_id).get({
                             success(res) {
                                 console.log(res)
+                                that.setData({
+                                    target_userInfo : {
+                                        _openid : res.data._openid,
+                                        avatarUrl : res.data.avatarUrl,
+                                        userName : res.data.userName
+                                    }
+                                })
                                 var submittedUserList = res.data.submittedUserList;
                                 var submittedInfo = {
                                     userInfo: that.data.userInfo,
@@ -87,28 +96,61 @@ Page({
 
     sendSystemMessage() {
         console.log("send system message to notice");
-
-        wx.cloud.database().collection("message").add({
-            data: {
-                userAInfo: {
-                    _openid : 'SYSTEM',
-                    userName : '系统消息',
-                    avatarUrl : '../../images/index-icon/system.svg'
-                },
-                userBInfo: {
-                    _openid: that.data.requirement._openid,
-                    userName: that.data.requirement.userName,
-                    avatarUrl: that.data.requirement.avatarUrl
-                },
-                message_type: false, // true 为用户消息, false 为系统消息
-                message_list: [{
-                    _openid: 'SYSTEM',
-                    text: that.data.userInfo.userName + '完成了你的悬赏',
-                    time: utils.formatTime(new Date())
-                }],
-                last_send_time: wx.cloud.database().serverDate()
+        var that = this;
+        wx.cloud.database().collection('message').where({
+            userAInfo : {
+                _openid : 'SYSTEM'
             },
+            userBInfo : {
+                _openid : that.data.target_userInfo._openid
+            }
+        }).get({
+            success(res) {
+                if (res.data.length == 0){
+                    console.log("no connection before")
+                    wx.cloud.database().collection("message").add({
+                        data: {
+                            userAInfo: {
+                                _openid : 'SYSTEM',
+                                userName : '系统消息',
+                                avatarUrl : '../../images/index-icon/system.svg'
+                            },
+                            userBInfo: that.data.target_userInfo,
+                            message_type: false, // true 为用户消息, false 为系统消息
+                            message_list: [{
+                                _openid: 'SYSTEM',
+                                text: that.data.userInfo.userName + '完成了你的悬赏,快来看看吧',
+                                time: utils.formatTime(new Date())
+                            }],
+                            last_send_time: wx.cloud.database().serverDate()
+                        },
+                    })
+                } else {
+                    var msg = {
+                        _openid: 'SYSTEM',
+                        text: that.data.userInfo.userName + '完成了你的悬赏，快来看看吧',
+                        time: utils.formatTime(new Date())
+                    }
+                    var message_list = res.data[0].message_list
+                    message_list.push(msg)
+                    wx.cloud.database().collection('message').where({
+                        userAInfo : {
+                            _openid : 'SYSTEM'
+                        },
+                        userBInfo : {
+                            _openid : that.data.target_userInfo._openid
+                        }
+                    }).update({
+                        data : {
+                            message_list : message_list
+                        }
+                    })
+
+                }
+            }
         })
+
+        
     },
 
     uploadPPTfile(e) {
