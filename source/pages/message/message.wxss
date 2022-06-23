@@ -31,8 +31,13 @@
 }
 
 .msg {
+  display: inline-block; 
   color: #a0a0a0;
   font-size: 28rpx;
+  overflow: hidden;
+  width : 400rpx;
+  white-space : nowrap;
+  text-overflow:ellipsis;
 }
 
 

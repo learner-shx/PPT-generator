@@ -47,14 +47,14 @@ Page({
                                 console.log(res)
                                 var submittedUserList = res.data.submittedUserList;
                                 var submittedInfo = {
-                                    userInfo : that.data.userInfo,
-                                    ppt_path : that.data.requirement_ppt
+                                    userInfo: that.data.userInfo,
+                                    ppt_path: that.data.requirement_ppt
                                 }
                                 submittedUserList.push(submittedInfo);
                                 console.log(submittedUserList)
                                 wx.cloud.database().collection('requirement').doc(that.data.requirement_id).update({
-                                    data : {
-                                        submittedUserList : submittedUserList
+                                    data: {
+                                        submittedUserList: submittedUserList
                                     },
                                     success(res) {
                                         console.log("successfully submit")
@@ -67,6 +67,7 @@ Page({
                                             confirmText: "确定", // 确认按钮的文字，最多4个字符
                                             confirmColor: "#576B95", // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
                                             success(res) {
+                                                // that.sendSystemMessage();
                                                 wx.switchTab({
                                                     url: '../hall/hall',
                                                 })
@@ -76,13 +77,35 @@ Page({
                                 })
                             }
                         })
-                        
+
                     }
 
                 }
             })
         }
     },
+
+    // sendSystemMessage() {
+    //     console.log("send system message to notice");
+
+    //     wx.cloud.database().collection("message").add({
+    //         data: {
+    //             userAInfo: app.globalData.userInfo,
+    //             userBInfo: {
+    //                 _openid: that.data.requirement._openid,
+    //                 userName: that.data.requirement.userName,
+    //                 avatarUrl: that.data.requirement.avatarUrl
+    //             },
+    //             message_type: true, // true 为用户消息, false 为系统消息
+    //             message_list: [{
+    //                 _openid: app.globalData.userInfo._openid,
+    //                 text: '我们已经成为好友了，快来一起聊天吧!',
+    //                 time: utils.formatTime(new Date())
+    //             }],
+    //             last_send_time: wx.cloud.database().serverDate()
+    //         },
+    //     })
+    // },
 
     uploadPPTfile(e) {
         var that = this;
@@ -114,7 +137,7 @@ Page({
                     })
                 } else {
                     wx.showLoading({
-                      title: '正在上传',
+                        title: '正在上传',
                     })
                     wx.cloud.uploadFile({
                         cloudPath: that.data.openid + "_" + file_info.name, // 在云端存储的路径
@@ -129,7 +152,7 @@ Page({
                         wx.hideLoading({
                             success(res) {
                                 wx.showToast({
-                                  title: '上传完成',
+                                    title: '上传完成',
                                 })
                             }
                         })
