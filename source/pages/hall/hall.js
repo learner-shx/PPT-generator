@@ -265,17 +265,70 @@ Page({
     })
 
   },
-  infContent(e) {
-    console.log(e)
-    var option = this.data.informations[e.currentTarget.dataset.index]._id
-    wx.navigateTo({ //保留当前页面，跳转到应用内的某个页面（最多打开5个页面，之后按钮就没有响应的）后续可以使用wx.navigateBack 可以返回;
-      url: "infContent/infContent?id=" + option
+  
+
+  sendMessage(e) {
+    console.log("receive the reward")
+    var that = this;
+    var index = e.currentTarget.data.index;
+    const DB = wx.cloud.database().command;
+    wx.cloud.database().collection('message').where(
+      DB.or([
+        {
+          userAInfo: {
+            _openid: app.globalData.userInfo._openid
+          },
+          userBInfo: {
+            _openid: that.data.PPTmakers[index]._openid
+          }
+        },
+        {
+          userBInfo: {
+            _openid: app.globalData.userInfo._openid
+          },
+          userAInfo: {
+            _openid: that.data.PPTmakers[index]._openid
+          }
+        }
+      ])
+    ).get({
+      success(res) {
+        console.log(res.data)
+        if (res.data.length == 0) {
+          console.log("never build message connection before")
+          wx.cloud.database().collection("message").add({
+            data: {
+              userAInfo: app.globalData.userInfo,
+              userBInfo: {
+                _openid: that.data.PPTmakers[index]._openid,
+                userName: that.data.PPTmakers[index].userName,
+                avatarUrl: that.data.PPTmakers[index].avatarUrl
+              },
+              message_type: true, // true 为用户消息, false 为系统消息
+              message_list: [{
+                _openid : app.globalData.userInfo._openid,
+                text : '我们已经成为好友了，快来一起聊天吧!',
+                time : utils.formatTime(new Date())
+              }],
+              last_send_time: wx.cloud.database().serverDate()
+            },
+            success(ress) {
+              console.log(ress)
+              var chat_id = ress._id;
+              wx.navigateTo({
+                url: '../../chat/chat?chat_id=' + chat_id,
+              })
+            }
+          })
+        } else {
+          console.log("aleady build message connection before")
+          var chat_id = res.data[0]._id;
+          console.log(res.data)
+          wx.navigateTo({
+            url: '../../chat/chat?chat_id=' + chat_id,
+          })
+        }
+      }
     })
-
   },
-
-
-  receiveReq(e) {
-
-  }
 })

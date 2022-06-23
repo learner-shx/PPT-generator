@@ -53,7 +53,7 @@
         <view class="text">期望价格：{{PPTmakers[index].intentional_price}} 元</view>
         <view class="text">称号等级：{{PPTmakers[index].person_title}} </view>
         <view class="text">已解决悬赏数：{{PPTmakers[index].solved_requirement_num}} </view>
-        <view class="button" bindtap="infContent" data-index="{{index}}">详细信息</view>
+        <view class="button" bindtap="sendMessage" data-index="{{index}}">发信息</view>
       </view>
     </view>
 
