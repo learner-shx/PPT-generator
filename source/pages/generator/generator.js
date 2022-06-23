@@ -102,9 +102,7 @@ Page({
           }).catch(error => {
             console.log(fileList[0]);
           });
-        
-
-
+    
 
         // console.log(112);
     },
@@ -112,8 +110,6 @@ Page({
     download() {
         var that = this;
         // console.log(that.data.downloadUrl);
-
-
         wx.cloud.downloadFile({
             url : that.data.downloadUrl,
         // fileID: 'cloud://kamilu-3g69c1hh0c963d36.6b61-kamilu-3g69c1hh0c963d36-1312241224/' + that.data.filePath,
@@ -121,7 +117,34 @@ Page({
                 console.log("⽂件下载成功",res);
             }
          });
+    },
 
+    preview() {
+        var suffix;
+        var that = this;
+        if(that.data.PPT_style[that.data.PPT_style_index] == '简约ppt')
+        {
+            suffix = '.pptx';
+        }
+        else
+        {
+            suffix = '.html';
+        }
+        
+        wx.cloud.downloadFile({
+            // url : that.data.downloadUrl,
+            fileID: 'cloud://kamilu-3g69c1hh0c963d36.6b61-kamilu-3g69c1hh0c963d36-1312241224/' + that.data.filePath + suffix,
+            success: res => { 
+                const filepath = res.tempFilePath
+                wx.openDocument({
+                    filePath: filepath,
+                    success: function (res) {
+                    console.log('打开文档成功')
+                }
+            })
+            }
+         });
+        
     },
     selctPPTstyle() {
         var that = this

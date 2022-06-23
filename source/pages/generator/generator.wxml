@@ -30,3 +30,8 @@
     <view class='text'>幻灯片生成成功</view>
     <view class="submitButton" bindtap="download" hover-class="submitButton-hover">下载幻灯片</view>
 </view>
+
+<view wx:if="{{PPT_style_index==0}}">
+
+    <view class="submitButton" bindtap="preview" hover-class="submitButton-hover">幻灯片预览</view>
+</view>
