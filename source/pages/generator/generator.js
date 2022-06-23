@@ -2,7 +2,7 @@
 Page({
 
     data: {
-        PPT_style: ['简约ppt', 'beige', 'moon', 'night', 'serif', 'simple', 'sky', 'solarized'],
+        PPT_style: ['serif', 'simple', 'sky', 'solarized'],
         PPT_style_index: 0,
         description : "",
         describe : "",
@@ -123,7 +123,7 @@ Page({
          });
 
     },
-    selctPPTstyle() {
+    selectPPTstyle() {
         var that = this
         wx.showActionSheet({
             itemList: that.data.PPT_style,
