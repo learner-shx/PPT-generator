@@ -11,13 +11,13 @@
 <view class="requirement">
 
   <scroll-view class='scroll-view-header' scroll-with-animation="true" scroll-x="true" scroll-left="{{scrollLeft}}">
-    <view class="scroll-header-item-wraper {{activeTab==index?'title-selected':''}}"wx:for="{{tabTitles}}"  bindtap='selectTab' wx:key="unqiue" data-index="{{index}}" id="item-{{index}}">
+    <view class="scroll-header-item-wraper {{activeTab==index?'title-selected':''}}" wx:for="{{tabTitles}}" bindtap='selectTab' wx:key="unqiue" data-index="{{index}}" id="item-{{index}}">
       <text class="header-item-title">{{item}}</text>
     </view>
   </scroll-view>
 
   <scroll-view class='scroll-view-body' id='scroll-view-bodyId' scroll-x="true" scroll-left="{{bodyScrollLeft}}" scroll-with-animation="true">
-    <view class='scroll-view-item'  bindtouchend="scrollEnded" wx:for="{{tabTitles}}">
+    <view class='scroll-view-item' bindtouchend="scrollEnded" wx:for="{{tabTitles}}">
       <view class="content" wx:for="{{requirements}}" data-index="{{index}}" wx:if="{{activeTab==0}}">
         <view class="user" style="display: flex;">
           <view class="imageUser">
@@ -41,24 +41,23 @@
         </view>
       </view>
 
-      <view class="content" wx:for="{{informations}}" data-index="{{index}}"wx:if="{{activeTab==1}}">
+      <view class="content" wx:for="{{PPTmakers}}" data-index="{{index}}" wx:if="{{activeTab==1}}">
         <view class="user" style="display: flex;">
           <view class="imageUser">
-            <image src="{{informations[index].avatarUrl}}"></image>
+            <image src="{{PPTmakers[index].avatarUrl}}"></image>
           </view>
-          <view class="userName">{{informations[index].userName}}</view>
+          <view class="userName">{{PPTmakers[index].userName}}</view>
         </view>
-        <view class="text">{{informations[index].title}}</view>
-        <view class="reward">期望价格：{{informations[index].price}} 元
-          <view class="button" bindtap="infContent" data-index="{{index}}" >详细信息</view>
-        </view>
+        <view class="text">简介：{{PPTmakers[index].introduction}}</view>
+        <view class="text">擅长领域：{{PPTmakers[index].expertise_areas}}</view>
+        <view class="text">期望价格：{{PPTmakers[index].intentional_price}} 元</view>
+        <view class="text">称号等级：{{PPTmakers[index].person_title}} </view>
+        <view class="text">已解决悬赏数：{{PPTmakers[index].solved_requirement_num}} </view>
+        <view class="button" bindtap="infContent" data-index="{{index}}">详细信息</view>
       </view>
     </view>
 
 
-    <!-- <view class="buttom" style="color:rgba(180, 180, 180, 0.712);text-align: center;padding-bottom: 20rpx;">——我也是有底线的——
-
-    </view> -->
   </scroll-view>
 
 </view>

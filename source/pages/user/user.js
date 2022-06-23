@@ -164,7 +164,9 @@ Page({
                   user_type: false,
                   intentional_price: 0,
                   expertise_areas: null,
-                  introduction: '这个人很神秘，什么也没有写'
+                  introduction: '这个人很神秘，什么也没有写',
+                  solved_requirement_num : 0,
+                  person_title : '初出茅庐'
                 },
                 success(fin){
                   wx.cloud.database().collection('user').where({

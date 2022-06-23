@@ -1,4 +1,4 @@
-// pages/hall/hall.js
+// req_pages/hall/hall.js
 
 const windowWidth = wx.getSystemInfoSync().windowWidth;
 const app = getApp()
@@ -15,7 +15,8 @@ Page({
     bodyScrollLeft: 0,
     requirements: [],
     informations: [],
-    pages: 1,
+    req_pages: 1,
+    ppt_maker_pages : 1,
     time: 0
   },
 
@@ -96,21 +97,25 @@ Page({
 
   onShow: function () {
     this.setData({
-      pages: 1
+      req_pages: 1,
+      ppt_maker_pages : 1
     })
     this.getRequirments()
+    this.getPPTmakerInfo()
   },
 
   // 下拉刷新
   onPullDownRefresh: function () {
 
     this.getRequirments()
+    this.getPPTmakerInfo()
     wx.stopPullDownRefresh();
   },
 
   onReachBottom: function () {
     console.log("get the bottom")
     this.getRequirments();
+    this.getPPTmakerInfo()
   },
 
   handleInput(e) {
@@ -130,7 +135,8 @@ Page({
     });
 
     var that = this;
-    var max_requirments_number = this.data.pages * 10
+    var max_requirments_number = this.data.req_pages * 10
+    var max_makers_number = this.data.ppt_maker_pages * 10
     // console.log(max_requirments_number)
     const db = wx.cloud.database();
     wx.cloud.database().collection('requirement').orderBy('uploadTime', 'desc').where({
@@ -145,15 +151,40 @@ Page({
         var length = res.data.length > max_requirments_number ? max_requirments_number : res.data.length;
         // 上拉加载，如果悬赏数多于 max_requirments_number， 说明需要刷新页面增加数量
         if (res.data.length > max_requirments_number) {
-          that.data.pages = that.data.pages + 1;
+          that.data.req_pages = that.data.req_pages + 1;
         }
-        // console.log(that.data.pages)
+        // console.log(that.data.req_pages)
         for (let i = 0; i < length; i++) {
           arr.push(res.data[i])
         }
 
         that.setData({
           requirements: arr,
+        })
+      }
+    });
+    wx.cloud.database().collection('user').where({
+      user_type : true,
+      introduction : db.RegExp({
+        regexp : searchContentText,
+        options : 'i'
+      })
+    }).get({
+      success: function (res) {
+        console.log(res)
+        let arr = []
+        var length = res.data.length > max_makers_number ? max_makers_number : res.data.length;
+        // 上拉加载，如果悬赏数多于 max_requirments_number， 说明需要刷新页面增加数量
+        if (res.data.length > max_makers_number) {
+          that.data.ppt_maker_pages = that.data.ppt_maker_pages + 1;
+        }
+        // console.log(that.data.req_pages)
+        for (let i = 0; i < length; i++) {
+          arr.push(res.data[i])
+        }
+
+        that.setData({
+          PPTmakers: arr,
         })
         wx.hideLoading(); //隐藏正在加载中
       }
@@ -168,7 +199,7 @@ Page({
     });
 
     var that = this;
-    var max_requirments_number = this.data.pages * 10
+    var max_requirments_number = this.data.req_pages * 10
     // console.log(max_requirments_number)
     wx.cloud.database().collection('requirement').orderBy('uploadTime', 'desc').get({
       success: function (res) {
@@ -176,9 +207,9 @@ Page({
         var length = res.data.length > max_requirments_number ? max_requirments_number : res.data.length;
         // 上拉加载，如果悬赏数多于 max_requirments_number， 说明需要刷新页面增加数量
         if (res.data.length > max_requirments_number) {
-          that.data.pages = that.data.pages + 1;
+          that.data.req_pages = that.data.req_pages + 1;
         }
-        // console.log(that.data.pages)
+        // console.log(that.data.req_pages)
         for (let i = 0; i < length; i++) {
           arr.push(res.data[i])
         }
@@ -186,10 +217,37 @@ Page({
         that.setData({
           requirements: arr,
         })
+      }
+    });
+  },
+
+  getPPTmakerInfo() {
+    console.log("search PPTmaker")
+
+    var that = this;
+    var max_makers_number = this.data.req_pages * 10
+    // console.log(max_requirments_number)
+    wx.cloud.database().collection('user').where({
+      user_type : true
+    }).get({
+      success: function (res) {
+        let arr = []
+        var length = res.data.length > max_makers_number ? max_makers_number : res.data.length;
+        // 上拉加载，如果悬赏数多于 max_requirments_number， 说明需要刷新页面增加数量
+        if (res.data.length > max_makers_number) {
+          that.data.ppt_maker_pages = that.data.ppt_maker_pages + 1;
+        }
+        // console.log(that.data.req_pages)
+        for (let i = 0; i < length; i++) {
+          arr.push(res.data[i])
+        }
+
+        that.setData({
+          PPTmakers: arr,
+        })
         wx.hideLoading(); //隐藏正在加载中
       }
     });
-
   },
 
   reqContent(e) {
