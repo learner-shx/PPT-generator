@@ -39,6 +39,8 @@
   background-color: #ffeb37;
 }
 
+
+
 .content {
   background-color: #fff;
   border-radius: 50rpx;
@@ -241,4 +243,23 @@
   width: 50rpx;
   height: 50rpx;
   margin-left: 500rpx;
+}
+
+.accepted-user {
+  background-color: #fff;
+  border-radius: 50rpx;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+  padding-bottom: 40rpx;
+}
+
+.accepted-user .title {
+  font-size: 42rpx;
+  margin-top: 20rpx;
+  margin-left: 40rpx;
+  font-weight: bold;
+  display: flex;
+  flex-wrap: wrap;
 }
