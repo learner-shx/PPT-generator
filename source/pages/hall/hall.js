@@ -278,6 +278,9 @@ Page({
     var that = this;
     var index = e.currentTarget.dataset.index;
     console.log(that.data.PPTmakers[index])
+    this.setData({
+      selected_ppt_maker : that.data.PPTmakers[index]
+    })
     if (that.data.PPTmakers[index]._openid == app.globalData.userInfo._openid){
       wx.showToast({
         title: '不能和自己发消息哦',
@@ -308,15 +311,16 @@ Page({
     ).get({
       success(res) {
         console.log(res.data)
+        console.log(that.data.selected_ppt_maker)
         if (res.data.length == 0) {
           console.log("never build message connection before")
           wx.cloud.database().collection("message").add({
             data: {
               userAInfo: app.globalData.userInfo,
               userBInfo: {
-                _openid: that.data.PPTmakers[index]._openid,
-                userName: that.data.PPTmakers[index].userName,
-                avatarUrl: that.data.PPTmakers[index].avatarUrl
+                _openid: that.data.selected_ppt_maker._openid,
+                userName: that.data.selected_ppt_maker.userName,
+                avatarUrl: that.data.selected_ppt_maker.avatarUrl
               },
               message_type: true, // true 为用户消息, false 为系统消息
               message_list: [{
