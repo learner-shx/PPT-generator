@@ -37,12 +37,20 @@ Page({
         })
         // 判断是否已经报名
         var acceptedUserOpenid = that.data.requirement.acceptedUserList.map(item => item._openid)
+        var submittedUserOpenid = that.data.requirement.submittedUserList.map(item => item._openid)
         console.log(acceptedUserOpenid)
         if (acceptedUserOpenid.indexOf(that.data.userInfo._openid)!=-1) {
-          console.log("已经报名")
-          that.setData({
+          if (submittedUserOpenid.indexOf(that.data.userInfo._openid)!=-1){
+            console.log("已经提交")
+            that.setData({
+            status : 'finished'
+          })
+          } else {
+            console.log("已经报名")
+            that.setData({
             status : 'accepted'
           })
+          }
         } else {
           console.log("未报名")
           that.setData({

@@ -115,6 +115,7 @@ Page({
         userName: that.data.userInfo.userName,
         uploadTime: wx.cloud.database().serverDate(),
         acceptedUserList : [],
+        submittedUserList : [],
         acceptedWorkID : null
       },
       success: function (res) {
