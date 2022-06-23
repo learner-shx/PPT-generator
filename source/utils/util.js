@@ -48,34 +48,6 @@ const checkDesciptionValidity = (description) => {
   return true;
 };
 
-const checkSenstiveWords = (description) => {
-  var plugin = requirePlugin("chatbot");
-  plugin.init({
-    appid: "P5Ot9PHJDechCYqDFAW1AiK6OtG3Ja", //小程序示例账户，仅供学习和参考
-    openid: "123", //用户的openid，非必填，建议传递该参数
-  });
-
-  return new Promise((resolve, reject) => {
-    plugin.api.nlp("sensitive", { q: description, mode: "cnn" }).then((res) => {
-      console.log("sensitive result : ", res);
-      return resolve(res);
-    });
-  });
-};
-
-const debounce = (fn, interval) => {
-  var timer;
-  var time = interval || 1000;//延迟时间，如果interval不传默认1000ms
-  return function () {
-    clearTimeout(timer);
-    var context = this;
-    var args = arguments;//保存arguments，因为setTimeout是全局的
-    timer = setTimeout(function () {
-      fn.call(context, args);  //call方法是改变this的指向，第二个参数可以传递任意值
-    }, time);
-  };
-}
-
 
 const checkNumberValidity = (number) => {
   // 判断描述是否含有非法字符

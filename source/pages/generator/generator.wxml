@@ -12,7 +12,7 @@
         <view class="text">
             请输入文案
         </view>
-        <textarea class="txt_word" placeholder="请按照markdown格式输入文案\n示例：\n## 大标题 \n ### 小标题1 \n 正文1 \n ### 小标题2 \n 正文2" bindinput="describe" value="{{description}}" autoheight />
+        <textarea class="txt_word" placeholder="请按照markdown格式输入文案\n示例：\n## 大标题 \n ### 小标题1 \n 正文1 \n ### 小标题2 \n 正文2" bindinput="handleInput" value="{{description}}" autoheight />
     </view>
     <view class="kind" bindtap="selectPPTstyle">
     <view class='row-start'>
@@ -24,7 +24,7 @@
 
 </view>
 
-<view class="submitButton" bindtap="ppttest" hover-class="submitButton-hover">一键生成</view>
+<view class="submitButton" bindtap="oneTouchGenerator" hover-class="submitButton-hover">一键生成</view>
 
 <view wx:if="{{downloadUrl!=''}}">
     <view class='text'>幻灯片生成成功</view>

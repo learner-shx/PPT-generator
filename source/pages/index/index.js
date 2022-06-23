@@ -25,6 +25,9 @@ Page({
   
     async onLoad() {
       var that = this;
+      wx.showLoading({
+        title: '正在加载',
+      })
       // console.log("hello")
       // wx.cloud.database().collection('announcement').add({
       //   data : {
@@ -40,6 +43,9 @@ Page({
           console.log(res.data);
           that.setData({
             announcement : res.data
+          })
+          wx.hideLoading({
+            success: (res) => {},
           })
         }
       })
