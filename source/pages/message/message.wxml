@@ -1,4 +1,8 @@
 
+
+<view wx:if="{{messages==null||messages.length==0}}" class='no-message'>
+<image src="../../images/img/message.png"></image>
+</view>
 <block wx:for="{{messages}}">
 <view class="user-list">
 

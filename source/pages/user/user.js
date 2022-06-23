@@ -85,9 +85,10 @@ Page({
           that.setData({
             finished_requirements: res.data
           })
+          wx.hideLoading();
         }
       });
-      wx.hideLoading();
+      
     }
 
   },

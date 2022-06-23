@@ -46,3 +46,12 @@
   display: flex;
   flex-direction: row;
 }
+
+.no-message {
+  display: flex;
+  justify-content: center;
+}
+
+.no-message image {
+  margin-top: 200rpx;
+}
