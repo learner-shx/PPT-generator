@@ -2,7 +2,7 @@
 Page({
 
     data: {
-        PPT_style: ['serif', 'simple', 'sky', 'solarized'],
+        PPT_style: ['简约ppt','serif', 'simple', 'sky', 'solarized'],
         PPT_style_index: 0,
         description : "",
         describe : "",
