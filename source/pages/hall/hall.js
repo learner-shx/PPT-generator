@@ -268,9 +268,23 @@ Page({
   
 
   sendMessage(e) {
-    console.log("receive the reward")
+    if (app.globalData.userInfo == null) {
+      wx.showToast({
+        title: '请先登录',
+        icon : 'error'
+      })
+      return;
+    }
     var that = this;
     var index = e.currentTarget.dataset.index;
+    console.log(that.data.PPTmakers[index])
+    if (that.data.PPTmakers[index]._openid == app.globalData.userInfo._openid){
+      wx.showToast({
+        title: '不能和自己发消息哦',
+        icon : 'error'
+      })
+      return;
+    }
     const DB = wx.cloud.database().command;
     wx.cloud.database().collection('message').where(
       DB.or([
@@ -316,7 +330,7 @@ Page({
               console.log(ress)
               var chat_id = ress._id;
               wx.navigateTo({
-                url: '../../chat/chat?chat_id=' + chat_id,
+                url: '../chat/chat?chat_id=' + chat_id,
               })
             }
           })
@@ -325,7 +339,7 @@ Page({
           var chat_id = res.data[0]._id;
           console.log(res.data)
           wx.navigateTo({
-            url: '../../chat/chat?chat_id=' + chat_id,
+            url: '../chat/chat?chat_id=' + chat_id,
           })
         }
       }
