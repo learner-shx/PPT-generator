@@ -43,6 +43,12 @@ Page({
     }
   },
 
+  registerPPTmaker() {
+    wx.navigateTo({
+      url: '../release/release',
+    })
+  },
+
   onShow() {
 
     if (app.globalData.userInfo != null) {

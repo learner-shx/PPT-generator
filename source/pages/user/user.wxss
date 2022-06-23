@@ -305,6 +305,13 @@
   font-weight: bolder;
 }
 
+.bePPTmaker-font {
+  margin: 10rpx 40rpx 0rpx;
+  font-size: 38rpx;
+  font-weight: bolder;
+  color: goldenrod
+}
+
 .line {
   background-color: #ffeb37;
   height: 14rpx;

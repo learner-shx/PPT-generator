@@ -13,7 +13,7 @@ Page({
     limit : {
       beyondStyle: "#9494A2",
       current : 0,
-      maxlength : 200
+      maxlength : 100
     },
 
     validity_check : {

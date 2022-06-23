@@ -23,11 +23,6 @@
           <image src="{{avatarUrl}}"></image>
         </view>
         <view class="font">{{userName}}</view>
-        <navigator url="../updateUserInfo/updateUserInfo">
-          <view class="update">
-            <image src="../../images/index-icon/update.png"></image>
-          </view>
-        </navigator>
       </view>
     </view>
     <view wx:else class="loginButton">
@@ -58,8 +53,16 @@
       <view class="content">{{call}}</view>
     </view>
   </view>
+</view>
+
+<view wx:if="{{avatarUrl&&!user_type}}">
+
+  <view class='list-title' bindtap="registerPPTmaker">
+    <view class = "bePPTmaker-font" >成为PPT制作者</view>
+  </view>
 
 </view>
+
 
 <view wx:if="{{avatarUrl!=''}}">
   <view class='list-title' bindtap="changeRealsedStatus">
@@ -98,6 +101,9 @@
   </view>
 </view>
 
+
+
+
 <view wx:if="{{avatarUrl!=''}}">
   <view class='list-title' bindtap="changeSolvedStatus">
     <view class="req-font" >已解决的悬赏</view>
@@ -135,7 +141,7 @@
 </view>
 
 <view class="bottom">
-  <view class="bottom-content">
+  <view class="bottom-content" wx:if="{{avatarUrl}}">
     <navigator url="../help/help">
       <view class="me-about">
         <text>修改信息</text>
