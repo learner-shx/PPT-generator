@@ -26,6 +26,7 @@ Page({
     },
 
     submitReq() {
+        var that = this
         if (this.data.requirement_ppt == null) {
             wx.showToast({
                 title: '请上传PPT',
@@ -46,7 +47,8 @@ Page({
                                 console.log(res)
                                 var submittedUserList = res.data.submittedUserList;
                                 submittedUserList.push(that.data.userInfo);
-                                wx.cloud.database.collection('requirement').doc(that.data.requirement_id).update({
+                                console.log(submittedUserList)
+                                wx.cloud.database().collection('requirement').doc(that.data.requirement_id).update({
                                     data : {
                                         submittedUserList : submittedUserList
                                     },

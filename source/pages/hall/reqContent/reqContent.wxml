@@ -59,7 +59,7 @@
 </view>
 
 <view wx:if="{{requirement.status=='unreceived'&&status=='finished'}}">
-  <view class="finish-submit-button" bindtap="submitReq" hover-class="submitButton-hover">已提交</view>
+  <view class="finish-submit-button" hover-class="submitButton-hover">已提交</view>
 </view>
 
 <view wx:if="{{requirement.status=='finished'}}">

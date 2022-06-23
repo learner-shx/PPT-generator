@@ -7,7 +7,8 @@ Page({
 
     data: {
         inputValue : "",
-        disabled_send : false
+        disabled_send : false,
+        time : 0
     },
 
     onLoad : function(options) {
@@ -24,13 +25,18 @@ Page({
         console.log(this.data.chat_id)
     }, 
 
-    getMessage() {
 
-    },
+    handleInput(e) {
+        clearTimeout(this.data.time)
+        var that = this;
+        this.data.time = setTimeout(() => {
+          that.getInputValue(e.detail.value)
+        },300)
+      },
 
-    getInputValue(e) {
+    getInputValue(value) {
         this.setData({
-            inputValue : e.detail.value
+            inputValue : value
         }) 
         
     },
