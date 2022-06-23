@@ -67,7 +67,7 @@ Page({
                                             confirmText: "确定", // 确认按钮的文字，最多4个字符
                                             confirmColor: "#576B95", // 确认按钮的文字颜色，必须是 16 进制格式的颜色字符串
                                             success(res) {
-                                                // that.sendSystemMessage();
+                                                that.sendSystemMessage();
                                                 wx.switchTab({
                                                     url: '../hall/hall',
                                                 })
@@ -85,27 +85,31 @@ Page({
         }
     },
 
-    // sendSystemMessage() {
-    //     console.log("send system message to notice");
+    sendSystemMessage() {
+        console.log("send system message to notice");
 
-    //     wx.cloud.database().collection("message").add({
-    //         data: {
-    //             userAInfo: app.globalData.userInfo,
-    //             userBInfo: {
-    //                 _openid: that.data.requirement._openid,
-    //                 userName: that.data.requirement.userName,
-    //                 avatarUrl: that.data.requirement.avatarUrl
-    //             },
-    //             message_type: true, // true 为用户消息, false 为系统消息
-    //             message_list: [{
-    //                 _openid: app.globalData.userInfo._openid,
-    //                 text: '我们已经成为好友了，快来一起聊天吧!',
-    //                 time: utils.formatTime(new Date())
-    //             }],
-    //             last_send_time: wx.cloud.database().serverDate()
-    //         },
-    //     })
-    // },
+        wx.cloud.database().collection("message").add({
+            data: {
+                userAInfo: {
+                    _openid : 'SYSTEM',
+                    userName : '系统消息',
+                    avatarUrl : '../../images/index-icon/system.svg'
+                },
+                userBInfo: {
+                    _openid: that.data.requirement._openid,
+                    userName: that.data.requirement.userName,
+                    avatarUrl: that.data.requirement.avatarUrl
+                },
+                message_type: false, // true 为用户消息, false 为系统消息
+                message_list: [{
+                    _openid: 'SYSTEM',
+                    text: that.data.userInfo.userName + '完成了你的悬赏',
+                    time: utils.formatTime(new Date())
+                }],
+                last_send_time: wx.cloud.database().serverDate()
+            },
+        })
+    },
 
     uploadPPTfile(e) {
         var that = this;
