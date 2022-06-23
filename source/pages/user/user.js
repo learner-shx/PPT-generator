@@ -145,52 +145,54 @@ Page({
             console.log(ress.result.userInfo.openId)
             // 拿到用户的OpenId
             app.globalData.userInfo._openid = ress.result.userInfo.openId
+            console.log(app.globalData.userInfo)
+            wx.cloud.database().collection('user').where({
+              _openid: app.globalData.userInfo._openid
+            }).get({
+              success(ress) {
+                if (ress.data.length == 0) {
+                  // 没有搜索到则新建用户
+                  wx.cloud.database().collection('user').add({
+                    data: {
+                      userName: app.globalData.userInfo.nickName,
+                      avatarUrl: app.globalData.userInfo.avatarUrl,
+                      email: "未填写",
+                      call: "未填写",
+                      user_type: false,
+                      intentional_price: 0,
+                      expertise_areas: null,
+                      introduction: '这个人很神秘，什么也没有写',
+                      solved_requirement_num : 0,
+                      person_title : '初出茅庐'
+                    },
+                    success(fin){
+                      wx.cloud.database().collection('user').where({
+                        _openid : app.globalData.userInfo._openid
+                      }).get({
+                        success(re) {
+                          app.globalData.userInfo = re.data[0];
+                        }
+                      })
+                      console.log(app.globalData.userInfo._openid)
+                    }
+                  })
+                  
+                }
+                else {
+                  app.globalData.userInfo = ress.data[0]
+                }
+                that.setData({
+                  userInfo : app.globalData.userInfo
+                })
+                wx.setStorageSync('userInfo', app.globalData.userInfo);
+                that.onShow()
+              }
+    
+            })
+    
           },
         })
         // 在数据库中查询此openid，如果没有那么新建用户，否则按原用户登录
-
-        wx.cloud.database().collection('user').where({
-          _openid: app.globalData.userInfo._openid
-        }).get({
-          success(ress) {
-            if (ress.data.length == 0) {
-              // 没有搜索到则新建用户
-              wx.cloud.database().collection('user').add({
-                data: {
-                  userName: app.globalData.userInfo.nickName,
-                  avatarUrl: app.globalData.userInfo.avatarUrl,
-                  email: "未填写",
-                  call: "未填写",
-                  user_type: false,
-                  intentional_price: 0,
-                  expertise_areas: null,
-                  introduction: '这个人很神秘，什么也没有写',
-                  solved_requirement_num : 0,
-                  person_title : '初出茅庐'
-                },
-                success(fin){
-                  wx.cloud.database().collection('user').where({
-                    _openid : app.globalData.userInfo._openid
-                  }).get({
-                    success(re) {
-                      app.globalData.userInfo = re.data[0];
-                    }
-                  })
-                }
-              })
-              
-            }
-            else {
-              app.globalData.userInfo = ress.data[0]
-            }
-            that.setData({
-              userInfo : app.globalData.userInfo
-            })
-            wx.setStorageSync('userInfo', app.globalData.userInfo);
-            that.onShow()
-          }
-
-        })
 
       }
     })
