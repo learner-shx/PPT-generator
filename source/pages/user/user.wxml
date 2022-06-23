@@ -142,12 +142,10 @@
 
 <view class="bottom">
   <view class="bottom-content" wx:if="{{avatarUrl}}">
-    <navigator url="../help/help">
-      <view class="me-about">
+      <view class="me-about" bindtap="registerPPTmaker">
         <text>修改信息</text>
         <image src="../../images/common/next.png"></image>
       </view>
-    </navigator>
   </view>
   <view class="bottom-content">
     <view class="me-about" bindtap="showPop">
@@ -155,20 +153,15 @@
       <image src="../../images/common/next.png"></image>
     </view>
   </view>
-  <view class="bottom-content">
+  <view class="feed-back-button">
+  <button class="button-type" open-type="feedback" style="display: contents" >
     <view class="me-about">
-      <text>反馈与建议</text>
+      反馈与建议
       <image src="../../images/common/next.png"></image>
     </view>
-  </view>
-  <view class="bottom-content">
-    <navigator url="../help/help">
-      <view class="me-about">
-        <text>帮助</text>
-        <image src="../../images/common/next.png"></image>
-      </view>
-    </navigator>
-  </view>
+  </button>
+</view>
+
 
 
 </view>
