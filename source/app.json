@@ -5,16 +5,14 @@
         "pages/release/release",
         "pages/releaseReq/releaseReq",
         "pages/hall/reqContent/reqContent",
-        "pages/hall/infContent/infContent",
-        "pages/updateUserInfo/updateUserInfo",
-        "pages/updateUserInfo/updataCall/updataCall",
-        "pages/updateUserInfo/updataEmail/updataEmail",
         "pages/message/message",
         "pages/user/user",
         "pages/generator/generator",
         "pages/requirement/requirement",
         "pages/chat/chat",
-        "pages/uploadReq/uploadReq"
+        "pages/uploadReq/uploadReq",
+        "pages/hall/checkSubmit/checkSubmit",
+        "pages/hall/downloadPPT/downloadPPT"
     ],
     "window": {
         "backgroundColor": "#F6F6F6",

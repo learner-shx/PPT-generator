@@ -51,9 +51,14 @@
 </view>
 </view>
 
-<view wx:if="{{requirement.status=='unreceived'&&status=='unaccepted'}}">
+<view wx:if="{{requirement.status=='unreceived'&&status=='unaccepted'&&userInfo._openid!=requirement._openid}}">
   <view class="getButton" bindtap="receiveReq" hover-class="getButton-hover">接取悬赏</view>
 </view>
+
+<view wx:if="{{requirement.status=='unreceived'&&status=='unaccepted'&&userInfo._openid==requirement._openid}}">
+  <view class="getButton" bindtap="checkSubmits" hover-class="getButton-hover">查看所有提交</view>
+</view>
+
 
 <view wx:if="{{requirement.status=='unreceived'&&status=='accepted'}}">
   <view class="submitButton" bindtap="submitReq" hover-class="submitButton-hover">提交作品</view>

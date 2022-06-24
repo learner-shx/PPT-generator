@@ -19,7 +19,7 @@
   <scroll-view class='scroll-view-body' id='scroll-view-bodyId' scroll-x="true" scroll-left="{{bodyScrollLeft}}" scroll-with-animation="true">
     <view class='scroll-view-item' bindtouchend="scrollEnded" wx:for="{{tabTitles}}">
       <view class="content" wx:for="{{requirements}}" data-index="{{index}}" wx:if="{{activeTab==0}}">
-        <view class="user" style="display: flex;">
+        <view style="display: flex;">
           <view class="imageUser">
             <image src="{{requirements[index].avatarUrl}}"></image>
           </view>

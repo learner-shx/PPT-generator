@@ -1,0 +1,7 @@
+
+<view class="container">
+<image src="../../../images/index-icon/PPT.svg"></image>
+<view class="font">预览后点击菜单保存文件</view>
+</view>
+
+<view class="submitButton" bindtap="downloadPPT" hover-class="submitButton-hover">下载</view>

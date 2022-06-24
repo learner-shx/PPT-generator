@@ -195,5 +195,12 @@ Page({
     wx.navigateTo({
       url: '../../uploadReq/uploadReq?id=' + this.data.requirement_id
     })
+  },
+
+  checkSubmits() {
+    var that = this;
+    wx.navigateTo({
+      url : '../checkSubmit/checkSubmit?id=' + that.data.requirement_id
+    })
   }
 })

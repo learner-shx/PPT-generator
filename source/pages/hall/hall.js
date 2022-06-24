@@ -202,7 +202,9 @@ Page({
     var that = this;
     var max_requirments_number = this.data.req_pages * 10
     // console.log(max_requirments_number)
-    wx.cloud.database().collection('requirement').orderBy('uploadTime', 'desc').get({
+    wx.cloud.database().collection('requirement').orderBy('uploadTime', 'desc').where({
+      status : 'unreceived'
+    }).get({
       success: function (res) {
         let arr = []
         var length = res.data.length > max_requirments_number ? max_requirments_number : res.data.length;
