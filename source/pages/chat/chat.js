@@ -94,11 +94,6 @@ Page({
                             last_send_time: wx.cloud.database().serverDate(),
                         },
                         success(res) {
-                            console.log(res)
-                            wx.showToast({
-                                title: '发送成功',
-                            })
-    
                             that.getChatList()
                             that.setData({
                                 inputValue: ""
