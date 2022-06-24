@@ -103,10 +103,21 @@ Page({
             console.log(res);
             that.setData({
                 downloadUrl: res.fileList[0].tempFileURL,
-            })
+                
+            });
+            if (res.fileList[0].tempFileURL != ''){
+                wx.showToast({
+                  title: 'ppt生成成功',
+                  icon : 'none',
+                  duration : 500
+                })
+                return;
+            }
         }).catch(error => {
             console.log(fileList[0]);
         });
+
+        
 
 
         // console.log(112);
