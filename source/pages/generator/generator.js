@@ -2,7 +2,7 @@
 Page({
 
     data: {
-        PPT_style: ['简约ppt', 'serif', 'simple', 'sky', 'solarized'],
+        PPT_style: ['serif', 'simple', 'sky', 'solarized','简约ppt'],
         PPT_style_index: 0,
         description: "",
         describe: "",
@@ -17,7 +17,7 @@ Page({
         var that = this;
         this.data.time = setTimeout(() => {
             that.getDescription(e.detail.value)
-        }, 1000)
+        }, 300)
     },
 
     onLoad() {
@@ -151,6 +151,7 @@ Page({
             success: res => {
                 const filepath = res.tempFilePath
                 wx.openDocument({
+                    showMenu : true,
                     filePath: filepath,
                     success: function (res) {
                         console.log('打开文档成功')
