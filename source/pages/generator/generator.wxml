@@ -12,7 +12,7 @@
         <view class="text">
             请输入文案
         </view>
-        <textarea class="txt_word" placeholder="请按照markdown格式输入文案\n示例：\n## 大标题 \n ### 小标题1 \n 正文1 \n ### 小标题2 \n 正文2" bindinput="handleInput" value="{{description}}" autoheight />
+        <textarea maxlength='-1' class="txt_word" placeholder="请按照markdown格式输入文案\n示例：\n## 大标题 \n ### 小标题1 \n 正文1 \n ### 小标题2 \n 正文2" bindinput="handleInput" value="{{description}}" autoheight />
     </view>
     <view class="kind" bindtap="selectPPTstyle">
     <view class='row-start'>
