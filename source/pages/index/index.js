@@ -9,16 +9,16 @@ Page({
     data: {
       arr: [],
       movies: [{
-          url: '../../images/Rotating/3.jpg'
-        },
-        {
-          url: '../../images/Rotating/news.png'
-        },
-        {
           url: '../../images/Rotating/1.jpg'
         },
         {
           url: '../../images/Rotating/2.jpg'
+        },
+        {
+          url: '../../images/Rotating/3.jpg'
+        },
+        {
+          url: '../../images/Rotating/4.jpg'
         }
       ],
     },
