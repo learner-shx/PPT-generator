@@ -33,6 +33,6 @@
         <input class="pub-input" bindinput="handleInput" value="{{inputValue}}"></input>
     </view>
 
-    <view class="pub-button{{inputValue==''?'':'-with-text'}}" bindtap="publishMessage">发送</view>
+    <view class="pub-button{{inputValue==''?'':'-with-text'}}" bindtap="publishMessage{{inputValue==''?'123':''}}">发送</view>
 
 </view>
