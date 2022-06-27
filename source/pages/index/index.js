@@ -60,8 +60,8 @@ Page({
 
     toGenerator() {
       wx.navigateTo({
-        url: '../getMD/getMD',
-        //url:'../generator/generator'
+        // url: '../getMD/getMD',
+        url:'../generator/generator'
       })
     },
 
