@@ -13,8 +13,7 @@
     "pages/chat/chat",
     "pages/uploadReq/uploadReq",
     "pages/hall/checkSubmit/checkSubmit",
-    "pages/hall/downloadPPT/downloadPPT",
-    "pages/getMD"
+    "pages/hall/downloadPPT/downloadPPT"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
