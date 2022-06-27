@@ -1,0 +1,133 @@
+/* pages/getMD.wxss */
+
+.title {
+  display: flex;
+}
+.title .line {
+  background-color: #ffeb37;
+  height: 14rpx;
+  border-radius: 35rpx;
+  width: 100%;
+}
+.title .release {
+  margin: 30rpx 50rpx 0rpx;
+  font-size: 38rpx;
+}
+.content {
+  background-color: #fff;
+  padding: 20rpx;
+  width: 85%;
+  margin: 0 auto;
+  border-radius: 50rpx;
+  margin-top: 30rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+}
+
+.content .input .text {
+  margin: 0rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-left: 30rpx;
+  margin-top: 15rpx;
+}
+.content .input .txt_word {
+  word-wrap: break-word;
+  white-space: pre-line
+}
+.content .kind {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content .kind .text {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.content .input textarea {
+  background-color: #e2e2e250;
+  border-radius: 50rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  height: 400rpx;
+  word-break: break-all;
+  padding: 20rpx;
+  width: 85%;
+}
+
+.submitButton {
+  background-color: #ffeb37;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  border-radius: 30rpx;
+  width: 80%;
+  text-align: center;
+  padding: 30rpx;
+  margin-bottom: 50rpx;
+  margin-left: 40rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+  position :fixed;
+  bottom: 0;
+}
+
+.submitButton-hover {
+  background-color: #ffeb37;
+  box-shadow: 10rpx 10rpx 20rpx 10rpx #e1e1e1;
+}
+
+.login-image {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.login-image .text {
+  color: gray;
+}
+
+.login {
+  color: #000;
+  background-color: #ffd23c;
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-gengduo:before {
+  content: "\e620";
+}
+
+.kind {
+  display: flex;
+  height: 100rpx;
+  width: 100%;
+  margin-bottom: 3rpx;
+  background: #ffffff;
+  border-bottom: 2rpx solid rgb(238, 238, 238);
+}
+.row-start {
+  display: flex;
+  margin-top: 30rpx;
+  width: 40%;
+  justify-content: space-around;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.row-input {
+  font-size: 30rpx;
+  color: #808080;
+  font-family: Arial Normal;
+}
+.row-back {
+  margin-top: 30rpx;
+  margin-right: 30rpx;
+  color: #808080;
+  text-align: center;
+}
