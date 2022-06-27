@@ -1,67 +1,68 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/hall/hall",
-    "pages/release/release",
-    "pages/releaseReq/releaseReq",
-    "pages/hall/reqContent/reqContent",
-    "pages/message/message",
-    "pages/user/user",
-    "pages/generator/generator",
-    "pages/getMD/getMD",
-    "pages/requirement/requirement",
-    "pages/chat/chat",
-    "pages/uploadReq/uploadReq",
-    "pages/hall/checkSubmit/checkSubmit",
-    "pages/hall/downloadPPT/downloadPPT"
-  ],
-  "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#ffd23c",
-    "navigationBarTitleText": "",
-    "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "color": "#9c9d9b",
-    "backgroundColor": "#fff",
-    "selectedColor": "#0A44DF",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "images/index-icon/index.png",
-        "selectedIconPath": "images/index-icon/index.png"
-      },
-      {
-        "pagePath": "pages/hall/hall",
-        "text": "大厅",
-        "iconPath": "images/index-icon/dating.png",
-        "selectedIconPath": "images/index-icon/dating.png"
-      },
-      {
-        "pagePath": "pages/message/message",
-        "text": "消息",
-        "iconPath": "images/index-icon/message.png",
-        "selectedIconPath": "images/index-icon/message.png"
-      },
-      {
-        "pagePath": "pages/user/user",
-        "text": "我",
-        "iconPath": "images/index-icon/user.png",
-        "selectedIconPath": "images/index-icon/user.png"
-      }
-    ]
-  },
-  "plugins": {
-    "chatbot": {
-      "version": "1.2.44",
-      "provider": "wx8c631f7e9f2465e1"
-    }
-  },
-  "requiredBackgroundModes": [
-    "audio"
-  ],
-  "style": "v2",
-  "sitemapLocation": "sitemap.json"
+    "pages": [
+        "pages/index/index",
+        "pages/hall/hall",
+        "pages/release/release",
+        "pages/releaseReq/releaseReq",
+        "pages/hall/reqContent/reqContent",
+        "pages/message/message",
+        "pages/user/user",
+        "pages/generator/generator",
+        "pages/getMD/getMD",
+        "pages/requirement/requirement",
+        "pages/chat/chat",
+        "pages/uploadReq/uploadReq",
+        "pages/hall/checkSubmit/checkSubmit",
+        "pages/hall/downloadPPT/downloadPPT",
+        "pages/generator/styleSelect/styleSelect"
+    ],
+    "window": {
+        "backgroundColor": "#F6F6F6",
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#ffd23c",
+        "navigationBarTitleText": "",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#9c9d9b",
+        "backgroundColor": "#fff",
+        "selectedColor": "#0A44DF",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "images/index-icon/index.png",
+                "selectedIconPath": "images/index-icon/index.png"
+            },
+            {
+                "pagePath": "pages/hall/hall",
+                "text": "大厅",
+                "iconPath": "images/index-icon/dating.png",
+                "selectedIconPath": "images/index-icon/dating.png"
+            },
+            {
+                "pagePath": "pages/message/message",
+                "text": "消息",
+                "iconPath": "images/index-icon/message.png",
+                "selectedIconPath": "images/index-icon/message.png"
+            },
+            {
+                "pagePath": "pages/user/user",
+                "text": "我",
+                "iconPath": "images/index-icon/user.png",
+                "selectedIconPath": "images/index-icon/user.png"
+            }
+        ]
+    },
+    "plugins": {
+        "chatbot": {
+            "version": "1.2.44",
+            "provider": "wx8c631f7e9f2465e1"
+        }
+    },
+    "requiredBackgroundModes": [
+        "audio"
+    ],
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
 }

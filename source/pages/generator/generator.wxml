@@ -3,6 +3,9 @@
         PPT自动生成
         <view class="line"></view>
     </view>
+    <view class="more-options" bindtap="moreOptions" hover-class="more-options-hover">
+        配置选项
+    </view>
 </view>
 
 <!-- 物品的描述和标题+地点 -->
@@ -10,19 +13,34 @@
 <view class="content">
     <view class="input">
         <view class="text">
-            请输入文案
+            PPT标题
         </view>
-        <textarea maxlength='-1' class="txt_word" placeholder="请按照markdown格式输入文案\n示例：\n## 大标题 \n ### 小标题1 \n 正文1 \n ### 小标题2 \n 正文2" bindinput="handleInput" value="{{description}}" autoheight />
+        <textarea maxlength='-1' class="title-style" bindinput="handleInput" placeholder="请输入PPT标题" id='PPT_title' autoheight />
     </view>
-    <view class="kind" bindtap="selectPPTstyle">
-    <view class='row-start'>
-      <view class='text'>分类</view>
-      <view class="row-input">{{PPT_style[PPT_style_index]}}
-      </view>
-    </view>
+</view>
+
+<view wx:for="{{subPPT_pages}}" data-index="{{index}}">
+
+    <view class="content">
+        <view class="input">
+            <view class="top-bar">
+                <view class="text">
+                    小标题
+                </view>
+                <view class="delete-btn" data-index="{{index}}" bindtap="deleteItem">删除</view>
+            </view>
+            <textarea maxlength='-1' class="title-style" bindinput="handleInput" placeholder="请输入标题" id='subPPTtitle_{{index}}' value="{{item.title}}" autoheight />
+            <view class="text">
+                正文内容
+            </view>
+            <textarea maxlength='-1' class="txt_word" bindinput="handleInput" placeholder="请输入内容" id='subPPTcontent_{{index}}' value="{{item.content}}" autoheight />
+        </view>
     </view>
 
 </view>
+
+<view class="new-item" bindtap="addItem" hover-class="new-item-hover"><text>新建</text></view>
+
 
 <view class="submitButton" bindtap="oneTouchGenerator" hover-class="submitButton-hover" wx:if="{{downloadUrl==''}}">一键生成</view>
 

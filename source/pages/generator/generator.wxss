@@ -1,6 +1,7 @@
 
 .title {
   display: flex;
+  justify-content: space-between;
 }
 .title .line {
   background-color: #ffeb37;
@@ -12,6 +13,26 @@
   margin: 30rpx 50rpx 0rpx;
   font-size: 38rpx;
 }
+
+.title .more-options {
+  background-color: #fff;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+  border-radius: 30rpx;
+  font-weight: bold;
+  padding: 10rpx 15rpx 5rpx 15rpx;
+  margin: 30rpx 50rpx 0rpx;
+  font-size: 32rpx;
+}
+
+.title .more-options-hover {
+  background-color: #fff;
+  box-shadow: 10rpx 10rpx 20rpx 10rpx #e1e1e1;
+  border-radius: 30rpx;
+  padding: 5rpx 15rpx 5rpx 15rpx;
+  margin: 30rpx 50rpx 0rpx;
+  font-size: 32rpx;
+}
+
 .content {
   background-color: #fff;
   padding: 20rpx;
@@ -33,6 +54,13 @@
   word-wrap: break-word;
   white-space: pre-line
 }
+
+.content .input .title-style {
+  word-wrap: break-word;
+  white-space: pre-line;
+  height:  50rpx;
+}
+
 .content .kind {
   display: flex;
   justify-content: space-between;
@@ -45,10 +73,10 @@
 
 .content .input textarea {
   background-color: #e2e2e250;
-  border-radius: 50rpx;
+  border-radius: 20rpx;
   margin-left: 30rpx;
   margin-top: 30rpx;
-  height: 400rpx;
+  height: 150rpx;
   word-break: break-all;
   padding: 20rpx;
   width: 85%;
@@ -129,4 +157,42 @@
   margin-right: 30rpx;
   color: #808080;
   text-align: center;
+}
+
+.new-item {
+  background:  #18DE27;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  border-radius: 30rpx;
+  width: 30%;
+  text-align: center;
+  padding: 20rpx;
+  margin-bottom: 200rpx;
+  margin-left: 40rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+}
+
+.new-item text {
+  color: #fff;
+}
+
+.new-item-hover {
+  box-shadow: 10rpx 10rpx 20rpx 10rpx #e1e1e1;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-bar .delete-btn {
+  margin: 0rpx;
+  font-size: 32rpx;
+  font-weight: normal;
+  margin-left: 30rpx;
+  margin-right: 40rpx;
+  background-color: #DE0700;
+  padding: 5rpx 20rpx 5rpx 20rpx;
+  color: #fff;
+  border-radius: 30rpx;
 }
