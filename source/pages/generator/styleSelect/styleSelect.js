@@ -20,8 +20,8 @@ Page({
     onLoad(option) {
         console.log(option)
         this.setData({
-            PPT_style_index: option.id1,
-            subPPTpage_number_index: option.id2,
+            PPT_style_index: parseInt(option.id1),
+            subPPTpage_number_index: parseInt(option.id2),
             intelligentPictureMap: option.id3 == "false" ? false : true
         })
         console.log("here")

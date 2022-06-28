@@ -49,5 +49,5 @@
 </view> -->
 
 <view wx:if="{{downloadUrl!=''}}">
-    <view class="submitButton" bindtap="preview" hover-class="submitButton-hover">幻灯片预览</view>
+    <view class="submitButton previewButton" bindtap="preview" hover-class="submitButton-hover">幻灯片预览</view>
 </view>

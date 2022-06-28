@@ -97,6 +97,12 @@
   bottom: 0;
 }
 
+.previewButton {
+  color: #fff;
+  background-color: #18DE27;
+}
+
+
 .submitButton-hover {
   background-color: #ffeb37;
   box-shadow: 10rpx 10rpx 20rpx 10rpx #e1e1e1;
