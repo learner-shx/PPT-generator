@@ -5,7 +5,7 @@ Page({
 
     data: {
         PPT_title: "",
-        downloadUrl: "",
+        enablePreview: false,
         filePath: "",
         time: 0,
         subPPT_pages: [],
@@ -121,20 +121,23 @@ Page({
     },
 
     intergrateUserInput() {
-        var head = "% " + this.data.PPT_title + "\n\n";
-        var mid = "";
-        var sub_ppt_page_number = parseInt(this.data.PPT_style_config.subPPTpage_number_index) + 1;
-        console.log(sub_ppt_page_number)
+
+        var input_information = {
+            PPT_title : this.data.PPT_title,
+            subPPT_pages : []
+        }
+
         for (var i = 0; i < this.data.subPPT_pages.length; i++) {
             var sub_title = this.data.subPPT_pages[i].title == '' ? '空' : this.data.subPPT_pages[i].title;
             var sub_content = this.data.subPPT_pages[i].content == '' ? '空' : this.data.subPPT_pages[i].content;
-            mid += '# ' + sub_title + "\n\n" + sub_content + "\n\n";
-
-            for (var j = 0; j < sub_ppt_page_number; j++) {
-                mid += "## " + '空' + "\n\n" + " " + "\n\n";
+            var subPPT = {
+                title : sub_title,
+                content : sub_content
             }
+            input_information.subPPT_pages.push(subPPT)
         }
-        return head + mid;
+        console.log(input_information)
+        return input_information;
     },
 
     oneTouchGenerator() {
@@ -150,31 +153,26 @@ Page({
         wx.showLoading({
           title: '正在生成...',
         })
-        var markdown_file = this.intergrateUserInput();
-        // console.log(markdown_file)
+        var input_information = this.intergrateUserInput();
 
         var that = this;
-        var suffix;
-        if (that.data.PPT_style[that.data.PPT_style_config.PPT_style_index] == '简约ppt') {
-            suffix = '.pptx';
-        }
-        else {
-            suffix = '.html';
-        }
+        var style_config = {};
+        style_config.PPT_style = this.data.PPT_style[this.data.PPT_style_index];
+        style_config.subPPTpage_number = this.data.PPT_style_config.subPPTpage_number_index + 1;
+        style_config.intelligentPictureMap = this.data.PPT_style_config.intelligentPictureMap;
+
         wx.cloud.callFunction({
 
-            name: 'pdc_1',
+            name: 'generatePPT',
             data: {
-                step: 1,
-                // ppt : pres, // 这个 CloudID 值到云函数端会被替换
-                style: that.data.PPT_style[that.data.PPT_style_config.PPT_style_index],
-                description: markdown_file,
-                filepath: that.data.filePath,
+                description: input_information,
+                style_config: style_config,
+                _openid : app.globalData.userInfo._openid
             },
             success(res) {
                 console.log(res)
                 that.setData({
-                    downloadUrl: 'res.fileList[0].tempFileURL',
+                    enablePreview: true,
                 });
                 wx.hideLoading({
                   success: (res) => {
@@ -186,31 +184,17 @@ Page({
                 })
             }
         });
-
-
     },
 
-
     preview() {
-        var suffix;
-        var that = this;
-        if (that.data.PPT_style[parseInt(that.data.PPT_style_config.PPT_style_index)] == '简约ppt') {
-            suffix = '.pptx';
-        }
-        else {
-            suffix = '.html';
-        }
-
         wx.downloadFile({
-            url: "http://114.115.244.162:9000/0f" + suffix,
-            // fileID: 'cloud://kamilu-3g69c1hh0c963d36.6b61-kamilu-3g69c1hh0c963d36-1312241224/' + that.data.filePath + suffix,
+            // P means preview
+            url: "http://114.115.244.162:9000/P/" + app.globalData.userInfo._openid,
             success: res => {
-                console.log("d http://114.115.244.162:9000/0f" + suffix)
                 const filepath = res.tempFilePath
                 wx.openDocument({
                     showMenu: true,
                     filePath: filepath,
-                    fileType: suffix.substring(1),
                     success: function (res) {
                         console.log('打开文档成功')
                     }
