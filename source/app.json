@@ -8,7 +8,6 @@
         "pages/message/message",
         "pages/user/user",
         "pages/generator/generator",
-        "pages/getMD/getMD",
         "pages/requirement/requirement",
         "pages/chat/chat",
         "pages/uploadReq/uploadReq",

@@ -117,6 +117,17 @@ Page({
             subPPT_pages : subPPT_pages
         })
     },
+
+    intergrateUserInput() {
+        var head = "% " + this.data.PPT_title + "\n\n";
+        var mid = "";
+        for (var i = 0; i<this.data.subPPT_pages.length; i++) {
+            var sub_title = this.data.subPPT_pages[i].title==''?'空':this.data.subPPT_pages[i].title;
+            var sub_content = this.data.subPPT_pages[i].content==''?'空':this.data.subPPT_pages[i].content;
+            mid += '# ' + sub_title + "\n\n" + sub_content + "\n\n";
+        }
+        return head + mid;
+    },
  
     oneTouchGenerator() {
 
@@ -128,9 +139,13 @@ Page({
             })
             return;
         }
-        var that = this;
 
-        if (that.data.PPT_style[that.data.PPT_style_index] == '简约ppt') {
+        var markdown_file = this.intergrateUserInput();
+        console.log(markdown_file)
+
+        var that = this;
+        var suffix;
+        if (that.data.PPT_style_config.PPT_style[that.data.PPT_style_config.PPT_style_index] == '简约ppt') {
             suffix = '.pptx';
         }
         else {
@@ -142,8 +157,8 @@ Page({
             data: {
                 step: 1,
                 // ppt : pres, // 这个 CloudID 值到云函数端会被替换
-                style: that.data.PPT_style[that.data.PPT_style_index],
-                description: that.data.description,
+                style: that.data.PPT_style_config.PPT_style[that.data.PPT_style_config.PPT_style_index],
+                description: markdown_file,
                 filepath: that.data.filePath,
             },
             success(res) {
@@ -160,7 +175,7 @@ Page({
     preview() {
         var suffix;
         var that = this;
-        if (that.data.PPT_style[that.data.PPT_style_index] == '简约ppt') {
+        if (that.data.PPT_style_config.PPT_style[that.data.PPT_style_config.PPT_style_index] == '简约ppt') {
             suffix = '.pptx';
         }
         else {
