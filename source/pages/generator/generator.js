@@ -154,10 +154,10 @@ Page({
           title: '正在生成...',
         })
         var input_information = this.intergrateUserInput();
-
+        console.log(input_information)
         var that = this;
         var style_config = {};
-        style_config.PPT_style = this.data.PPT_style[this.data.PPT_style_index];
+        style_config.PPT_style = this.data.PPT_style_index;
         style_config.subPPTpage_number = this.data.PPT_style_config.subPPTpage_number_index + 1;
         style_config.intelligentPictureMap = this.data.PPT_style_config.intelligentPictureMap;
 

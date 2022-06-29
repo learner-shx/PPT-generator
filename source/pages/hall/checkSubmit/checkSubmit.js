@@ -29,7 +29,8 @@ Page({
             success(res) {
                 console.log(res)
                 that.setData({
-                    submittedUserList: res.data.submittedUserList
+                    submittedUserList: res.data.submittedUserList,
+                    userInfo : res.data._openid
                 })
                 wx.hideLoading()
             }
@@ -113,15 +114,71 @@ Page({
                         person_title : person_title
                     }
                 })
-                wx.hideLoading({
-                  success(ress) {
-                      wx.navigateTo({
-                        url: '../downloadPPT/downloadPPT?id=' + that.data.submittedUserList[index].ppt_path
-                      })
-                  }
-                })
+                that.sendAccpetMessage(that.data.submittedUserList[index].userInfo);
+                
             }
         })
     },
+
+    sendAccpetMessage(accepted_userInfo) {
+        
+        wx.cloud.database().collection("message").where({
+            userBInfo : {
+                _openid : accepted_userInfo._openid
+            }
+        }).get({
+            success(res) {
+                if (res.data.length == 0) {
+                    console.log("user finish the job first time");
+                    wx.cloud.database().collection("message").add({
+                        data: {
+                            userAInfo: {
+                                _openid : 'SYSTEM',
+                                userName : '系统消息',
+                                avatarUrl : '../../images/index-icon/system.svg'
+                            },
+                            userBInfo: accepted_userInfo,
+                            message_type: false, // true 为用户消息, false 为系统消息
+                            message_list: [{
+                                _openid: 'SYSTEM',
+                                text: '你提交的作品被' + that.data.userInfo.userName + '采纳了，感谢您的付出',
+                                time: utils.formatTime(new Date())
+                            }],
+                            last_send_time: wx.cloud.database().serverDate()
+                        },
+                    })
+                } else {
+                    var _id = res.data[0]._id;
+                    console.log("search message")
+                    wx.cloud.database().collection('message').doc(_id).get({
+                        success(res) {
+                            var message_list = res.data.message_list;
+                            var msg = {
+                                _openid: 'SYSTEM',
+                                text: '你提交的作品被' + that.data.userInfo.userName + '采纳了，感谢您的付出',
+                                time: utils.formatTime(new Date())
+                            };
+                            message_list.push(msg);
+                            wx.cloud.database().collection('message').doc(_id).update({
+                                data : {
+                                    message_list : message_list,
+                                    last_send_time: wx.cloud.database().serverDate()
+                                }
+                            })
+                        }
+                        
+                    })
+                }
+            }
+        })
+
+        wx.hideLoading({
+            success(ress) {
+                wx.navigateTo({
+                  url: '../downloadPPT/downloadPPT?id=' + that.data.submittedUserList[index].ppt_path
+                })
+            }
+          })
+    }
 
 })

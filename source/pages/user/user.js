@@ -12,8 +12,8 @@ Page({
     userInfo: {},
     about: "none",
     maxShownRequirement: {
-      released: 3,
-      solved: 3
+      released: 10,
+      solved: 10
     },
     show_released_req: false,
     show_solved_req: false
