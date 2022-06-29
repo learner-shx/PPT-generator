@@ -122,12 +122,17 @@ Page({
 
     sendAccpetMessage(accepted_userInfo) {
         
+        var that = this;
         wx.cloud.database().collection("message").where({
             userBInfo : {
                 _openid : accepted_userInfo._openid
+            },
+            userAInfo : {
+                _openid : 'SYSTEM'
             }
         }).get({
             success(res) {
+                console.log(res)
                 if (res.data.length == 0) {
                     console.log("user finish the job first time");
                     wx.cloud.database().collection("message").add({
@@ -141,7 +146,7 @@ Page({
                             message_type: false, // true 为用户消息, false 为系统消息
                             message_list: [{
                                 _openid: 'SYSTEM',
-                                text: '你提交的作品被' + that.data.userInfo.userName + '采纳了，感谢您的付出',
+                                text: '你提交的作品被' + app.globalData.userInfo.userName + '采纳了，感谢您的付出',
                                 time: utils.formatTime(new Date())
                             }],
                             last_send_time: wx.cloud.database().serverDate()
