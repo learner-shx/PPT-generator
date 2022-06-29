@@ -55,7 +55,7 @@
   <view class="getButton" bindtap="receiveReq" hover-class="getButton-hover">接取悬赏</view>
 </view>
 
-<view wx:if="{{requirement.status=='unreceived'&&status=='unaccepted'&&userInfo._openid==requirement._openid}}">
+<view wx:if="{{userInfo._openid==requirement._openid}}">
   <view class="getButton" bindtap="checkSubmits" hover-class="getButton-hover">查看所有提交</view>
 </view>
 
@@ -68,6 +68,6 @@
   <view class="finish-submit-button" hover-class="submitButton-hover">已提交</view>
 </view>
 
-<view wx:if="{{requirement.status=='finished'}}">
+<view wx:if="{{requirement.status=='finished'&&userInfo._openid!=requirement._openid}}">
   <view class="finishedButton">已结束</view>
 </view>

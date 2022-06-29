@@ -31,7 +31,8 @@ Page({
                 console.log(res)
                 that.setData({
                     submittedUserList: res.data.submittedUserList,
-                    userInfo : res.data._openid
+                    userInfo : res.data._openid,
+                    status : res.data.status
                 })
                 wx.hideLoading()
             }
@@ -104,6 +105,7 @@ Page({
                 console.log(res)
             }
         })
+        console.log(that.data.submittedUserList[index].userInfo._id)
         wx.cloud.database().collection('user').doc(that.data.submittedUserList[index].userInfo._id).get({
             success(res){
                 console.log(res)
@@ -168,11 +170,11 @@ Page({
                     console.log("search message")
                     wx.cloud.database().collection('message').doc(_id).get({
                         success(res) {
-                            console.log(res)
+                            console.log(res)   
                             var message_list = res.data.message_list;
                             var msg = {
                                 _openid: 'SYSTEM',
-                                text: '你提交的作品被' + that.data.userInfo.userName + '采纳了，感谢您的付出',
+                                text: '你提交的作品被' + app.globalData.userInfo.userName + '采纳了，感谢您的付出',
                                 time: utils.formatTime(new Date())
                             };
                             message_list.push(msg);

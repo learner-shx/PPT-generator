@@ -135,6 +135,7 @@
           </view>
         </view>
         <view class="reward">赏金：{{finished_requirements[index].money}} 元
+          <view class="button" bindtap="reqContent" data-index="{{index}}">查看</view>
         </view>
       </view>
     </view>

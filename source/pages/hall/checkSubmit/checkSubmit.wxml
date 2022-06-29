@@ -18,5 +18,5 @@
 
     </view>
 
-    <view class="submitButton{{enable_submit?'':'-disable'}}" bindtap="acceptPPT{{enable_submit?'':'123'}}" hover-class="submitButton-hover">确认悬赏</view>
+    <view wx:if="{{status=='unreceived'}}" class="submitButton{{enable_submit?'':'-disable'}}" bindtap="acceptPPT{{enable_submit?'':'123'}}" hover-class="submitButton-hover">确认悬赏</view>
 </view>
