@@ -1,5 +1,6 @@
 
-const app = getApp()
+const app = getApp();
+const utils = require('../../../utils/util');
 
 Page({
 
