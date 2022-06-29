@@ -15,7 +15,7 @@
         </view>
         <view class="bottom-content">
             <view class="me-about switch" bindtap="showPop">
-                <text style="margin-left: 40rpx;">智能配图</text>
+                <text style="margin-left: 40rpx;">模板配图</text>
                 <switch checked="{{intelligentPictureMap}}" bindchange="switchChange"/>
             </view>
         </view>
