@@ -165,7 +165,7 @@ Page({
                                 time: utils.formatTime(new Date())
                             };
                             message_list.push(msg);
-                            wx.cloud.database().collection('message').doc(_id).update({
+                            wx.cloud.database().collection('message').doc(res.data._id).update({
                                 data : {
                                     message_list : message_list,
                                     last_send_time: wx.cloud.database().serverDate()
