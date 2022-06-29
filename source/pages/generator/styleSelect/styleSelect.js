@@ -4,7 +4,7 @@ const app = getApp();
 Page({
 
     data: {
-        PPT_style: ['简约', '自然', '时尚', '科技', '随机',],
+        PPT_style: ['简约', '自然', '深色', '科技', '随机',],
         // PPT_style_index: 0,
         subPPTpage_number: ['1', '2', '3', '4'],
         // subPPTpage_number_index: 1,

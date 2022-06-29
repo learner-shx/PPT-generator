@@ -42,12 +42,4 @@
 <view class="new-item" bindtap="addItem" hover-class="new-item-hover"><text>新建</text></view>
 
 
-<view class="submitButton" bindtap="oneTouchGenerator" hover-class="submitButton-hover" wx:if="{{!enablePreview}}">一键生成</view>
-
-<!-- <view wx:if="{{downloadUrl!=''}}">
-    <view class="submitButton" bindtap="download" hover-class="submitButton-hover">下载幻灯片</view>
-</view> -->
-
-<view wx:if="{{enablePreview}}">
-    <view class="submitButton previewButton" bindtap="preview" hover-class="submitButton-hover">幻灯片预览</view>
-</view>
+<view class="submitButton{{enablePreview?'':'-disable'}}" bindtap="oneTouchGenerator" hover-class="submitButton-hover">一键生成</view>

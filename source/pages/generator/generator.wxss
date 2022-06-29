@@ -202,3 +202,18 @@
   color: #fff;
   border-radius: 30rpx;
 }
+
+.submitButton-disable {
+  background-color: #FAFAFA;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  border-radius: 30rpx;
+  width: 80%;
+  text-align: center;
+  padding: 30rpx;
+  margin-bottom: 50rpx;
+  margin-left: 40rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+  position :fixed;
+  bottom: 0;
+}

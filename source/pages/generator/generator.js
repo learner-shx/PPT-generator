@@ -75,6 +75,15 @@ Page({
         this.setData({
             PPT_title: value,
         })
+        if (value != '') {
+            this.setData({
+                enablePreview : true
+            })
+        } else {
+            this.setData({
+                enablePreview : false
+            })
+        }
     },
 
     deleteItem(e) {
@@ -153,6 +162,9 @@ Page({
         wx.showLoading({
           title: '正在生成...',
         })
+        this.setData({
+            enablePreview : false
+        })
         var input_information = this.intergrateUserInput();
         console.log(input_information)
         var that = this;
@@ -171,15 +183,40 @@ Page({
             },
             success(res) {
                 console.log(res)
-                that.setData({
-                    enablePreview: true,
-                });
+
                 wx.hideLoading({
                   success: (res) => {
                       wx.showToast({
                         title: '生成成功',
                         duration : 1000
                       })
+                      wx.showLoading({
+                        title: '正在加载...',
+                      })
+                      console.log("http://114.115.244.162:9000/P/" + app.globalData.userInfo._openid)
+                      wx.downloadFile({
+                          // P means preview
+                          url: "http://114.115.244.162:9000/P/" + app.globalData.userInfo._openid + ".pptx",
+                          success: re => {
+                              console.log(re)
+                              const filepath = re.tempFilePath
+                              wx.openDocument({
+                                  showMenu: true,
+                                  filePath: filepath,
+                                  success: function () {
+                                      wx.hideLoading({
+                                          success(r) {
+                                            that.setData({
+                                                enablePreview: true,
+                                            });
+                                          }
+                                      })
+                                      console.log('打开文档成功')
+                                  }
+                              })
+                          }
+                      });
+              
                   },
                 })
             }
@@ -187,31 +224,6 @@ Page({
     },
 
     preview() {
-        wx.showLoading({
-          title: '正在加载...',
-        })
-        console.log("http://114.115.244.162:9000/P/" + app.globalData.userInfo._openid)
-        wx.downloadFile({
-            // P means preview
-            url: "http://114.115.244.162:9000/P/" + app.globalData.userInfo._openid + ".pptx",
-            success: res => {
-                console.log(res)
-                const filepath = res.tempFilePath
-                wx.openDocument({
-                    showMenu: true,
-                    filePath: filepath,
-                    success: function (res) {
-                        wx.hideLoading({
-                          success: (res) => {},
-                        })
-                        console.log('打开文档成功')
-                    }
-                })
-            },
-            fail: res => {
-                console.log(res)
-            }
-        });
 
     },
 
