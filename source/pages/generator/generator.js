@@ -187,6 +187,9 @@ Page({
     },
 
     preview() {
+        wx.showLoading({
+          title: '正在加载...',
+        })
         console.log("http://114.115.244.162:9000/P/" + app.globalData.userInfo._openid)
         wx.downloadFile({
             // P means preview
@@ -198,6 +201,9 @@ Page({
                     showMenu: true,
                     filePath: filepath,
                     success: function (res) {
+                        wx.hideLoading({
+                          success: (res) => {},
+                        })
                         console.log('打开文档成功')
                     }
                 })

@@ -1,7 +1,7 @@
 const formatTime = (date) => {
   
-  const hour = date.getHours();
-  const minute = date.getMinutes();
+  const hour = date.getHours()>=10? date.getHours(): '0' + date.getHours();
+  const minute = date.getMinutes()>=10 ? date.getMinutes():'0' + date.getMinutes() ;
   return hour + ':' + minute
 };
 
