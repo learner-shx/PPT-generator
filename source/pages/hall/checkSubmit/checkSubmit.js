@@ -114,18 +114,18 @@ Page({
                         person_title : person_title
                     }
                 })
-                that.sendAccpetMessage(that.data.submittedUserList[index].userInfo);
+                that.sendAccpetMessage(that.data.submittedUserList[index]);
                 
             }
         })
     },
 
-    sendAccpetMessage(accepted_userInfo) {
+    sendAccpetMessage(submittedInfo) {
         
         var that = this;
         wx.cloud.database().collection("message").where({
             userBInfo : {
-                _openid : accepted_userInfo._openid
+                _openid : submittedInfo.userInfo._openid
             },
             userAInfo : {
                 _openid : 'SYSTEM'
@@ -142,7 +142,7 @@ Page({
                                 userName : '系统消息',
                                 avatarUrl : '../../images/index-icon/system.svg'
                             },
-                            userBInfo: accepted_userInfo,
+                            userBInfo: submittedInfo.userInfo,
                             message_type: false, // true 为用户消息, false 为系统消息
                             message_list: [{
                                 _openid: 'SYSTEM',
@@ -180,7 +180,7 @@ Page({
         wx.hideLoading({
             success(ress) {
                 wx.navigateTo({
-                  url: '../downloadPPT/downloadPPT?id=' + that.data.submittedUserList[index].ppt_path
+                  url: '../downloadPPT/downloadPPT?id=' + submittedInfo.ppt_path
                 })
             }
           })
