@@ -121,7 +121,7 @@ Page({
     },
 
     sendAccpetMessage(submittedInfo) {
-        
+        console.log(submittedInfo)
         var that = this;
         wx.cloud.database().collection("message").where({
             userBInfo : {
@@ -151,6 +151,16 @@ Page({
                             }],
                             last_send_time: wx.cloud.database().serverDate()
                         },
+                        success(re) {
+                            console.log(re)
+                            wx.hideLoading({
+                                success(ress) {
+                                    wx.navigateTo({
+                                      url: '../downloadPPT/downloadPPT?id=' + submittedInfo.ppt_path
+                                    })
+                                }
+                              })
+                        }
                     })
                 } else {
                     var _id = res.data[0]._id;
@@ -169,6 +179,16 @@ Page({
                                 data : {
                                     message_list : message_list,
                                     last_send_time: wx.cloud.database().serverDate()
+                                },
+                                success(re) {
+                                    console.log(re)
+                                    wx.hideLoading({
+                                        success(ress) {
+                                            wx.navigateTo({
+                                              url: '../downloadPPT/downloadPPT?id=' + submittedInfo.ppt_path
+                                            })
+                                        }
+                                      })
                                 }
                             })
                         }
@@ -178,13 +198,7 @@ Page({
             }
         })
 
-        wx.hideLoading({
-            success(ress) {
-                wx.navigateTo({
-                  url: '../downloadPPT/downloadPPT?id=' + submittedInfo.ppt_path
-                })
-            }
-          })
+        
     }
 
 })
