@@ -157,6 +157,7 @@ Page({
                     console.log("search message")
                     wx.cloud.database().collection('message').doc(_id).get({
                         success(res) {
+                            console.log(res)
                             var message_list = res.data.message_list;
                             var msg = {
                                 _openid: 'SYSTEM',
