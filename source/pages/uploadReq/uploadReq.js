@@ -52,7 +52,8 @@ Page({
                                         _openid : res.data._openid,
                                         avatarUrl : res.data.avatarUrl,
                                         userName : res.data.userName
-                                    }
+                                    },
+                                    describe : res.data.describe
                                 })
                                 var submittedUserList = res.data.submittedUserList;
                                 var submittedInfo = {
@@ -119,7 +120,7 @@ Page({
                             message_type: false, // true 为用户消息, false 为系统消息
                             message_list: [{
                                 _openid: 'SYSTEM',
-                                text: that.data.userInfo.userName + '完成了你的悬赏,快来看看吧',
+                                text: that.data.userInfo.userName + '完成了你的悬赏 {' + that.data.describe+ ' },快来看看吧',
                                 time: utils.formatTime(new Date())
                             }],
                             last_send_time: wx.cloud.database().serverDate()
@@ -128,7 +129,7 @@ Page({
                 } else {
                     var msg = {
                         _openid: 'SYSTEM',
-                        text: that.data.userInfo.userName + '完成了你的悬赏，快来看看吧',
+                        text: that.data.userInfo.userName + '完成了你的悬赏 {' + that.data.describe + ' }，快来看看吧',
                         time: utils.formatTime(new Date())
                     }
                     var message_list = res.data[0].message_list
