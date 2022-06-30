@@ -1,3 +1,5 @@
+
+<view wx:if="{{openid!=''}}"> 
 <view class="title">
     <view class="release">
         PPT自动生成
@@ -40,4 +42,13 @@
 
 
 <view class="submitButton{{enablePreview?'':'-disable'}}" bindtap="moreOptions" hover-class="submitButton-hover">选择模板</view>
+</view>
 
+<view wx:if="{{openid==''}}">
+<view class="login-image">
+
+  <image src="../../images/img/noLogin.png" ></image>
+
+<button class="login" bindtap="getUserProfile">登录</button>
+</view>
+</view>
