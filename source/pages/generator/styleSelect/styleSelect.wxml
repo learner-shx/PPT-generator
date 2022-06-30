@@ -8,3 +8,5 @@
 </view>
 
 <view class="submitButton{{enableSubmit?'':'-disable'}}" bindtap="oneTouchGenerator" hover-class="submitButton-hover">一键生成</view>
+
+<view wx:if="{{preview_btn}}" class="submitButton" bindtap="preview" hover-class="submitButton-hover">在线预览</view>
