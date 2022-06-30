@@ -97,7 +97,7 @@
   box-shadow: 10rpx 10rpx 20rpx 10rpx #e1e1e1;
 }
 
-.content image {
+image {
   border-radius: 30rpx;
 }
 
@@ -116,4 +116,24 @@
   border-radius: 50rpx;
   margin-top: 30rpx;
   box-shadow: 0rpx 0rpx 15rpx 5rpx #f5b041;
+}
+
+.block {
+  height: 200rpx;
+}
+
+.previewButton {
+  background-color: #ffef5e;
+  font-weight: bold;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  border-radius: 30rpx;
+  width: 80%;
+  text-align: center;
+  padding: 30rpx;
+  margin-bottom: 50rpx;
+  margin-left: 40rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+  position: fixed;
+  bottom: 0;
 }
