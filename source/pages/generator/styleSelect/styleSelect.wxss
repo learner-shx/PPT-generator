@@ -8,7 +8,6 @@
   box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
 }
 
-
 .submitButton {
   background-color: #ffeb37;
   margin: 0 auto;
@@ -45,7 +44,7 @@
 }
 
 .switch {
-  margin : 20rpx 0rpx;
+  margin: 20rpx 0rpx;
 }
 
 .me-about view {
@@ -61,4 +60,60 @@
   width: 600rpx;
   text-align: left;
   background-color: transparent;
+}
+
+.submitButton-disable {
+  background-color: #fafafa;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  border-radius: 30rpx;
+  width: 80%;
+  text-align: center;
+  padding: 30rpx;
+  margin-bottom: 50rpx;
+  margin-left: 40rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+  position: fixed;
+  bottom: 0;
+}
+
+.submitButton {
+  background-color: #ffeb37;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  border-radius: 30rpx;
+  width: 80%;
+  text-align: center;
+  padding: 30rpx;
+  margin-bottom: 50rpx;
+  margin-left: 40rpx;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx #e1e1e1;
+  position: fixed;
+  bottom: 0;
+}
+
+.submitButton-hover {
+  background-color: #ffeb37;
+  box-shadow: 10rpx 10rpx 20rpx 10rpx #e1e1e1;
+}
+
+.content image {
+  border-radius: 30rpx;
+}
+
+.description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.content-choosen {
+  background-color: #fff;
+  padding: 20rpx;
+  width: 85%;
+  margin: 0 auto;
+  border-radius: 50rpx;
+  margin-top: 30rpx;
+  box-shadow: 0rpx 0rpx 15rpx 5rpx #f5b041;
 }

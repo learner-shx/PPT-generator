@@ -3,9 +3,6 @@
         PPT自动生成
         <view class="line"></view>
     </view>
-    <view class="more-options" bindtap="moreOptions" hover-class="more-options-hover">
-        配置选项
-    </view>
 </view>
 
 <!-- 物品的描述和标题+地点 -->
@@ -42,4 +39,5 @@
 <view class="new-item" bindtap="addItem" hover-class="new-item-hover"><text>新建</text></view>
 
 
-<view class="submitButton{{enablePreview?'':'-disable'}}" bindtap="oneTouchGenerator" hover-class="submitButton-hover">一键生成</view>
+<view class="submitButton{{enablePreview?'':'-disable'}}" bindtap="moreOptions" hover-class="submitButton-hover">选择模板</view>
+

@@ -4,68 +4,103 @@ const app = getApp();
 Page({
 
     data: {
-        PPT_style: ['简约', '自然', '深色', '科技', '随机',],
-        // PPT_style_index: 0,
-        subPPTpage_number: ['1', '2', '3', '4'],
-        // subPPTpage_number_index: 1,
-        intelligentPictureMap: true
-    },
-
-    switchChange() {
-        this.setData({
-            intelligentPictureMap: !this.data.intelligentPictureMap
-        })
-    },
-
-    onLoad(option) {
-        console.log(option)
-        this.setData({
-            PPT_style_index: parseInt(option.id1),
-            subPPTpage_number_index: parseInt(option.id2),
-            intelligentPictureMap: option.id3 == "false" ? false : true
-        })
-        console.log("here")
-    },
-
-    selectPPTstyle() {
-        var that = this
-        wx.showActionSheet({
-            itemList: that.data.PPT_style,
-            success: function (res) {
-                console.log(res)
-                that.setData({
-                    PPT_style_index: res.tapIndex,
-                })
-            }
-        })
-    },
-
-    selectPPTextendPageNumber() {
-        var that = this
-        wx.showActionSheet({
-            itemList: that.data.subPPTpage_number,
-            success: function (res) {
-                console.log(res)
-                that.setData({
-                    subPPTpage_number_index: res.tapIndex,
-                })
-            }
-        })
+        enableSubmit : false,
+        template_index : null,
+        template : [
+            "简约风格",
+            "互联网风格",
+            "科技感",
+            "卡通小树",
+            "唯美小花"
+        ]
     },
 
 
-    onUnload() {
-        app.globalData.targetPageEventChannel = this.getOpenerEventChannel();
+    onLoad() {
+        const eventChannel = this.getOpenerEventChannel()
         var that = this;
-        setTimeout(function () {
-            var t = getApp().globalData.targetPageEventChannel
-            t ? t.emit('backFromTargetPage', {
-                data: {
-                    PPT_style_index: that.data.PPT_style_index,
-                    subPPTpage_number_index: that.data.subPPTpage_number_index,
-                    intelligentPictureMap: that.data.intelligentPictureMap
-                }
-            }) : console.log('not targetPage navigateBack, canceled')
-        }, 400)
-    }
+        eventChannel.on('acceptDataFromOpenerPage', function (data) {
+            that.setData({
+                PPT_title: data.PPT_title,
+                subPPT_pages: data.subPPT_pages,
+            })
+        })
+    },
+
+    selectPPTstyle(e) {
+        var index = e.currentTarget.dataset.index;
+        this.setData({
+            template_index : index,
+            enableSubmit : true
+        })
+    },
+
+
+    oneTouchGenerator() {
+
+        wx.showLoading({
+            title: '正在生成...',
+        })
+        this.setData({
+            enableSubmit: false,
+        })
+
+        var that = this;
+
+        var data = {
+            PPT_title : that.data.PPT_title,
+            subPPT_pages : that.data.subPPT_pages
+        }
+
+        wx.cloud.callFunction({
+
+            name: 'generatePPT',
+            data: {
+                description: data,
+                template : that.data.template_index,
+                _openid: app.globalData.userInfo._openid
+            },
+            success(res) {
+                console.log(res)
+
+                wx.hideLoading({
+                    success: (res) => {
+                        wx.showToast({
+                            title: '生成成功',
+                            duration: 1000
+                        })
+                        wx.showLoading({
+                            title: '正在加载...',
+                        })
+                        console.log("http://114.115.244.162:9000/P/" + app.globalData.userInfo._openid)
+                        wx.downloadFile({
+                            // P means preview
+                            url: "http://114.115.244.162:9000/P/" + app.globalData.userInfo._openid + ".pptx",
+                            success: re => {
+                                console.log(re)
+                                const filepath = re.tempFilePath
+                                wx.openDocument({
+                                    showMenu: true,
+                                    filePath: filepath,
+                                    success: function () {
+                                        wx.hideLoading({
+                                            success(r) {
+                                                that.setData({
+                                                    enablePreview: true,
+                                                });
+                                            }
+                                        })
+                                        console.log('打开文档成功')
+                                    }
+                                })
+                            }
+                        });
+
+                    },
+                })
+            }
+        });
+    },
+
+
 })

@@ -1,24 +1,10 @@
-<view class="content">
-    <view class="configuration">
-        <view class="bottom-content">
-            <view class="me-about" bindtap="selectPPTstyle">
-                <text>模板风格</text>
-                <text style="color: grey;">{{PPT_style[PPT_style_index]}}</text>
-                <!-- <image src="../../../images/common/next.png"></image> -->
-            </view>
-        </view>
-        <view class="bottom-content">
-            <view class="me-about" bindtap="selectPPTextendPageNumber">
-                <text>扩展页数</text>
-                <text style="color: grey;">{{subPPTpage_number[subPPTpage_number_index]}}</text>
-            </view>
-        </view>
-        <view class="bottom-content">
-            <view class="me-about switch" bindtap="showPop">
-                <text style="margin-left: 40rpx;">模板配图</text>
-                <switch checked="{{intelligentPictureMap}}" bindchange="switchChange"/>
-            </view>
-        </view>
-    </view>
-
+<view wx:for="{{template}}" data-index="{{index}}">
+    <view class="content{{template_index==index?'-choosen':''}}" >
+    <view bindtap="selectPPTstyle" data-index="{{index}}">
+    <image src="../../../images/PPT_template/{{index}}.jpg"></image>
+    <view class="description">{{item}}</view>
 </view>
+    </view>
+</view>
+
+<view class="submitButton{{enableSubmit?'':'-disable'}}" bindtap="oneTouchGenerator" hover-class="submitButton-hover">一键生成</view>
