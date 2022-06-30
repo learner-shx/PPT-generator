@@ -99,8 +99,8 @@
 
 image {
   border-radius: 30rpx;
-  width: 95%;
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
 
