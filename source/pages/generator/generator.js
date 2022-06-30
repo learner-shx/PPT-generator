@@ -52,72 +52,9 @@ Page({
             subPPT_pages: subPPT_pages
         })
     },
-    getUserProfile(e) {
-    
-        var that = this;
-        wx.getUserProfile({
-          desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-          success: (res) => {
-            that.setData({
-              userName: res.userInfo.nickName,
-              avatarUrl: res.userInfo.avatarUrl,
-            })
-            console.log(res.userInfo)
-            app.globalData.userInfo = res.userInfo
-            
-            // 数据库提交结束
-            
-            wx.cloud.callFunction({
-              name: "login",
-              data : {},
-              success: res => {
-                console.log(res.result.userInfo.openId)
-                // 拿到用户的OpenId
-                app.globalData.userInfo._openid = res.result.userInfo.openId
-                that.setData({
-                  userInfo : app.globalData.userInfo,
-                })
-                
-              },
-              fail: function(res) {
-                console.log(res)
-              }
-            })
-            
-            // 在数据库中查询此openid，如果没有那么新建用户，否则按原用户登录
-    
-            wx.cloud.database().collection('user').where({
-              _openid : app.globalData.userInfo._openid
-            }).get({
-              success(res) {
-                if(res.data.length==0) {
-                  // 没有搜索到则新建用户
-                  app.globalData.userInfo.user_type = false;
-                  wx.cloud.database().collection('user').add({
-                    // data 字段表示需新增的 JSON 数据
-          
-                    data: {
-                      userName: app.globalData.userInfo.nickName,
-                      avatarUrl: app.globalData.userInfo.avatarUrl,
-                      email: "未填写",
-                      call: "未填写",
-                      user_type : false
-                    },
-                  })
-                } else {
-                  app.globalData.userInfo = res.data[0]
-                }
-                wx.setStorageSync('userInfo', app.globalData.userInfo);
-                wx.navigateBack({
-                  delta: 1,
-                })
-              }
-            })
-            
-          }
-        })
+    getUserProfile() {
         
-      },
+    },
 
     onLoad() {
         this.setData({

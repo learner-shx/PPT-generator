@@ -7,7 +7,7 @@ App({
   onLaunch() {
 
     wx.cloud.init({
-      env: "cloud1-9gv9ynmtc4528521"
+      env: "kamilu-3g69c1hh0c963d36"
     })
 
     if (wx.getStorageSync('userInfo')) {
