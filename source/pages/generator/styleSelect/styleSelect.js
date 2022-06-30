@@ -93,11 +93,13 @@ Page({
             // P means preview
             url: "http://114.115.244.162:9000/P/" + app.globalData.userInfo._openid + ".pptx",
             success: re => {
-                console.log(re)
-                const filepath = re.tempFilePath
+                
+                const filepath = re.tempFilePath//.replace('unknown','pptx')
+                console.log(filepath)
                 wx.openDocument({
                     showMenu: true,
                     filePath: filepath,
+                    fileType : 'pptx',
                     success: function () {
                         wx.hideLoading({
                             success(r) {
