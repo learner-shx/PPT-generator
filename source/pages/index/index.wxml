@@ -1,5 +1,9 @@
+
 <view class="headBg">
-  <view class="title"><!-- 标题轮播图等 -->
+<view class="Title">幻享PPT自动生成器</view>
+</view>
+
+<view class="title">
   <swiper indicator-dots='true' autoplay='true' interval='3000' duration='1000' circular='true' class="swip">
     <block wx:for="{{movies}}" wx:for-index="index">
       <swiper-item>
@@ -8,13 +12,10 @@
     </block>
   </swiper>
 </view>
-</view>
 
 
-<!-- 发布和寻找 -->
 <view class="function">
   <button class="release" bindtap="toGenerator" hover-class="release-hover">
-    <!--发布-->
 
       <view class="img">
         <image src="../../images/index-icon/generator.jpg"></image>
@@ -26,7 +27,6 @@
   </button>
 
   <button class="release" bindtap="toRequirement" hover-class="release-hover">
-    <!--寻找-->
 
       <view class="img">
         <image src="../../images/index-icon/requirement.jpg"></image>
@@ -61,3 +61,6 @@
     </view>
   </view>
 </view>
+
+
+

@@ -1,12 +1,18 @@
 /* 首行黄色背景+正式上线 */
 .headBg{
   background-color: #ffd23c;
-  height: 400rpx;
+  height: 100rpx;
   border-bottom-right-radius: 80rpx;
   border-bottom-left-radius: 80rpx;
 }
 
-.headBg .content{
+.headBg .Title {
+  text-align: center;
+  font-weight: bold;
+  color : rgb(7, 7, 7);
+}
+
+.content{
   background-color: #fff;
   width: 90%;
   height: 250rpx;

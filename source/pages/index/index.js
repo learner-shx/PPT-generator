@@ -23,6 +23,8 @@ Page({
       ],
     },
   
+    
+
     onLoad() {
 
       var that = this;
