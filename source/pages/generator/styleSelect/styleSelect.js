@@ -88,10 +88,18 @@ Page({
         wx.showLoading({
             title: '正在加载...',
         })
-        console.log("http://114.115.244.162:9000/P/" + app.globalData.userInfo._openid)
+        // wx.cloud.callFunction({
+        //     name : 'downloadPPT',
+        //     data : {
+        //         _openid : app.globalData.userInfo._openid
+        //     },
+        //     success(res) {
+        //         console.log(res)
+        //     }
+        // })
         wx.downloadFile({
             // P means preview
-            url: "http://114.115.244.162:9000/P/" + app.globalData.userInfo._openid + ".pptx",
+            url: "http://kamilu.top:9000/" + app.globalData.userInfo._openid + ".pptx",
             success: re => {
                 
                 const filepath = re.tempFilePath//.replace('unknown','pptx')
@@ -112,6 +120,9 @@ Page({
                         console.log('打开文档成功')
                     }
                 })
+            },
+            fail(res) {
+                console.log(res)
             }
         });
     }
